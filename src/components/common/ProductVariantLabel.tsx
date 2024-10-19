@@ -12,13 +12,13 @@ function ProductVariantLabel() {
   ];
 
   return (
-    <div className='product-variant-label-container'>
+    <div className='custom-product-variant-label-container'>
       {partOptions.map(({ key, label }) => {
         return (
           <button
             key={key}
             onClick={() => setSelectedPart(key)}
-            className={selectedPart === key ? 'selected' : ''}
+            className={selectedPart === key ? 'custom-selected' : ''}
           >
             {label}
           </button>

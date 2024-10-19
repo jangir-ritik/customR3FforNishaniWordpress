@@ -1,8 +1,8 @@
 import './App.css';
-import './styles/CustomStyles.scss'; // Import the updated SCSS
+import './styles/CustomStyles.scss';
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Environment, Html, PresentationControls, OrbitControls } from '@react-three/drei';
+import { Environment, Html, PresentationControls } from '@react-three/drei';
 import Test from './Test';
 
 import ProductHeader from './components/common/ProductHeader';
@@ -36,7 +36,6 @@ const App = () => {
                           </PresentationControls>
                           <Environment preset="warehouse" environmentRotation={[Math.PI ,0 ,Math.PI]} />
                       </Suspense>
-                      {/* <OrbitControls /> */}
                   </Canvas>
               </div>
           </div>

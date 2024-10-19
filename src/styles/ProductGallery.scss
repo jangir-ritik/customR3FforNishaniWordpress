@@ -1,0 +1,11 @@
+.product-gallery-container {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    .product-gallery-image {
+        // height: 300px;
+        // object-fit: contain;
+        // aspect-ratio: 1/1;
+    }
+}

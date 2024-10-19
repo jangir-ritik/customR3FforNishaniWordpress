@@ -1,0 +1,23 @@
+.chain-customizer-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    gap: 24px;
+}
+
+.product-variant-type {
+    min-width: 100px; 
+    min-height: 100px;
+    background: #f4f0ed; 
+    color: #ccc; 
+    justify-content: center; 
+    align-items: center; 
+    display: flex;
+    font-size: 12px;
+    user-select: none;
+}
+
+.selected {
+    border: 1px solid black;
+    color: #000;
+}

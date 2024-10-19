@@ -1,0 +1,57 @@
+// @import "./styles/ProductImage.scss";
+// @import "./styles/ProductGallery.scss";
+// @import "./styles/ProductHeader.scss";
+// @import "./styles/ProductDescription.scss";
+// @import "./styles/StyleSelector.scss";
+// @import "./styles/MetalSelector.scss";
+// @import "./styles/PriceDisplay.scss";
+// @import "./styles/AddToCartButton.scss";
+// @import "./styles/MaterialAccordion.scss";
+// @import "./styles/DetailsAccordion.scss";
+// @import "./styles/ChainCustomizer.scss";
+// @import "./styles/ProductVariantLabel.scss";
+// @import "./styles/ProductVariantModel.scss";
+// @import "./styles/cssReset.scss";
+@import "./styles/CustomStyles.scss";
+
+.custom-product-customization-page {
+  display: flex;
+  justify-content: center;
+  max-width: 100vw;
+  gap: 24px;
+  padding: 40px 80px;
+
+  .custom-product-customization-page-left-section {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-width: 50%;
+    gap: 24px;
+
+    #experience-canvas {
+      height: 500px;
+    }
+  }
+
+  .custom-product-customization-page-right-section {
+    max-width: 628px;
+    display: flex;
+    flex-direction: column;
+
+    .custom-product-customization-page-right-style-metal-selector-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: 24px 0px;
+    }
+
+    .custom-product-customization-page-right-price-add-to-cart-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 85px;
+    }
+  }
+}

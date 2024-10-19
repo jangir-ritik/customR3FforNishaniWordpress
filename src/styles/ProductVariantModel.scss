@@ -1,0 +1,21 @@
+.product-variant-model-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .product-variant-model-left-chain {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+
+        .default {
+            border: 1px solid transparent;
+        }
+
+        .selected {
+            border: 1px solid #000;
+        }
+    }
+}

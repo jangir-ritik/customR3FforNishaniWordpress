@@ -1,0 +1,23 @@
+.product-name-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+        font-size: 24px;
+        font-weight: 400;
+    }
+
+    .product-header-actions {
+        display: flex;
+        gap: 24px;
+
+        button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            height: 24px;
+            width: 24px;
+        }
+    }
+}

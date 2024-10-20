@@ -9,66 +9,34 @@ export default function GLTFViewer() {
   const { nodes, materials } = useGLTF('/test.gltf');
   const { parts } = useProductStore();
 
-  // const getMaterial = (partType) => {
-  //   const partData = parts[partType];
-  //   const isGold = partData.metal === 'gold';
-  
-  //   const baseColor = isGold ? 0xffd700 : 0xffffff;
-  //   const metalness = 0.9;
-  //   const roughness = 0.1;
-  
-  //   return new THREE.MeshPhysicalMaterial({
-  //     color: new THREE.Color(baseColor),
-  //     metalness: metalness,
-  //     roughness: roughness,
-  //     envMapIntensity: 1.5,
-  //     clearcoat: 0.5,
-  //     clearcoatRoughness: 0.1,
-  //     reflectivity: 1.0,
-  //     emissive: isGold ? new THREE.Color(0x332200).multiplyScalar(0.2) : new THREE.Color(0x111111).multiplyScalar(0.1),
-  //   });
-  // };
-
   const getMaterial = (partType) => {
     const partData = parts[partType];
     const isGold = partData.metal === 'gold';
-  
-    // Refined color values
-    const baseColor = isGold ? 0xFFD700 : 0xE6E6E6;
-    const metalness = isGold ? 0.8 : 0.9;
-    const roughness = isGold ? 0.15 : 0.1;
+    // #9E6D33
+    // #D6A87B
+    // #E7C27B
+    // #E5BF7F
+    // #C18A4C
+    // #F1CA88
+    // #E5C080
+    // #CE9835
+    // #E3BA76
+    // #FEDF9E
+    const baseColor = isGold ? 0xEBB864 : 0xE8E8E8;
+    const metalness = isGold ? 1.3 : 0.95;
+    const roughness = isGold ? 0.1 : 0.05;
   
     return new THREE.MeshPhysicalMaterial({
       color: new THREE.Color(baseColor),
       metalness: metalness,
       roughness: roughness,
-      envMapIntensity: 1.2, // Increased for more reflection
-      clearcoat: 0.3, // Increased for more shine
-      clearcoatRoughness: 0.3,
-      reflectivity: 0.9,
-      // Subtle noise for realism
-      // roughnessMap: createNoiseTexture(0.05),
-      // normalMap: createNoiseTexture(0.03),
-      // normalScale: new THREE.Vector2(0.05, 0.05),
-      // Add slight color variation
-      emissive: isGold ? new THREE.Color(0x332200).multiplyScalar(0.1) : new THREE.Color(0x111111).multiplyScalar(0.05),
+      envMapIntensity: 1.5,
+      clearcoat: 0.1,
+      clearcoatRoughness: 0.1,
+      reflectivity: 1.0,
+      emissive: isGold ? new THREE.Color(0xFFD700).multiplyScalar(0.05) : new THREE.Color(0x111111).multiplyScalar(0.1),
     });
   };
-  
-  // Helper function to create noise texture (if not already defined)
-  function createNoiseTexture(intensity = 0.05) {
-    const size = 256;
-    const data = new Uint8Array(size * size * 4);
-    for (let i = 0; i < size * size * 4; i += 4) {
-      const noise = Math.random() * intensity * 255;
-      data[i] = data[i + 1] = data[i + 2] = 128 + noise;
-      data[i + 3] = 255; // Alpha
-    }
-    const texture = new THREE.DataTexture(data, size, size, THREE.RGBAFormat);
-    texture.needsUpdate = true;
-    return texture;
-  }
-
 
   const getVisibility = (partType, modelIndex) => {
     return parts[partType].selectedModel === modelIndex;
@@ -118,6 +86,7 @@ export default function GLTFViewer() {
             rotation={node.rotation}
             scale={node.scale}
             visible={getVisibility(mesh.partType, mesh.modelIndex)}
+            // visible={true}
           />
         );
       })}

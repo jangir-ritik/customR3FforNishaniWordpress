@@ -1,9 +1,10 @@
 import React from "react";
 import useProductStore from "../../store/store";
 import ProductVariantLabel from "./ProductVariantLabel";
+import productData from "../../../public/product_array.json";
 
 const ChainCustomizer = () => {
-  const { selectedPart, parts, setPartModel } = useProductStore();
+  const { selectedPart, parts, setPartModel, productType } = useProductStore();
   const selectedModel = parts[selectedPart].selectedModel;
   const modelCount = parts[selectedPart].modelCount;
 
@@ -11,13 +12,21 @@ const ChainCustomizer = () => {
     setPartModel(selectedPart, index);
   };
 
-  // the images are in the images folder inside of public folder 
+  const getImageSrc = (partType: ChainPart, index: number) => {
+    let category;
+    if (partType === "topLock" || partType === "bottomLock") {
+      category = "hooks";
+    } else {
+      category = productType === "necklace" ? "necklaces" : "bracelets";
+    }
 
-  // get models images for top lock (hook) ===> hook-model1.png, hook-model2.png, hook-model3.png, hook-model4.png, hook-model5.png
-  // get model images for left chain ===> id productType === 'necklace' ? necklace-model1.png, necklace-model2.png, necklace-model3.png, necklace-model4.png, necklace-model5.png : bracelet-model1.png, bracelet-model2.png, bracelet-model3.png, bracelet-model4.png, bracelet-model5.png
-  // get model images for right chain ===> id productType === 'necklace' ? necklace-model1.png, necklace-model2.png, necklace-model3.png, necklace-model4.png, necklace-model5.png : bracelet-model1.png, bracelet-model2.png, bracelet-model3.png, bracelet-model4.png, bracelet-model5.png
-  // get model images for bottom lock (hook) ===> hook-model1.png, hook-model2.png, hook-model3.png, hook-model4.png, hook-model5.png
-  // get model images for additional chain (if any) ===> id productType === 'necklace' ? necklace-model1.png, necklace-model2.png, necklace-model3.png, necklace-model4.png, necklace-model5.png : bracelet-model1.png, bracelet-model2.png, bracelet-model3.png, bracelet-model4.png, bracelet-model5.png
+    const items = productData.categories[category];
+    if (items && items[index]) {
+      return items[index].images[0].url; // Assuming we're using the first image (gold plating)
+    }
+
+    return "";
+  };
 
   return (
     <div className="tdt-chain-customizer">
@@ -29,14 +38,11 @@ const ChainCustomizer = () => {
             className={`tdt-model-option ${index === selectedModel ? 'tdt-selected' : ''}`}
             key={index}
           >
-            {/* TODO: add the images */}
-            {/* if productVariantLabel === left chain, then use the left chain model image */}
-            {/* if productVariantLabel === right chain, then use the right chain model image */}
-            {/* if productVariantLabel === top lock, then use the top lock model image */}
-            {/* if productVariantLabel === bottom lock, then use the bottom lock model image */}
-            {/* if productVariantLabel === additional chain, then use the additional chain model image */}
-            {/* <img src={`/images/hooks/hook-model${index + 1}.png`} alt={`model ${index + 1}`} /> */}
-            model {index + 1}
+            <img 
+              src={getImageSrc(selectedPart, index)} 
+              alt={`${selectedPart} model ${index + 1}`} 
+              onError={(e) => console.error('Image failed to load:', e.target.src)}
+            />
           </div>
         ))}
       </div>

@@ -1,78 +1,5 @@
 import { create } from 'zustand';
-
-type Metal = 'gold' | 'silver';
-type ChainPart = 'leftChain' | 'rightChain' | 'topLock' | 'bottomLock' | 'additionalChain';
-
-// types.ts
-interface JewelryPartData {
-  leftChain: {
-    label: string;
-    model: string;
-    price: number;
-  };
-  rightChain: {
-    label: string;
-    model: string;
-    price: number;
-  };
-  additionalChain: {
-    label: string;
-    model: string;
-    price: number;
-  };
-  lockBottom: {
-    label: string;
-    model: string;
-    price: number;
-  };
-  lockTop: {
-    label: string;
-    model: string;
-    price: number;
-  };
-}
-
-interface ChainPartState {
-  metal: Metal;
-  label: string;
-  selectedModel: number;
-  modelCount: number;
-  prices: number[];
-}
-
-interface ProductData {
-  id: string;
-  name: string;
-  description: string;
-  price: string;
-  regular_price: string;
-  sale_price: string;
-  image_url: string;
-  attributes: Record<string, any>;
-  variations: any[];
-  default_attributes: Record<string, string>;
-  jewellery_part?: {
-    value: string;
-  };
-  jewelry_parts?: Record<ChainPart, {
-    label: string;
-    model: string;
-    price: number;
-  }>;
-}
-
-interface ProductStore {
-  productData: ProductData | null;
-  jewelryData: JewelryPartData | null;
-  selectedPart: ChainPart;
-  parts: Record<ChainPart, ChainPartState>;
-  setProductData: (data: ProductData) => void;
-  setJewelryData: (dataString: string) => void;
-  setSelectedPart: (part: ChainPart) => void;
-  setPartMetal: (part: ChainPart, metal: Metal) => void;
-  setPartModel: (part: ChainPart, modelIndex: number) => void;
-  calculateTotalPrice: () => number;
-}
+import { ChainPart, JewelryPartData, ProductStore } from '../types/type';
 
 // utils/parseJewelryData.ts
 export const parseJewelryData = (dataString: string): JewelryPartData => {
@@ -237,10 +164,15 @@ const useProductStore = create<ProductStore>((set, get) => ({
       });
     }
 
-    return {
+    const updatedState = {
       productData: data,
       parts: updatedParts
     };
+
+    // Calculate and set the initial total price
+    updatedState.totalPrice = get().calculateTotalPrice();
+
+    return updatedState;
   }),
   setSelectedPart: (part) => set({ selectedPart: part }),
   setPartMetal: (part, metal) => set((state) => ({
@@ -249,12 +181,19 @@ const useProductStore = create<ProductStore>((set, get) => ({
       [part]: { ...state.parts[part], metal },
     },
   })),
-  setPartModel: (part, modelIndex) => set((state) => ({
-    parts: {
-      ...state.parts,
-      [part]: { ...state.parts[part], selectedModel: modelIndex },
-    },
-  })),
+  setPartModel: (part, modelIndex) => set((state) => {
+    const updatedPart = { ...state.parts[part], selectedModel: modelIndex };
+    const updatedParts = { ...state.parts, [part]: updatedPart };
+
+    // Recalculate the price for the updated part
+    const newPrice = updatedPart.prices[modelIndex];
+
+    return {
+      parts: updatedParts,
+      // Trigger a re-render of components that depend on the total price
+      totalPrice: get().calculateTotalPrice(),
+    };
+  }),
   calculateTotalPrice: () => {
     const state = get();
     return Object.entries(state.parts).reduce((total, [partKey, part]) => {
@@ -266,6 +205,9 @@ const useProductStore = create<ProductStore>((set, get) => ({
       return total + price;
     }, 0);
   },
+
+  // Add this new property to store the total price
+  totalPrice: 0,
 }));
 
 export default useProductStore;

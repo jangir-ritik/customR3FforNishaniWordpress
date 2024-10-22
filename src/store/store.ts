@@ -164,8 +164,14 @@ const useProductStore = create<ProductStore>((set, get) => ({
       });
     }
 
+    // Determine product type from the name or set a default
+    const productType = data.name.toLowerCase().includes('necklace') ? 'necklace' : 'bracelet';
+
     const updatedState = {
-      productData: data,
+      productData: {
+        ...data,
+        productType, // Add this line
+      },
       parts: updatedParts
     };
 

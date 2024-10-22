@@ -66,32 +66,32 @@
         ],
         "hooks": [
             {
-                "id": "hook1",
+                "id": "model1",
                 "name": "Signature Lock",
                 "price": 1900
             },
             {
-                "id": "hook1B",
+                "id": "model1B",
                 "name": "Signature Lock Matte",
                 "price": 2000
             },
             {
-                "id": "hook2",
+                "id": "model2",
                 "name": "Spiral Lock",
                 "price": 2400
             },
             {
-                "id": "hook3",
+                "id": "model3",
                 "name": "Hexagonal Textured Lock",
                 "price": 2300
             },
             {
-                "id": "hook4",
+                "id": "model4",
                 "name": "Half Studded Lock",
                 "price": 2500
             },
             {
-                "id": "hook5",
+                "id": "model5",
                 "name": "Octagonal Lock",
                 "price": 2200
             }

@@ -114,6 +114,7 @@ export interface ProductData {
         model: string;
         price: number;
     }>;
+    productType: 'necklace' | 'bracelet';
 }
 
 export interface ProductStore {

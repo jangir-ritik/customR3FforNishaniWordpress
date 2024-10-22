@@ -1,0 +1,105 @@
+{
+    "categories": {
+        "necklaces": [
+            {
+                "id": "model1",
+                "name": "Curb Chain",
+                "price": 3600
+            },
+            {
+                "id": "model2",
+                "name": "Box with Pearls",
+                "price": 4400
+            },
+            {
+                "id": "model3",
+                "name": "Simple 13A",
+                "price": 4000
+            },
+            {
+                "id": "model4",
+                "name": "Simple 13B",
+                "price": 4000
+            },
+            {
+                "id": "model5",
+                "name": "Ball Chain",
+                "price": 4600
+            },
+            {
+                "id": "model6",
+                "name": "Simple with Diamond",
+                "price": 8800
+            }
+        ],
+        "bracelets": [
+            {
+                "id": "model1",
+                "name": "Box Chain",
+                "price": 2200
+            },
+            {
+                "id": "model2",
+                "name": "Simple 5",
+                "price": 2000
+            },
+            {
+                "id": "model3",
+                "name": "Simple 7",
+                "price": 2000
+            },
+            {
+                "id": "model4",
+                "name": "Simple 11",
+                "price": 2000
+            },
+            {
+                "id": "model5",
+                "name": "Ball Chain",
+                "price": 2300
+            },
+            {
+                "id": "model6",
+                "name": "Curb Chain",
+                "price": 1800
+            }
+        ],
+        "hooks": [
+            {
+                "id": "hook1",
+                "name": "Signature Lock",
+                "price": 1900
+            },
+            {
+                "id": "hook1B",
+                "name": "Signature Lock Matte",
+                "price": 2000
+            },
+            {
+                "id": "hook2",
+                "name": "Spiral Lock",
+                "price": 2400
+            },
+            {
+                "id": "hook3",
+                "name": "Hexagonal Textured Lock",
+                "price": 2300
+            },
+            {
+                "id": "hook4",
+                "name": "Half Studded Lock",
+                "price": 2500
+            },
+            {
+                "id": "hook5",
+                "name": "Octagonal Lock",
+                "price": 2200
+            }
+        ]
+    },
+    "metadata": {
+        "lastUpdated": "2024-10-22",
+        "currency": "INR",
+        "priceUnit": "whole"
+    }
+}

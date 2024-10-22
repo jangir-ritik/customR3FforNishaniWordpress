@@ -1,0 +1,255 @@
+{
+    "presetProducts": {
+        "necklaces": {
+            "twist-link-necklace": {
+                "id": "5462",
+                "name": "Twist Link Necklace",
+                "components": {
+                    "chainRight": {
+                        "type": "curb chain",
+                        "model": "model1",
+                        "price": 3600
+                    },
+                    "chainLeft": {
+                        "type": "simple 13B",
+                        "model": "model4",
+                        "price": 4000
+                    },
+                    "additionalChain": {
+                        "type": "simple with diamond",
+                        "model": "model6",
+                        "price": 8800
+                    },
+                    "bottomLock": {
+                        "type": "hexagonal textured lock",
+                        "model": "model3",
+                        "price": 2300
+                    },
+                    "topLock": {
+                        "type": "signature lock",
+                        "model": "model1",
+                        "price": 1900
+                    }
+                }
+            },
+            "minimalist-twist-necklace": {
+                "id": "5463",
+                "name": "Minimalist Twist Necklace",
+                "components": {
+                    "chainRight": {
+                        "type": "ball chain",
+                        "model": "model5",
+                        "price": 4600
+                    },
+                    "chainLeft": {
+                        "type": "curb chain",
+                        "model": "model1",
+                        "price": 3600
+                    },
+                    "additionalChain": {
+                        "type": "box with pearls",
+                        "model": "model2",
+                        "price": 4400
+                    },
+                    "bottomLock": {
+                        "type": "signature lock",
+                        "model": "model1",
+                        "price": 1900
+                    },
+                    "topLock": {
+                        "type": "spiral lock",
+                        "model": "model2",
+                        "price": 2400
+                    }
+                }
+            },
+            "classic-link-necklace": {
+                "id": "5464",
+                "name": "Classic Link Necklace",
+                "components": {
+                    "chainRight": {
+                        "type": "box with pearls",
+                        "model": "model2",
+                        "price": 4400
+                    },
+                    "chainLeft": {
+                        "type": "curb chain",
+                        "model": "model1",
+                        "price": 3600
+                    },
+                    "additionalChain": {
+                        "type": "null",
+                        "price": 0
+                    },
+                    "bottomLock": {
+                        "type": "hexagonal textured lock",
+                        "model": "model3",
+                        "price": 2300
+                    },
+                    "topLock": {
+                        "type": "spiral lock",
+                        "model": "model2",
+                        "price": 2400
+                    }
+                }
+            },
+            "bold-link-necklace": {
+                "id": "5464",
+                "name": "Bold Link Necklace",
+                "components": {
+                    "chainRight": {
+                        "type": "simple 13B",
+                        "model": "model4",
+                        "price": 4000
+                    },
+                    "chainLeft": {
+                        "type": "ball chain",
+                        "model": "model5",
+                        "price": 4600
+                    },
+                    "additionalChain": {
+                        "type": "simple with diamond",
+                        "model": "model6",
+                        "price": 8800
+                    },
+                    "bottomLock": {
+                        "type": "signature lock",
+                        "model": "model1",
+                        "price": 1900
+                    },
+                    "topLock": {
+                        "type": "half studded",
+                        "model": "model4",
+                        "price": 2500
+                    }
+                }
+            }
+        },
+        "bracelets": {
+            "minimalist-bracelet": {
+                "id": "1",
+                "name": "The Minimalist Bracelet",
+                "components": {
+                    "chainRight": {
+                        "type": "simple 11",
+                        "model": "model4",
+                        "price": null
+                    },
+                    "chainLeft": {
+                        "type": "ball chain",
+                        "model": "model5",
+                        "price": 2300
+                    },
+                    "bottomLock": {
+                        "type": "octagonal lock",
+                        "model": "model5",
+                        "price": 2200
+                    },
+                    "topLock": {
+                        "type": "signature lock",
+                        "model": "model1",
+                        "price": 2000
+                    }
+                }
+            },
+            "modern-link-bracelet": {
+                "id": "2",
+                "name": "Modern Link Bracelet",
+                "components": {
+                    "chainRight": {
+                        "type": "curb chain",
+                        "model": "model6",
+                        "price": 1800
+                    },
+                    "chainLeft": {
+                        "type": "ball chain",
+                        "model": "model5",
+                        "price": 2300
+                    },
+                    "additionalChain": {
+                        "type": "box chain",
+                        "model": "model1",
+                        "price": 2200
+                    },
+                    "bottomLock": {
+                        "type": "signature lock",
+                        "model": "model1",
+                        "price": 1900
+                    },
+                    "topLock": {
+                        "type": "signature lock",
+                        "model": "model1",
+                        "price": 2000
+                    }
+                }
+            },
+            "signature-fusion-bracelet": {
+                "id": "3",
+                "name": "Signature Fusion Bracelet",
+                "components": {
+                    "chainLeft": {
+                        "type": "simple 7",
+                        "model": "model3",
+                        "price": null
+                    },
+                    "chainRight": {
+                        "type": "simple 11",
+                        "model": "model4",
+                        "price": null
+                    },
+                    "additionalChain": {
+                        "type": "box chain",
+                        "model": "model1",
+                        "price": 2200
+                    },
+                    "bottomLock": {
+                        "type": "spiral lock",
+                        "model": "model2",
+                        "price": 2400
+                    },
+                    "topLock": {
+                        "type": "half studded",
+                        "model": "model4",
+                        "price": 2500
+                    }
+                }
+            },
+            "statement-link-bracelet": {
+                "id": "4",
+                "name": "Statement Link Bracelet",
+                "components": {
+                    "chainLeft": {
+                        "type": "simple 7",
+                        "model": "model3",
+                        "price": null
+                    },
+                    "chainRight": {
+                        "type": "curb chain",
+                        "model": "model6",
+                        "price": 1800
+                    },
+                    "additionalChain": {
+                        "type": "null",
+                        "price": 0
+                    },
+                    "bottomLock": {
+                        "type": "signature lock",
+                        "model": "model1",
+                        "price": 1900
+                    },
+                    "topLock": {
+                        "type": "hexagonal textured lock",
+                        "model": "model3",
+                        "price": 2300
+                    }
+                }
+            }
+        }
+    },
+    "metadata": {
+        "lastUpdated": "2024-10-22",
+        "currency": "USD",
+        "documentId": "ID-5427",
+        "collection": "Rainbow"
+    }
+}

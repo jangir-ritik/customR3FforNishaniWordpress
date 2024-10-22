@@ -8,7 +8,8 @@ function ProductVariantLabel() {
     { key: 'leftChain', label: 'Left Chain' },
     { key: 'rightChain', label: 'Right Chain' },
     { key: 'topLock', label: 'Front Lock' },
-    { key: 'bottomLock', label: 'Back Lock' }
+    { key: 'bottomLock', label: 'Back Lock' },
+    { key: 'additionalChain', label: 'Additional Chain' }
   ];
 
   return (

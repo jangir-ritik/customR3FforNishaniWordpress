@@ -6,9 +6,6 @@ const ChainCustomizer = () => {
   const { selectedPart, parts, setPartModel } = useProductStore();
   const selectedModel = parts[selectedPart].selectedModel;
   const modelCount = parts[selectedPart].modelCount;
-  const productData = useProductStore(state => state.productData);
-
-  console.log(productData?.attributes)
 
   const handleModelChange = (index) => {
     setPartModel(selectedPart, index);

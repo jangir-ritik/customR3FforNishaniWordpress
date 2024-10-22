@@ -3,14 +3,23 @@ import useProductStore from "../../store/store";
 
 const AddToCartButton = () => {
   const productData = useProductStore(state => state.productData);
+  const calculateTotalPrice = useProductStore(state => state.calculateTotalPrice);
+  const parts = useProductStore(state => state.parts);
 
   const handleAddToCart = async () => {
     try {
+      const customPrice = calculateTotalPrice();
+      
       const formData = new FormData();
       formData.append('action', 'pc_add_to_cart');
       formData.append('product_id', productData.id);
-      // formData.append('variation_id', productData.variations[0].id); // Assuming first variation for simplicity
-      formData.append('quantity', 1);
+      formData.append('quantity', '1');
+      formData.append('custom_price', customPrice.toString());
+
+      // Add selected parts information
+      Object.entries(parts).forEach(([partKey, part]) => {
+        formData.append(`custom_${partKey}`, `Model-${part.selectedModel + 1}`);
+      });
       
       // Use the WordPress ajaxurl variable
       const ajaxurl = window.ajaxurl || '/wp-admin/admin-ajax.php';

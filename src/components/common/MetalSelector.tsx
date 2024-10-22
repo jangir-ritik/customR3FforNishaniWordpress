@@ -2,32 +2,28 @@ import React from "react";
 import useProductStore from "../../store/store";
 
 const MetalSelector = () => {
-  const { selectedPart, parts, setPartMetal } = useProductStore();
-  const selectedMetal = parts[selectedPart].metal;
-  const partLabel = parts[selectedPart].label;
+  const { selectedPart, parts, setPartPlating } = useProductStore();
+  const selectedMetal = parts[selectedPart].plating;
+  // const partLabel = parts[selectedPart].label;
 
   const handleMetalChange = (metal) => {
-    setPartMetal(selectedPart, metal);
+    setPartPlating(selectedPart, metal);
   };
 
   return (
     <div className="tdt-metal-selector">
-      <p className="tdt-metal-label">Plating for {partLabel}:</p>
+      <p className="tdt-metal-label">Plating: </p>
       <div className="tdt-metal-options">
         <button
           type="button"
           onClick={() => handleMetalChange('gold')}
           className={`tdt-metal-button tdt-gold ${selectedMetal === 'gold' ? 'tdt-selected' : ''}`}
-        >
-          {/* Gold */}
-        </button>
+        />
         <button
           type="button"
           onClick={() => handleMetalChange('silver')}
           className={`tdt-metal-button tdt-silver ${selectedMetal === 'silver' ? 'tdt-selected' : ''}`}
-        >
-          {/* Silver */}
-        </button>
+        />
       </div>
     </div>
   );

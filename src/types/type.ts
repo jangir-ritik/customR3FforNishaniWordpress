@@ -1,10 +1,12 @@
 export type Metal = 'gold' | 'silver';
 export type ChainPart = 'leftChain' | 'rightChain' | 'topLock' | 'bottomLock' | 'additionalChain';
+export type ProductType = 'necklace' | 'bracelet';
 
 export interface Component {
     type: string;
     model: string;
     price: number | null;
+    plating: Metal;
 }
 
 export interface Product {
@@ -22,7 +24,7 @@ export interface Categories {
 export interface Metadata {
     lastUpdated: string;
     currency: string;
-    priceUnit: string;
+    priceUnit?: string;
 }
 
 export interface ProductArrayData {
@@ -47,6 +49,19 @@ export interface ProductPresets {
     bracelets: Record<string, Product>;
 }
 
+export interface ModelCountGetterParams {
+    productType: ProductType;
+    partType: ChainPart;
+}
+
+export type CreateProductStore = (
+    set: (
+        partial: ProductStore | Partial<ProductStore> | ((state: ProductStore) => ProductStore | Partial<ProductStore>),
+        replace?: boolean
+    ) => void,
+    get: () => ProductStore
+) => ProductStore;
+
 export interface Metadata {
     lastUpdated: string;
     currency: string;
@@ -64,35 +79,40 @@ export interface JewelryPartData {
         label: string;
         model: string;
         price: number;
+        plating: Metal;
     };
     rightChain: {
         label: string;
         model: string;
         price: number;
+        plating: Metal;
     };
     additionalChain: {
         label: string;
         model: string;
         price: number;
+        plating: Metal;
     };
     lockBottom: {
         label: string;
         model: string;
         price: number;
+        plating: Metal;
     };
     lockTop: {
         label: string;
         model: string;
         price: number;
+        plating: Metal;
     };
 }
 
 export interface ChainPartState {
-    metal: Metal;
+    readonly modelCount: number;
+    readonly prices: number[];
+    plating: Metal;
     label: string;
     selectedModel: number;
-    modelCount: number;
-    prices: number[];
 }
 
 export interface ProductData {
@@ -113,6 +133,7 @@ export interface ProductData {
         label: string;
         model: string;
         price: number;
+        plating: Metal;
     }>;
     productType: 'necklace' | 'bracelet';
 }
@@ -125,8 +146,27 @@ export interface ProductStore {
     setProductData: (data: ProductData) => void;
     setJewelryData: (dataString: string) => void;
     setSelectedPart: (part: ChainPart) => void;
-    setPartMetal: (part: ChainPart, metal: Metal) => void;
     setPartModel: (part: ChainPart, modelIndex: number) => void;
     calculateTotalPrice: () => number;
     totalPrice: number;
+    productType: 'necklace' | 'bracelet';
+    setProductType: (type: 'necklace' | 'bracelet') => void;
+    setPartPrice: (part: ChainPart, price: number) => void;
+    setPartPlating: (part: ChainPart, plating: Metal) => void;
+}
+
+export interface PartData {
+    plating: Metal;
+    label: string;
+    selectedModel: number;
+    modelCount: number;
+    prices: number[];
+  }
+
+  export interface ProductState {
+    productType: ProductType;
+    selectedPart: ChainPart;
+    parts: Record<ChainPart, PartData>;
+    totalPrice: number;
+    productData: ProductData | null;
 }

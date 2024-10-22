@@ -12,7 +12,7 @@ const ChainCustomizer = () => {
   const handleModelChange = (index) => {
     setPartModel(selectedPart, index);
   };
-
+  
   const getImageSrc = (partType, index: number) => {
     if (partType === "topLock" || partType === "bottomLock") {
       category = "hooks";
@@ -22,7 +22,9 @@ const ChainCustomizer = () => {
 
     const items = options.categories[category];
     if (items && items[index]) {
-      return items[index].images[0].url; // Assuming we're using the first image (gold plating)
+      const selectedMetal = parts[selectedPart].plating;
+      // if selectedMetal is gold, use the first image, if silver, use the second image
+      return items[index].images[selectedMetal === 'gold' ? 0 : 1].url;
     }
 
     return "";

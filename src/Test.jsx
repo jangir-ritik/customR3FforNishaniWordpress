@@ -11,7 +11,7 @@ export default function GLTFViewer() {
 
   const getMaterial = (partType) => {
     const partData = parts[partType];
-    const isGold = partData.metal === 'gold';
+    const isGold = partData.plating === 'gold';
     // #9E6D33
     // #D6A87B
     // #E7C27B

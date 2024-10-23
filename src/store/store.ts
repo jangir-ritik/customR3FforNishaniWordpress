@@ -90,7 +90,7 @@ const useProductStore = create<ProductStore>((set, get) => ({
   productData: null,
   jewelryData: null,
   selectedPart: 'leftChain',
-  productType: 'necklace',
+  productType: 'bracelet',
   parts: {
     leftChain: {
       plating: 'gold',

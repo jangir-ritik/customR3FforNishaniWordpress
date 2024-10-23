@@ -97,7 +97,16 @@ export default function Bracelet() {
     { name: 'BraceletR4', partType: 'rightChain', modelIndex: 3, material: 'metal' },
     { name: 'BraceletR5Base', partType: 'rightChain', modelIndex: 4, material: 'metal' },
     { name: 'BraceletR5Pearls', partType: 'rightChain', modelIndex: 4, material: 'pearl' },
-    { name: 'BraceletR6', partType: 'rightChain', modelIndex: 5, material: 'metal' }
+    { name: 'BraceletR6', partType: 'rightChain', modelIndex: 5, material: 'metal' },
+    // Bracelet A
+    { name: 'BraceletA1', partType: 'additionalChain', modelIndex: 0, material: 'metal' },
+    { name: 'BraceletA2', partType: 'additionalChain', modelIndex: 1, material: 'metal' },
+    { name: 'BraceletA3', partType: 'additionalChain', modelIndex: 2, material: 'metal' },
+    { name: 'BraceletA4', partType: 'additionalChain', modelIndex: 3, material: 'metal' },
+    { name: 'BraceletA5Base', partType: 'additionalChain', modelIndex: 4, material: 'metal' },
+    { name: 'BraceletA5Pearls', partType: 'additionalChain', modelIndex: 4, material: 'pearl' },
+    { name: 'BraceletA6', partType: 'additionalChain', modelIndex: 5, material: 'metal' },
+    
   ], []);
 
   return (

@@ -1,35 +1,14 @@
-import React from "react";
-import Image from "next/image";
-import useProductStore from "@/app/store/store";
-import productImage from "@/public/pngs/view-container.png";
+import React, { memo } from "react";
 
-const ProductImage: React.FC = () => {
-
-    const getContentToDisplay = () => {
-        return {
-            type: 'image',
-            src: productImage,
-            alt: "Default Product Image"
-        };
-    };
-
-    const content = getContentToDisplay();
-
-    return (
-        <div className="product-image-container">
-            {content.type === 'image' ? (
-                <Image
-                    src={content.src ?? ''}
-                    alt={content.alt ?? ''}
-                    className="product-main-image"
-                />
-            ) : (
-                <div className="product-text-content">
-                    test
-                </div>
-            )}
-        </div>
-    );
-};
+const ProductImage = memo(({ imageUrl }: { imageUrl: string }) => (
+    <div style={{ width: '300px', height: '300px' }}>
+      <img 
+        src={imageUrl} 
+        alt="product" 
+        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        loading="lazy"
+      />
+    </div>
+  ));
 
 export default ProductImage;

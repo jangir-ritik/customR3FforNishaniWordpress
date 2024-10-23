@@ -89,7 +89,7 @@ export default function Bracelet() {
     { name: 'BottomHook4Base', partType: 'bottomLock', modelIndex: 3, material: 'metal' },
     { name: 'BottomHook4Daimonds', partType: 'bottomLock', modelIndex: 3, material: 'diamond' },
     { name: 'BottomHook5', partType: 'bottomLock', modelIndex: 4, material: 'metal' },
-    { name: 'BottomHook5', partType: 'bottomLock', modelIndex: 5, material: 'metal' },
+    { name: 'BottomHook1', partType: 'bottomLock', modelIndex: 5, material: 'metal' },
     // Right Chain
     { name: 'BraceletR1', partType: 'rightChain', modelIndex: 0, material: 'metal' },
     { name: 'BraceletR2', partType: 'rightChain', modelIndex: 1, material: 'metal' },

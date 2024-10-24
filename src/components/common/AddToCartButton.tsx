@@ -83,9 +83,6 @@ const AddToCartButton = () => {
         jQuery(document.body).trigger('added_to_cart');
       }
 
-      // Show success message
-      alert('Product added to cart successfully!');
-
     } catch (error) {
       console.error('Error adding to cart:', error);
       setError(error.message || 'Failed to add product to cart');

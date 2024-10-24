@@ -87,7 +87,7 @@ const getModelPrices = (productType: string, partType: ChainPart): number[] => {
 };
 
 const useProductStore = create<ProductStore>((set, get) => ({
-  productData: null,
+  productData: window.productData || {},  // Get the WordPress localized productData
   jewelryData: null,
   selectedPart: 'leftChain',
   productType: 'bracelet',

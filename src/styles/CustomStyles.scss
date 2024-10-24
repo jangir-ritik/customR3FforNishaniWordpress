@@ -192,10 +192,17 @@
         text-overflow: ellipsis;
         overflow: hidden;
         padding: 0;
+        min-height: 32px;
+        line-height: 32px;
 
         &.tdt-selected {
             color: #000;
             text-decoration: underline;
+        }
+
+        &:hover {
+            color: inherit;
+            background-color: transparent;
         }
 
         &:focus {
@@ -303,7 +310,6 @@
 
     .tdt-price {
         font-size: 24px;
-        font-weight: 600;
         margin: 0;
 
         @media (min-width: 768px) {
@@ -430,8 +436,8 @@ button:not(.cms-search-submit):hover, .button:hover, input[type="submit"]:hover,
       align-items: center;
       gap: 0.5rem;
       margin-top: 0.5rem;
-      padding: 0.5rem;
-      color: #2563eb; // blue color
+      padding: 0.5rem 0;
+      color: #7e7e7e;
       background: none;
       border: none;
       cursor: pointer;
@@ -439,11 +445,12 @@ button:not(.cms-search-submit):hover, .button:hover, input[type="submit"]:hover,
       transition: color 0.2s ease;
   
       &:hover {
-        color: #1e40af; // darker blue
+        color: #000;
       }
   
       &__icon {
         font-size: 0.75rem;
+        opacity: 0.4;
       }
     }
   }

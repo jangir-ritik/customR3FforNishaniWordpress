@@ -70,15 +70,15 @@ const ProductDescription = () => {
         )}
       </div>
       {showButton && (
-        <button
+        <div
           onClick={() => setIsExpanded(!isExpanded)}
           className="product-description__button"
         >
           <span>{isExpanded ? 'Show Less' : 'Show More'}</span>
-          <span className="product-description__icon">
+          {/* <span className="product-description__icon">
             {isExpanded ? '\u25B2' : '\u25BC'}
-          </span>
-        </button>
+          </span> */}
+        </div>
       )}
     </div>
   );

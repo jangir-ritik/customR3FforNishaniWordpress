@@ -7,7 +7,7 @@ const PriceDisplay = () => {
   return (
     <div className="tdt-price-display">
       <p className="tdt-price">₹{totalPrice.toLocaleString('en-IN')}</p>
-      {/* <p className="tdt-tax-info">(Inclusive of all taxes)</p> */}
+      <p className="tdt-tax-info">(Inclusive of all taxes)</p>
     </div>
   );
 };

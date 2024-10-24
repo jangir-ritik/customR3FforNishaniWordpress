@@ -1,9 +1,18 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, Suspense } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import useProductStore from './store/store';
+import Loader from './components/Loader';
 
 export default function Bracelet() {
+  return (
+    <Suspense fallback={<Loader />}>
+      <BraceletContent />
+    </Suspense>
+  );
+}
+
+function BraceletContent() {
   const group = useRef();
   const { nodes } = useGLTF('/BraceletFile.gltf');
   const { parts } = useProductStore();

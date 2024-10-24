@@ -86,11 +86,23 @@ const getModelPrices = (productType: string, partType: ChainPart): number[] => {
   return options.categories[category]?.map(item => item.price) || [];
 };
 
+const getPartPrice = (productType: string, partType: ChainPart, modelIndex: number): number => {
+  let category: string;
+  if (partType === 'topLock' || partType === 'bottomLock') {
+    category = 'hooks';
+  } else {
+    category = productType === 'necklace' ? 'necklaces' : 'bracelets';
+  }
+  const price = options.categories[category]?.[modelIndex]?.price || 0;
+  console.log(`getPartPrice: type=${productType}, part=${partType}, model=${modelIndex}, category=${category}, price=${price}`);
+  return price;
+};
+
 const useProductStore = create<ProductStore>((set, get) => ({
   productData: window.productData || {},  // Get the WordPress localized productData
   jewelryData: null,
   selectedPart: 'leftChain',
-  productType: 'bracelet',
+  productType: 'necklace', // Explicitly set this to 'necklace'
   parts: {
     leftChain: {
       plating: 'gold',
@@ -187,7 +199,7 @@ const useProductStore = create<ProductStore>((set, get) => ({
         leftChain: data.jewelry_parts.leftChain,
         rightChain: data.jewelry_parts.rightChain,
         additionalChain: data.jewelry_parts.additionalChain,
-        topLock: data.jewelry_parts.topLock,     
+        topLock: data.jewelry_parts.topLock,
         bottomLock: data.jewelry_parts.bottomLock
       };
 
@@ -214,12 +226,11 @@ const useProductStore = create<ProductStore>((set, get) => ({
         }
       });
     }
-
     // Determine product type from the name or set a default
     const productType = data.name.toLowerCase().includes('necklace') ? 'necklace' : 'bracelet';
 
-    const initialTotalPrice = Object.values(updatedParts).reduce((total, partData) => {
-      return total + (partData.prices[partData.selectedModel] || 0);
+    const initialTotalPrice = Object.entries(updatedParts).reduce((total, [partKey, partData]) => {
+      return total + getPartPrice(productType, partKey as ChainPart, partData.selectedModel);
     }, 0);
 
     const updatedState = {
@@ -227,6 +238,7 @@ const useProductStore = create<ProductStore>((set, get) => ({
         ...data,
         productType,
       },
+      productType, // Set this explicitly
       parts: updatedParts,
       totalPrice: initialTotalPrice
     };
@@ -277,26 +289,21 @@ const useProductStore = create<ProductStore>((set, get) => ({
   })),
 
   setPartModel: (part, modelIndex) => set((state) => {
-    // Get the new price for the selected model
-    const prices = getModelPrices(state.productType, part);
-    const newPrice = prices[modelIndex] || 0;
-    
-    // Update the part with new model and keep the entire prices array
     const updatedParts = {
       ...state.parts,
       [part]: {
         ...state.parts[part],
         selectedModel: modelIndex,
-        prices: prices // Keep the entire prices array
       }
     };
 
-    // Calculate new total price
-    const newTotalPrice = Object.values(updatedParts).reduce((total, partData) => {
-      return total + (partData.prices[partData.selectedModel] || 0);
+    const newTotalPrice = Object.entries(updatedParts).reduce((total, [partKey, partData]) => {
+      const price = getPartPrice(state.productType, partKey as ChainPart, partData.selectedModel);
+      return total + price;
     }, 0);
 
-    // Return updated state
+    console.log(`New total price: ${newTotalPrice}`);
+
     return {
       parts: updatedParts,
       totalPrice: newTotalPrice
@@ -305,14 +312,15 @@ const useProductStore = create<ProductStore>((set, get) => ({
 
   calculateTotalPrice: () => {
     const state = get();
-    return Object.entries(state.parts).reduce((total, [_, part]) => {
-      const price = part.prices[part.selectedModel] || 0;
-      if (isNaN(price)) {
-        console.warn(`Invalid price for part:`, part);
-        return total;
-      }
+    return Object.entries(state.parts).reduce((total, [partKey, part]) => {
+      const price = getPartPrice(state.productType, partKey as ChainPart, part.selectedModel);
       return total + price;
     }, 0);
+  },
+
+  logState: () => {
+    const state = get();
+    console.log('Current state:', JSON.stringify(state, null, 2));
   },
 
 }));

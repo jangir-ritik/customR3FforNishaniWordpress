@@ -1,9 +1,18 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, Suspense } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import useProductStore from './store/store';
+import Loader from './components/Loader';
 
 export default function Necklace() {
+  return (
+    <Suspense fallback={<Loader />}>
+      <NecklaceContent />
+    </Suspense>
+  );
+}
+
+function NecklaceContent() {
   const group = useRef();
   const { nodes } = useGLTF('/NecklaceFile.gltf');
   const { parts } = useProductStore();

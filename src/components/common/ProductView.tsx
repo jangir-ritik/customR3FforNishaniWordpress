@@ -10,9 +10,9 @@ interface ProductViewProps {
 
 const ProductView = memo(({ productType }: ProductViewProps) => {
   // Memoize camera settings
-  console.log('productType', productType);
   const cameraSettings = React.useMemo(() => ({
-    position: [0, 0, productType === 'necklace' ? 15 : 20],
+    // position: [0, 0, productType === 'necklace' ? 10 : 15],
+    position: [0, 0, 15],
     fov: 50
   }), [productType]);
 
@@ -24,7 +24,7 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
     rotation: [Math.PI / 2, 0, 0],
     polar: [-Math.PI / 3, Math.PI / 3],
     azimuth: [-Math.PI / 1.4, Math.PI / 2]
-  }), [productType]);
+  }), []);
 
   return (
       <Canvas

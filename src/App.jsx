@@ -96,8 +96,10 @@ const App = () => {
 
   useEffect(() => {
     document.addEventListener('onLoad', () => {
-      document.getElementById('cms-header').classList.remove('header-shadow');
       document.getElementById('cms-main').classList.remove('cms-main');
+      const header = document.getElementById('cms-header');
+      header.classList.remove('header-shadow');
+      console.log('header found and style removed', header)
     });
   }, []);
 
@@ -124,8 +126,8 @@ const App = () => {
 
   return (
     <div className="tdt-product-customization-page">
-      <button 
-        style={{position: 'absolute', top: '140px', left: 0, padding: 10}}
+      <button
+        style={{ position: 'absolute', top: '140px', left: 0, padding: 10 }}
         onClick={handleProductTypeChange}
       >
         {productType === 'necklace' ? 'Necklace' : 'Bracelet'}
@@ -135,20 +137,28 @@ const App = () => {
         <div className="tdt-product-3d-view">
           <ProductView productType={productType} />
         </div>
-        <ProductImage imageUrl={productData.image_url} />
-      </div>
-
-      <div className="tdt-product-customization-right-section">
-        <ProductHeader />
-        <ProductDescription />
+        {/* in mobile, the chain customizer needs to be here */}
         <ChainCustomizer />
         <div className="tdt-product-style-metal-wrapper">
           <StyleSelector />
           <MetalSelector />
         </div>
-        <hr style={{ width: '100%', color: '#00000010', margin: 0 }} />
+        <ProductImage imageUrl={productData.image_url} />
         <ProductDetails />
-        <hr style={{ width: '100%', color: '#00000010', margin: 0 }} />
+      </div>
+
+      <div className="tdt-product-customization-right-section">
+        <ProductHeader />
+        <ProductDescription />
+        {/* in desktop, the chain customizer needs to be here */}
+        <ChainCustomizer />
+        <div className="tdt-product-style-metal-wrapper">
+          <StyleSelector />
+          <MetalSelector />
+        </div>
+        <hr className='tdt-product-details-divider hide-on-mobile' />
+        <ProductDetails />
+        <hr className='tdt-product-details-divider hide-on-mobile' />
         <div className="tdt-product-price-cart-wrapper">
           <PriceDisplay key={totalPrice} />
           <AddToCartButton />

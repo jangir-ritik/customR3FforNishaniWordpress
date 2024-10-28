@@ -56,19 +56,22 @@ function BraceletContent() {
         // const baseColor = isGold ? 0xE6Bf80 : 0xd4d4d1;
         // const metalness = isGold ? 1.3 : 0.95;
         // const roughness = isGold ? 0.1 : 0.05;
-        const baseColor = isGold ? 0xFFD700 : 0xd4d4d1; // More vibrant gold
+        const baseColor = isGold ? 0xFDD887 : 0xE8E8E8;
+        // const baseColor = isGold ? 0xFFD700 : 0xd4d4d1; // More vibrant gold
         const metalness = isGold ? 0.95 : 0.95; // Slightly lower metalness
-        const roughness = isGold ? 0.15 : 0.05; // Slightly higher roughness
-        const envMapIntensity = 2.0; // Increase from 1.5
+        const roughness = isGold ? 0.05 : 0.3; // Slightly higher roughness
+        // const envMapIntensity = 0.05; // Increase from 1.5
         return new THREE.MeshPhysicalMaterial({
           color: new THREE.Color(baseColor),
           metalness: metalness,
           roughness: roughness,
-          envMapIntensity: 1.5,
-          clearcoat: 0.1,
-          clearcoatRoughness: 0.1,
-          reflectivity: 1.0,
-          emissive: isGold ? new THREE.Color(0xFFD700).multiplyScalar(0.05) : new THREE.Color(0x111111).multiplyScalar(0.1),
+          // envMapIntensity: envMapIntensity,
+    //       anisotropy: 0.1,                      // Moderate anisotropic effect
+    // anisotropyRotation: Math.PI / 2,
+          // clearcoat: 0.1,
+          // clearcoatRoughness: 0.1,
+          // reflectivity: 1.0,
+          emissive: isGold ? new THREE.Color(0xD09F5D).multiplyScalar(0.1) : new THREE.Color(0x111111).multiplyScalar(0.01),
         });
     }
   };
@@ -84,8 +87,7 @@ function BraceletContent() {
     { name: 'BraceletL2', partType: 'leftChain', modelIndex: 1, material: 'metal' },
     { name: 'BraceletL3', partType: 'leftChain', modelIndex: 2, material: 'metal' },
     { name: 'BraceletL4', partType: 'leftChain', modelIndex: 3, material: 'metal' },
-    { name: 'BraceletL5Base', partType: 'leftChain', modelIndex: 4, material: 'metal' },
-    { name: 'BraceletL5Pearls', partType: 'leftChain', modelIndex: 4, material: 'pearl' },
+    { name: 'BraceletL5', partType: 'leftChain', modelIndex: 4, material: 'metal' },
     { name: 'BraceletL6', partType: 'leftChain', modelIndex: 5, material: 'metal' },
     // Top Lock
     { name: 'TopHook1', partType: 'topLock', modelIndex: 0, material: 'metal' },
@@ -108,17 +110,16 @@ function BraceletContent() {
     { name: 'BraceletR2', partType: 'rightChain', modelIndex: 1, material: 'metal' },
     { name: 'BraceletR3', partType: 'rightChain', modelIndex: 2, material: 'metal' },
     { name: 'BraceletR4', partType: 'rightChain', modelIndex: 3, material: 'metal' },
-    { name: 'BraceletR5Base', partType: 'rightChain', modelIndex: 4, material: 'metal' },
-    { name: 'BraceletR5Pearls', partType: 'rightChain', modelIndex: 4, material: 'pearl' },
+    { name: 'BraceletR5', partType: 'rightChain', modelIndex: 4, material: 'metal' },
     { name: 'BraceletR6', partType: 'rightChain', modelIndex: 5, material: 'metal' },
     // Bracelet A
-    { name: 'BraceletA1', partType: 'additionalChain', modelIndex: 0, material: 'metal' },
-    { name: 'BraceletA2', partType: 'additionalChain', modelIndex: 1, material: 'metal' },
-    { name: 'BraceletA3', partType: 'additionalChain', modelIndex: 2, material: 'metal' },
-    { name: 'BraceletA4', partType: 'additionalChain', modelIndex: 3, material: 'metal' },
-    { name: 'BraceletA5Base', partType: 'additionalChain', modelIndex: 4, material: 'metal' },
-    { name: 'BraceletA5Pearls', partType: 'additionalChain', modelIndex: 4, material: 'pearl' },
-    { name: 'BraceletA6', partType: 'additionalChain', modelIndex: 5, material: 'metal' },
+    // { name: 'BraceletA1', partType: 'additionalChain', modelIndex: 0, material: 'metal' },
+    // { name: 'BraceletA2', partType: 'additionalChain', modelIndex: 1, material: 'metal' },
+    // { name: 'BraceletA3', partType: 'additionalChain', modelIndex: 2, material: 'metal' },
+    // { name: 'BraceletA4', partType: 'additionalChain', modelIndex: 3, material: 'metal' },
+    // { name: 'BraceletA5Base', partType: 'additionalChain', modelIndex: 4, material: 'metal' },
+    // { name: 'BraceletA5Pearls', partType: 'additionalChain', modelIndex: 4, material: 'pearl' },
+    // { name: 'BraceletA6', partType: 'additionalChain', modelIndex: 5, material: 'metal' },
     
   ], []);
 

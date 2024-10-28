@@ -1,5 +1,6 @@
 import React, { Suspense, memo } from 'react';
 import { Canvas } from '@react-three/fiber';
+import * as THREE from 'three';
 import { Environment, Html, OrbitControls, PresentationControls } from '@react-three/drei';
 import Bracelet from '../../Bracelet';
 import Necklace from '../../Necklace';
@@ -37,16 +38,15 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
         userSelect: 'none'
       }}
     >
-      <color attach="background" args={['#f4f0ed']} />
+      {/* <color attach="background" args={['#f4f0ed']} /> */}
       <Suspense fallback={<Html center />}>
         <PresentationControls {...presentationSettings}>
           {productType === 'necklace' ? <Necklace /> : <Bracelet />}
         </PresentationControls>
-        <Environment files="./2.hdr" 
-        />
-        <spotLight
-          position={[10, 10, 10]}
-          intensity={0.4}
+        <Environment files="./5.exr" environmentIntensity={0.8}  />
+        {/* <spotLight
+          position={[0, 0, 0]}
+          intensity={4}
           angle={0.6}
           penumbra={0.5}
           castShadow
@@ -58,9 +58,9 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
           angle={0.7}
           penumbra={0.5}
         />
-        <ambientLight intensity={0.2} />
+        <ambientLight intensity={0.2} /> */}
       </Suspense>
-      {/* <OrbitControls /> */}
+      <OrbitControls />
     </Canvas>
   );
 });

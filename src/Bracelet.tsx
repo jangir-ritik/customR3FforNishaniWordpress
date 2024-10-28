@@ -53,9 +53,13 @@ function BraceletContent() {
 
       default:
         const isGold = partData.plating === 'gold';
-        const baseColor = isGold ? 0xEBB864 : 0xE8E8E8;
-        const metalness = isGold ? 1.3 : 0.95;
-        const roughness = isGold ? 0.1 : 0.05;
+        // const baseColor = isGold ? 0xE6Bf80 : 0xd4d4d1;
+        // const metalness = isGold ? 1.3 : 0.95;
+        // const roughness = isGold ? 0.1 : 0.05;
+        const baseColor = isGold ? 0xFFD700 : 0xd4d4d1; // More vibrant gold
+        const metalness = isGold ? 0.95 : 0.95; // Slightly lower metalness
+        const roughness = isGold ? 0.15 : 0.05; // Slightly higher roughness
+        const envMapIntensity = 2.0; // Increase from 1.5
         return new THREE.MeshPhysicalMaterial({
           color: new THREE.Color(baseColor),
           metalness: metalness,

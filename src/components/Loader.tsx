@@ -18,7 +18,7 @@ const Loader = () => {
                 <div style={{
                     width: '200px',
                     height: '2px',
-                    background: 'linear-gradient(to right, #C0C0C0, #FFD700)',
+                    background: 'linear-gradient(to right, #C0C0C0, #FF2C5A)',
                     borderRadius: '1px',
                     overflow: 'hidden',
                     position: 'relative'
@@ -26,19 +26,19 @@ const Loader = () => {
                     <div style={{
                         width: `${progress}%`,
                         height: '100%',
-                        background: 'linear-gradient(to right, #FFD700, #C0C0C0)',
+                        background: 'linear-gradient(to right, #FF2C5A, #C0C0C0)',
                         transition: 'width 0.5s',
                         position: 'absolute',
                         top: 0,
                         left: 0,
-                        boxShadow: '0 0 10px #FFD700'
+                        boxShadow: '0 0 10px #FF2C5A'
                     }} />
                 </div>
                 <div style={{
                     width: '40px',
                     height: '40px',
                     // borderRadius: '50%',
-                    // border: '2px solid #FFD700',
+                    // border: '2px solid #FF2C5A',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',

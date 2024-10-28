@@ -1,6 +1,6 @@
 .tdt-product-customization-page {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: center;
     max-width: 100%;
     padding: 24px;
@@ -20,13 +20,22 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        gap: 24px;
 
         @media (min-width: 768px) {
             max-width: 50%;
+            gap: 24px;
+            
+            > .tdt-chain-customizer {
+                display: none;
+            }
+
+            > .tdt-details-accordion {
+                display: none;
+            }
         }
 
         .tdt-product-3d-view {
+            // order: 0;
             height: 330px;
 
             @media (min-width: 768px) {
@@ -37,44 +46,83 @@
                 height: 600px;
             }
         }
+
+        .tdt-product-style-metal-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 24px 0;
+
+            @media (min-width: 768px) {
+                display: none;
+            }
+        }
     }
 
     .tdt-product-customization-right-section {
         max-width: 100%;
         display: flex;
         flex-direction: column;
+        gap: 8px;
+
+        > .tdt-chain-customizer {
+            display: none;
+        }
+
+        > .tdt-details-accordion {
+            display: none;
+        }
 
         @media (min-width: 768px) {
             max-width: 50%;
+            gap: 0;
+
+            > .tdt-chain-customizer {
+                display: block;
+                order: initial;
+                margin-bottom: 24px;
+            }
+
         }
 
         @media (min-width: 1024px) {
             max-width: 534px;
+
+            > .tdt-details-accordion {
+                display: flex;
+            }
         }
 
         .tdt-product-style-metal-wrapper {
-            display: flex;
-            flex-direction: column;
+            display: none;
+            flex-direction: row;
+            justify-content: space-between;
             align-items: flex-start;
 
             @media (min-width: 768px) {
+                display: flex;
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
+                margin-bottom: 24px;
             }
         }
 
         .tdt-product-price-cart-wrapper {
-            margin-top: 24px;
+            // margin-top: 24px;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
+            justify-content: space-between;
             gap: 16px;
+            margin-bottom: 24px;
 
             @media (min-width: 768px) {
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
+                margin: 0;
+                margin-top: 24px;
             }
         }
     }
@@ -84,6 +132,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
     // margin-bottom: 16px;
 
     @media (min-width: 768px) {
@@ -93,15 +142,27 @@
     }
 
     .tdt-product-title {
-        font-size: 24px;
-        line-height: 29px;
+        font-size: 20px;
+        line-height: 24px;
         font-weight: 400;
         margin: 0;
+
+        @media (min-width: 768px) {
+            font-size: 24px;
+            line-height: 29px;
+            font-weight: 400;
+            margin: 0;
+            margin-bottom: 8px;
+        }
     }
 
     .tdt-product-actions {
-        display: flex;
+        display: none;
         gap: 16px;
+
+        @media (min-width: 768px) {
+            display: flex;
+        }
 
         .tdt-action-button {
             background-color: transparent;
@@ -115,8 +176,12 @@
 }
 
 .tdt-product-description {
-    margin-bottom: 40px;
+    margin-bottom: 16px;
     color: #00000088;
+
+    @media (min-width: 768px) {
+        margin-bottom: 40px;
+    }
 
     .tdt-product-main-description {
         font-size: 14px;
@@ -125,15 +190,23 @@
 }
 
 .tdt-chain-customizer {
-    margin-bottom: 24px;
+    // margin-bottom: 24px;
+    display: block;
+    width: 100%;
+    margin: 0;
+    // order: 1;
 
     .tdt-model-selector {
         overflow-x: scroll;
         display: flex;
         // flex-wrap: wrap;
         gap: 8px;
-        margin-top: 16px;
         padding-bottom: 16px;
+
+
+        @media (min-width: 768px) {
+            margin-top: 16px;
+        }
     }
 
     .tdt-model-option {
@@ -149,6 +222,7 @@
         cursor: pointer;
         transition: all 0.3s ease;
         border: 1px solid transparent;
+        overflow: hidden;
 
         &.tdt-selected {
             border: 1px solid black;
@@ -164,24 +238,38 @@
             min-height: 100px;
         }
     }
+
+    @media (min-width: 768px) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 24px;
+    }
 }
 
 .tdt-product-variant-label {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 32px;
+    flex-wrap: nowrap;
+    gap: 24px;
     justify-content: space-between;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    overflow-x: scroll;
+    padding-bottom: 16px;
 
     @media (min-width: 768px) {
         flex-wrap: nowrap;
         gap: 16px;
+        margin-top: 0;
+        overflow-x: hidden;
+        // margin-bottom: 32px;
     }
 
     .tdt-variant-button {
         // flex: 1 1 calc(50% - 4px);
         // padding: 8px 12px;
         border: none;
+        flex-shrink: 0;
         background-color: transparent;
         font-size: 12px;
         line-height: 14px;
@@ -213,36 +301,40 @@
 }
 
 .tdt-style-selector {
-    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
 
     .tdt-style-label {
-        font-size: 14px;
-        font-weight: 400;
-        color: #000;
+        font-size: 12px;
+        font-weight: 300;
+        color: #111;
         margin: 0;
 
         .tdt-style-value {
             font-weight: 600;
+            color: #000;
         }
     }
 }
 
 .tdt-metal-selector {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 16px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
 
     @media (min-width: 768px) {
         flex-direction: row;
         align-items: center;
+        gap: 0px;
     }
 
     .tdt-metal-label {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 300;
-        color: #000;
-        margin: 0 0 8px 0;
+        color: #111;
 
         @media (min-width: 768px) {
             margin: 0 16px 0 0;
@@ -292,14 +384,26 @@
 }
 
 .tdt-details-accordion {
-    margin: 16px 0;
+    // display: none;
+    margin: 24px 0;
+    font-size: 14px;
+    font-weight: 400;
+
+    @media (min-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 16px 0;
+    }
 
     .tdt-product-details {
         list-style-type: disc;
         padding-left: 20px;
+        font-size: 12px;
+        line-height: 16px;
         margin: 0;
         opacity: 0.6;
-        margin-top: 16px;
+        margin-top: 8px;
     }
 }
 
@@ -318,9 +422,9 @@
     }
 
     .tdt-tax-info {
-        font-size: 12px;
+        font-size: 10px;
         font-weight: 300;
-        opacity: 0.6;
+        opacity: 0.4;
         margin: 0;
 
         @media (min-width: 768px) {
@@ -374,83 +478,146 @@ button:not(.cms-search-submit):hover, .button:hover, input[type="submit"]:hover,
     100% {background-position:0     0, 10px 10px, 20px 20px}
 }
 
-.product-description {
-    width: 100%;
+// .product-description {
+//     width: 100%;
+//     color: #00000050;
+//     font-weight: 300;
     
-    &__empty {
-      font-style: italic;
-      color: #666;
-    }
+//     &__empty {
+//       font-style: italic;
+//       color: #666;
+//     }
   
-    &__container {
-      position: relative;
-    }
+//     &__container {
+//       position: relative;
+//     }
   
-    &__content {
-      position: relative;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
+//     &__content {
+//       position: relative;
+//       overflow: hidden;
+//       transition: max-height 0.3s ease-out;
       
-      &:not(.expanded) {
-        max-height: 4.5em; // Approximately 3 lines (adjust based on your line-height)
-      }
+//       &:not(.expanded) {
+//         max-height: 4.5em; // Approximately 3 lines (adjust based on your line-height)
+//       }
       
-      &.expanded {
-        max-height: none;
-      }
+//       &.expanded {
+//         max-height: none;
+//       }
+//     }
+  
+//     &__text {
+//     font-size: 14px;
+//     line-height: 20px;
+//     }
+  
+//     &__details {
+//       margin-top: 1rem;
+//       padding-left: 1.5rem;
+//       list-style-type: disc;
+  
+//       li {
+//         margin-bottom: 0.5rem;
+//       }
+//     }
+  
+//     &__note {
+//       margin-top: 1rem;
+//       font-style: italic;
+//       color: #666;
+//     }
+  
+//     &__gradient {
+//       position: absolute;
+//       bottom: 0;
+//       left: 0;
+//       height: 2rem;
+//       width: 100%;
+//       background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+//       pointer-events: none;
+//     }
+  
+//     &__button {
+//       display: flex;
+//       align-items: center;
+//       gap: 0.5rem;  
+//       padding: 0.5rem 0;
+//       color: #7e7e7e;
+//       background: none;
+//       border: none;
+//       cursor: pointer;
+//       font-size: 10px;
+//       transition: color 0.2s ease;
+  
+//       &:hover {
+//         color: #000;
+//       }
+  
+//       &__icon {
+//         font-size: 0.75rem;
+//         opacity: 0.4;
+//       }
+//     }
+//   }
+
+  .tdt-product-description {
+    width: 100%;
+    color: #00000050;
+    font-weight: 300;
+  }
+  
+  .product-description__container {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .product-description__content {
+    position: relative;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    
+    &:not(.expanded) {
+    //   max-height: 4.5em;
     }
-  
-    &__text {
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-  
-    &__details {
-      margin-top: 1rem;
-      padding-left: 1.5rem;
-      list-style-type: disc;
-  
-      li {
-        margin-bottom: 0.5rem;
-      }
-    }
-  
-    &__note {
-      margin-top: 1rem;
-      font-style: italic;
-      color: #666;
-    }
-  
-    &__gradient {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 2rem;
-      width: 100%;
-      background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-      pointer-events: none;
-    }
-  
-    &__button {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-      padding: 0.5rem 0;
-      color: #7e7e7e;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 0.875rem;
-      transition: color 0.2s ease;
-  
-      &:hover {
-        color: #000;
-      }
-  
-      &__icon {
-        font-size: 0.75rem;
-        opacity: 0.4;
-      }
+    
+    &.expanded {
+      max-height: none;
     }
   }
+  
+  .product-description__text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .product-description__empty {
+    font-style: italic;
+    color: #666;
+  }
+  
+
+.hide-on-mobile {
+    display: none;
+}
+
+.tdt-product-details-divider {
+    @media (min-width: 768px) {
+        display: block;
+        width: 100%;
+        opacity: 0.1;
+        margin: 0;    
+    }
+}
+
+.tdt-product-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1;
+    // order: 2;
+    // height: 100%;
+
+    @media (min-width: 768px) {
+        width: 300px;
+        height: 300px;
+        order: initial;
+    }
+}

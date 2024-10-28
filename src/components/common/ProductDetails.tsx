@@ -11,7 +11,7 @@ const ProductDetails = () => {
   const parseDescription = (description: string): { mainDescription: string; details: ProductDetail[]; note: string } => {
     const parts = description.split('<ul>');
     const mainDescription = parts[0].trim();
-    
+
     let details: ProductDetail[] = [];
     let note = '';
 
@@ -39,17 +39,16 @@ const ProductDetails = () => {
 
   return (
     <div className="tdt-details-accordion">
-        Details
-        <div className="tdt-accordion-content">
-                {details.length > 0 && (
-        <ul className="tdt-product-details">
-          {details.map((detail, index) => (
-            <li key={index}>{detail.text}</li>
-          ))}
-        </ul>
-      )}
-      {/* {note && <p className="tdt-product-note">{note}</p>} */}
-        </div>
+      Details
+      <div className="tdt-accordion-content">
+        {details.length > 0 && (
+          <ul className="tdt-product-details">
+            {details.map((detail, index) => (
+              <li key={index}>{detail.text}</li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };

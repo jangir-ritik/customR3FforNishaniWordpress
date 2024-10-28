@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 
 const ProductImage = memo(({ imageUrl }: { imageUrl: string }) => (
-    <div style={{ width: '300px', height: '300px' }}>
+    <div className="tdt-product-image-wrapper">
       <img 
         src={imageUrl} 
         alt="product" 

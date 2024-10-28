@@ -1,6 +1,6 @@
 import React, { Suspense, memo } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Environment, Html, PresentationControls } from '@react-three/drei';
+import { Environment, Html, OrbitControls, PresentationControls } from '@react-three/drei';
 import Bracelet from '../../Bracelet';
 import Necklace from '../../Necklace';
 
@@ -12,7 +12,7 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
   // Memoize camera settings
   const cameraSettings = React.useMemo(() => ({
     // position: [0, 0, productType === 'necklace' ? 10 : 15],
-    position: [0, 0, 15],
+    position: [0, 0, 12],
     fov: 50
   }), [productType]);
 
@@ -27,24 +27,41 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
   }), []);
 
   return (
-      <Canvas
-        dpr={[1, 2]}
-        camera={cameraSettings}
-        style={{
-          touchAction: 'none',
-          WebkitTapHighlightColor: 'transparent',
-          WebkitUserSelect: 'none',
-          userSelect: 'none'
-        }}
-      >
-        <color attach="background" args={['#f4f0ed']} />
-        <Suspense fallback={<Html center className="tdt-3d-loader" />}>
-          <PresentationControls {...presentationSettings}>
-            {productType === 'necklace' ? <Necklace /> : <Bracelet />}
-          </PresentationControls>
-          <Environment files="./2.hdr" />
-        </Suspense>
-      </Canvas>
+    <Canvas
+      dpr={[1, 2]}
+      camera={cameraSettings}
+      style={{
+        touchAction: 'none',
+        WebkitTapHighlightColor: 'transparent',
+        WebkitUserSelect: 'none',
+        userSelect: 'none'
+      }}
+    >
+      <color attach="background" args={['#f4f0ed']} />
+      <Suspense fallback={<Html center />}>
+        <PresentationControls {...presentationSettings}>
+          {productType === 'necklace' ? <Necklace /> : <Bracelet />}
+        </PresentationControls>
+        <Environment files="./2.hdr" 
+        />
+        <spotLight
+          position={[10, 10, 10]}
+          intensity={0.4}
+          angle={0.6}
+          penumbra={0.5}
+          castShadow
+        />
+
+        <spotLight
+          position={[-10, 4, -10]}
+          intensity={0.2}
+          angle={0.7}
+          penumbra={0.5}
+        />
+        <ambientLight intensity={0.2} />
+      </Suspense>
+      {/* <OrbitControls /> */}
+    </Canvas>
   );
 });
 

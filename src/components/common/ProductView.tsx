@@ -7,6 +7,7 @@ import Necklace from '../../Necklace';
 import { Perf } from 'r3f-perf';
 import { sRGBEncoding } from '@react-three/drei/helpers/deprecated';
 import { ACESFilmicToneMapping } from 'three';
+import EnhancedLighting from './EnhancedLighting';
 
 interface ProductViewProps {
   productType: 'necklace' | 'bracelet';
@@ -34,6 +35,12 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
     <Canvas
       dpr={[1, 2]}
       camera={cameraSettings}
+      gl={{
+        preserveDrawingBuffer: true,
+        antialias: true,
+        toneMapping: THREE.ACESFilmicToneMapping,
+        toneMappingExposure: 1.2
+      }}
       style={{
         touchAction: 'none',
         WebkitTapHighlightColor: 'transparent',
@@ -41,18 +48,18 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
         userSelect: 'none'
       }}
     >
-      {/* <color attach="background" args={['#f4f0ed']} /> */}
+      <color attach="background" args={['#f4f0ed']} />
       <Suspense fallback={<Html center />}>
+      <EnhancedLighting />
         <PresentationControls {...presentationSettings}>
           {productType === 'necklace' ? <Necklace /> : <Bracelet />}
         </PresentationControls>
-        <Environment files="./Studio.hdr" 
-        environmentRotation={[0, 0, 0]}
-        environmentIntensity={0.8}
-        background
-        />
+        {/* <Environment files="./Studio.hdr"
+          environmentRotation={[0, 0, 0]}
+          environmentIntensity={0.8}
+        /> */}
       </Suspense>
-      {/* <Perf deepAnalyze={true} position="bottom-left" /> */}
+      <Perf deepAnalyze={true} minimal={false} charts={true} position="bottom-left" />
       <OrbitControls />
     </Canvas>
   );

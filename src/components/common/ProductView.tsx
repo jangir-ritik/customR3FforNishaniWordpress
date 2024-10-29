@@ -4,6 +4,9 @@ import * as THREE from 'three';
 import { Environment, Html, OrbitControls, PresentationControls } from '@react-three/drei';
 import Bracelet from '../../Bracelet';
 import Necklace from '../../Necklace';
+import { Perf } from 'r3f-perf';
+import { sRGBEncoding } from '@react-three/drei/helpers/deprecated';
+import { ACESFilmicToneMapping } from 'three';
 
 interface ProductViewProps {
   productType: 'necklace' | 'bracelet';
@@ -43,23 +46,13 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
         <PresentationControls {...presentationSettings}>
           {productType === 'necklace' ? <Necklace /> : <Bracelet />}
         </PresentationControls>
-        <Environment files="./5.exr" environmentIntensity={0.8}  />
-        {/* <spotLight
-          position={[0, 0, 0]}
-          intensity={4}
-          angle={0.6}
-          penumbra={0.5}
-          castShadow
+        <Environment files="./Studio.hdr" 
+        environmentRotation={[0, 0, 0]}
+        environmentIntensity={0.8}
+        background
         />
-
-        <spotLight
-          position={[-10, 4, -10]}
-          intensity={0.2}
-          angle={0.7}
-          penumbra={0.5}
-        />
-        <ambientLight intensity={0.2} /> */}
       </Suspense>
+      {/* <Perf deepAnalyze={true} position="bottom-left" /> */}
       <OrbitControls />
     </Canvas>
   );

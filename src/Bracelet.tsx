@@ -88,6 +88,7 @@ function BraceletContent() {
     { name: 'BraceletL3', partType: 'leftChain', modelIndex: 2, material: 'metal' },
     { name: 'BraceletL4', partType: 'leftChain', modelIndex: 3, material: 'metal' },
     { name: 'BraceletL5', partType: 'leftChain', modelIndex: 4, material: 'metal' },
+    { name: 'BraceletL5', partType: 'leftChain', modelIndex: 4, material: 'metal' },
     { name: 'BraceletL6', partType: 'leftChain', modelIndex: 5, material: 'metal' },
     // Top Lock
     { name: 'TopHook1', partType: 'topLock', modelIndex: 0, material: 'metal' },

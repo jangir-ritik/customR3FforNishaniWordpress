@@ -12,13 +12,12 @@ const Loader = () => {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                fontFamily: 'Arial, sans-serif',
-                color: '#333'
+                color: '#333',
             }}>
                 <div style={{
                     width: '200px',
                     height: '2px',
-                    background: 'linear-gradient(to right, #C0C0C0, #FF2C5A)',
+                    background: '#dbdbdb',
                     borderRadius: '1px',
                     overflow: 'hidden',
                     position: 'relative'
@@ -26,41 +25,25 @@ const Loader = () => {
                     <div style={{
                         width: `${progress}%`,
                         height: '100%',
-                        background: 'linear-gradient(to right, #FF2C5A, #C0C0C0)',
+                        background: 'linear-gradient(to right, #ff0023, #FF2C5A)',
                         transition: 'width 0.5s',
                         position: 'absolute',
                         top: 0,
                         left: 0,
-                        boxShadow: '0 0 10px #FF2C5A'
                     }} />
                 </div>
                 <div style={{
                     width: '40px',
                     height: '40px',
-                    // borderRadius: '50%',
-                    // border: '2px solid #FF2C5A',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     marginTop: '20px',
-                    // background: 'radial-gradient(circle, #FFD700, #C0C0C0)',
-                    //   boxShadow: '0 0 15px rgba(255, 215, 0, 0.5)'
                 }}>
                     <span style={{ fontSize: '12px', fontWeight: 'bold' }}>
                         {progress.toFixed(0)}%
                     </span>
                 </div>
-                {/* <p style={{
-                    marginTop: '15px',
-                    fontSize: '14px',
-                    letterSpacing: '2px',
-                    textTransform: 'uppercase',
-                    background: 'linear-gradient(to right, #C0C0C0, #FFD700)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
-                }}>
-                    Loading Elegance
-                </p> */}
             </div>
         </Html>
     );

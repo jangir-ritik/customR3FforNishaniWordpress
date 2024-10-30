@@ -95,12 +95,50 @@ const App = () => {
   // }
 
   useEffect(() => {
-    document.addEventListener('onLoad', () => {
-      document.getElementById('cms-main').classList.remove('cms-main');
-      const header = document.getElementById('cms-header');
-      header.classList.remove('header-shadow');
-      console.log('header found and style removed', header)
-    });
+    try {
+      // Find the main element with cms-main class
+      const mainElement = document.getElementById('cms-main');
+      const headerElement = document.getElementById('cms-header');
+      
+      if (mainElement) {
+        // Remove the cms-main class
+        mainElement.classList.remove('cms-main');
+        
+        // Optional: Log success for debugging
+        console.log('Successfully removed cms-main class');
+      } else {
+        console.warn('Main element with cms-main class not found');
+      }
+
+      if (headerElement) {
+        headerElement.classList.remove('header-shadow');
+        headerElement.classList.add('custom-bottom-border');
+        console.log('Successfully removed header-shadow class');
+      } else {
+        console.warn('Header element with header-shadow class not found');
+      }
+
+    } catch (error) {
+      // Log any errors that occur during the process
+      console.error('Error removing cms-main class:', error);
+    }
+    
+    // Cleanup function (optional)
+    return () => {
+      try {
+        const mainElement = document.getElementById('cms-main');
+        if (mainElement && !mainElement.classList.contains('cms-main')) {
+          mainElement.classList.add('cms-main');
+        }
+        const headerElement = document.getElementById('cms-header');
+        if (headerElement && headerElement.classList.contains('custom-bottom-border')) {
+          headerElement.classList.add('header-shadow');
+          headerElement.classList.remove('custom-bottom-border');
+        }
+      } catch (error) {
+        console.error('Error in cleanup:', error);
+      }
+    };
   }, []);
 
   useEffect(() => {

@@ -78,10 +78,10 @@ function NecklaceContent() {
     // Left Chain
     { name: 'NecklaceL1', partType: 'leftChain', modelIndex: 0, material: 'metal' },
     { name: 'NecklaceL2', partType: 'leftChain', modelIndex: 1, material: 'metal' },
+    { name: 'NecklaceL2Pearls', partType: 'leftChain', modelIndex: 1, material: 'pearl' },
     { name: 'NecklaceL3', partType: 'leftChain', modelIndex: 2, material: 'metal' },
     { name: 'NecklaceL4', partType: 'leftChain', modelIndex: 3, material: 'metal' },
-    { name: 'NecklaceL5Base', partType: 'leftChain', modelIndex: 4, material: 'metal' },
-    { name: 'NecklaceL5Pearls', partType: 'leftChain', modelIndex: 4, material: 'pearl' },
+    { name: 'NecklaceL5', partType: 'leftChain', modelIndex: 4, material: 'metal' },
     { name: 'NecklaceL6', partType: 'leftChain', modelIndex: 5, material: 'metal' },
     { name: 'NecklaceL6Daimonds', partType: 'leftChain', modelIndex: 5, material: 'diamond' },
     // Top Lock
@@ -91,7 +91,7 @@ function NecklaceContent() {
     { name: 'TopHook4Base', partType: 'topLock', modelIndex: 3, material: 'metal' },
     { name: 'TopHook4Daimonds', partType: 'topLock', modelIndex: 3, material: 'diamond' },
     { name: 'TopHook5', partType: 'topLock', modelIndex: 4, material: 'metal' },
-    { name: 'TopHook1', partType: 'topLock', modelIndex: 5, material: 'metal' },
+    { name: 'TopHook6', partType: 'topLock', modelIndex: 5, material: 'metal' },
     // Bottom Lock
     { name: 'BottomHook1', partType: 'bottomLock', modelIndex: 0, material: 'metal' },
     { name: 'BottomHook2', partType: 'bottomLock', modelIndex: 1, material: 'metal' },
@@ -103,20 +103,19 @@ function NecklaceContent() {
     // Right Chain
     { name: 'NecklaceR1', partType: 'rightChain', modelIndex: 0, material: 'metal' },
     { name: 'NecklaceR2', partType: 'rightChain', modelIndex: 1, material: 'metal' },
+    { name: 'NecklaceR2Pearls', partType: 'rightChain', modelIndex: 1, material: 'metal' },
     { name: 'NecklaceR3', partType: 'rightChain', modelIndex: 2, material: 'metal' },
     { name: 'NecklaceR4', partType: 'rightChain', modelIndex: 3, material: 'metal' },
-    { name: 'NecklaceR5Base', partType: 'rightChain', modelIndex: 4, material: 'metal' },
-    { name: 'NecklaceR5Pearls', partType: 'rightChain', modelIndex: 4, material: 'pearl' },
+    { name: 'NecklaceR5', partType: 'rightChain', modelIndex: 4, material: 'metal' },
     { name: 'NecklaceR6', partType: 'rightChain', modelIndex: 5, material: 'metal' },
-    { name: 'NecklaceR6Daimonds', partType: 'rightChain', modelIndex: 5, material: 'diamond' },
     // Necklace A
     { name: 'NecklaceA1', partType: 'additionalChain', modelIndex: 0, material: 'metal' },
-    { name: 'NecklaceA2', partType: 'additionalChain', modelIndex: 1, material: 'metal' }, // typo in 
+    { name: 'NecklaceA2Base', partType: 'additionalChain', modelIndex: 1, material: 'metal' }, // typo in 
+    { name: 'NecklaceA2Perls', partType: 'additionalChain', modelIndex: 1, material: 'metal' }, // typo in 
     { name: 'NecklaceA3', partType: 'additionalChain', modelIndex: 2, material: 'metal' },
     { name: 'NecklaceA4', partType: 'additionalChain', modelIndex: 3, material: 'metal' },
-    { name: 'NecklaceA5Base', partType: 'additionalChain', modelIndex: 4, material: 'metal' },
-    { name: 'NecklaceA5Pearls', partType: 'additionalChain', modelIndex: 4, material: 'pearl' },
-    { name: 'NecklaceA6', partType: 'additionalChain', modelIndex: 5, material: 'metal' },
+    { name: 'NecklaceA5', partType: 'additionalChain', modelIndex: 4, material: 'metal' },
+    { name: 'NecklaceA6Base', partType: 'additionalChain', modelIndex: 5, material: 'metal' },
     { name: 'NecklaceA6Daimonds', partType: 'additionalChain', modelIndex: 5, material: 'diamond' },
   ], []);
 

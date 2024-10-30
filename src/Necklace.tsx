@@ -91,7 +91,7 @@ function NecklaceContent() {
     { name: 'TopHook4Base', partType: 'topLock', modelIndex: 3, material: 'metal' },
     { name: 'TopHook4Daimonds', partType: 'topLock', modelIndex: 3, material: 'diamond' },
     { name: 'TopHook5', partType: 'topLock', modelIndex: 4, material: 'metal' },
-    { name: 'TopHook6', partType: 'topLock', modelIndex: 5, material: 'metal' },
+    { name: 'TopHook1', partType: 'topLock', modelIndex: 5, material: 'metal' },
     // Bottom Lock
     { name: 'BottomHook1', partType: 'bottomLock', modelIndex: 0, material: 'metal' },
     { name: 'BottomHook2', partType: 'bottomLock', modelIndex: 1, material: 'metal' },

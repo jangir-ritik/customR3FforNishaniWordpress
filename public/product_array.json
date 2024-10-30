@@ -3,8 +3,18 @@
         "necklaces": [
             {
                 "id": "model1",
-                "name": "Curb Chain",
+                "name": "Crub Chain",
                 "price": 3600,
+                "variants": {
+                    "gold": {
+                        "url": "/images/necklaces/necklace-model1-g.png",
+                        "item-code": "914892-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/necklaces/necklace-model1-s.png",
+                        "item-code": "914892-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -18,8 +28,18 @@
             },
             {
                 "id": "model2",
-                "name": "Box with Pearls",
+                "name": "Box chain with Pearls",
                 "price": 4400,
+                "variants": {
+                    "gold": {
+                        "url": "/images/necklaces/necklace-model2-g.png",
+                        "item-code": "200681-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/necklaces/necklace-model2-s.png",
+                        "item-code": "200681-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -33,8 +53,18 @@
             },
             {
                 "id": "model3",
-                "name": "Simple 13A",
-                    "price": 4000,
+                "name": "Signature diamond-cut chain (Smll Link)",
+                "price": 6500,
+                "variants": {
+                    "gold": {
+                        "url": "/images/necklaces/necklace-model3-g.png",
+                        "item-code": "N-FLL0150-W07-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/necklaces/necklace-model3-s.png",
+                        "item-code": "N-FLL0150-W07-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -48,8 +78,18 @@
             },
             {
                 "id": "model4",
-                "name": "Simple 13B",
-                "price": 4000,
+                "name": "Signature diamond-cut chain (Big Link)",
+                "price": 8800,
+                "variants": {
+                    "gold": {
+                        "url": "/images/necklaces/necklace-model4-g.png",
+                        "item-code": "N-FLL0200-W07-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/necklaces/necklace-model4-s.png",
+                        "item-code": "N-FLL0200-W07-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -65,6 +105,16 @@
                 "id": "model5",
                 "name": "Ball Chain",
                 "price": 4600,
+                "variants": {
+                    "gold": {
+                        "url": "/images/necklaces/necklace-model5-g.png",
+                        "item-code": "914897-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/necklaces/necklace-model5-s.png",
+                        "item-code": "914897-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -78,8 +128,18 @@
             },
             {
                 "id": "model6",
-                "name": "Simple with Diamond",
-                "price": 8800,
+                "name": "Paperclip chain with studded links",
+                "price": 7900,
+                "variants": {
+                    "gold": {
+                        "url": "/images/necklaces/necklace-model6-g.png",
+                        "item-code": "914885-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/necklaces/necklace-model6-s.png",
+                        "item-code": "914885-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -97,6 +157,16 @@
                 "id": "model1",
                 "name": "Box Chain",
                 "price": 2200,
+                "variants": {
+                    "gold": {
+                        "url": "/images/bracelets/bracelet-model1-g.png",
+                        "item-code": "914893-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/bracelets/bracelet-model1-s.png",
+                        "item-code": "914893-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -110,8 +180,18 @@
             },
             {
                 "id": "model2",
-                "name": "Simple 5",
-                "price": 2000,
+                "name": "Paper clip 5 links",
+                "price": 4500,
+                "variants": {
+                    "gold": {
+                        "url": "/images/bracelets/bracelet-model2-g.png",
+                        "item-code": "N-FLL0200-W07-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/bracelets/bracelet-model2-s.png",
+                        "item-code": "N-FLL0200-W07-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -125,8 +205,18 @@
             },
             {
                 "id": "model3",
-                "name": "Simple 7",
-                "price": 2000,
+                "name": "Paper clip 7 links",
+                "price": 3300,
+                "variants": {
+                    "gold": {
+                        "url": "/images/bracelets/bracelet-model3-g.png",
+                        "item-code": "N-FLL0150-W07-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/bracelets/bracelet-model3-s.png",
+                        "item-code": "N-FLL0150-W07-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -140,8 +230,18 @@
             },
             {
                 "id": "model4",
-                "name": "Simple 11",
-                "price": 2000,
+                "name": "Paper clip 11 links",
+                "price": 2500,
+                "variants": {
+                    "gold": {
+                        "url": "/images/bracelets/bracelet-model4-g.png",
+                        "item-code": "914896-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/bracelets/bracelet-model4-s.png",
+                        "item-code": "914896-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -157,6 +257,16 @@
                 "id": "model5",
                 "name": "Ball Chain",
                 "price": 2300,
+                "variants": {
+                    "gold": {
+                        "url": "/images/bracelets/bracelet-model5-g.png",
+                        "item-code": "914891-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/bracelets/bracelet-model5-s.png",
+                        "item-code": "914891-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -170,8 +280,18 @@
             },
             {
                 "id": "model6",
-                "name": "Curb Chain",
+                "name": "Crub Chain",
                 "price": 1800,
+                "variants": {
+                    "gold": {
+                        "url": "/images/bracelets/bracelet-model6-g.png",
+                        "item-code": "914894-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/bracelets/bracelet-model6-s.png",
+                        "item-code": "914894-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -189,21 +309,43 @@
                 "id": "model1",
                 "name": "Signature Lock",
                 "price": 1900,
+                "variants": {
+                    "gold": {
+                        "url": "/images/hooks/hook-model1-g.png",
+                        "item-code": "914889-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/hooks/hook-model1-s.png",
+                        "item-code": "914889-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
-                        "url": "/images/hooks/hook-model1-g.png"
+                        "url": "/images/hooks/hook-model1-g.png",
+                        "item-code": "914889-YGP"
                     },
                     {
                         "plating": "silver",
-                        "url": "/images/hooks/hook-model1-s.png"
+                        "url": "/images/hooks/hook-model1-s.png",
+                        "item-code": "914889-RH"
                     }
                 ]
             },
             {
                 "id": "model2",
-                "name": "Spiral Lock",
+                "name": "Twisted Lock",
                 "price": 2400,
+                "variants": {
+                    "gold": {
+                        "url": "/images/hooks/hook-model2-g.png",
+                        "item-code": "914888-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/hooks/hook-model2-s.png",
+                        "item-code": "914888-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -219,6 +361,16 @@
                 "id": "model3",
                 "name": "Hexagonal Textured Lock",
                 "price": 2300,
+                "variants": {
+                    "gold": {
+                        "url": "/images/hooks/hook-model3-g.png",
+                        "item-code": "914886-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/hooks/hook-model3-s.png",
+                        "item-code": "914886-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -234,6 +386,16 @@
                 "id": "model4",
                 "name": "Half Studded Lock",
                 "price": 2500,
+                "variants": {
+                    "gold": {
+                        "url": "/images/hooks/hook-model4-g.png",
+                        "item-code": "914887-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/hooks/hook-model4-s.png",
+                        "item-code": "914887-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -249,6 +411,16 @@
                 "id": "model5",
                 "name": "Octagonal Lock",
                 "price": 2200,
+                "variants": {
+                    "gold": {
+                        "url": "/images/hooks/hook-model5-g.png",
+                        "item-code": "914890-YGP"
+                    },
+                    "silver": {
+                        "url": "/images/hooks/hook-model5-s.png",
+                        "item-code": "914890-RH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -262,8 +434,18 @@
             },
             {
                 "id": "model6",
-                "name": "Signature Lock Matte",
+                "name": "Signature Matte finish lock",
                 "price": 2000,
+                "variants": {
+                    "gold": {
+                        "url": "/images/hooks/hook-model6-g.png",
+                        "item-code": "914889-SBYGP"
+                    },
+                    "silver": {
+                        "url": "/images/hooks/hook-model6-s.png",
+                        "item-code": "914889-SBRH"
+                    }
+                },
                 "images": [
                     {
                         "plating": "gold",
@@ -278,7 +460,7 @@
         ]
     },
     "metadata": {
-        "lastUpdated": "2024-10-22",
+        "lastUpdated": "2024-10-30",
         "currency": "INR"
     }
 }

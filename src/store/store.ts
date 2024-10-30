@@ -2,54 +2,6 @@ import { create } from 'zustand';
 import { ChainPart, JewelryPartData, ProductStore, Metal, ProductData } from '../types/type';
 import options from "../../public/product_array.json";
 
-// export const parseJewelryData = (dataString: string): JewelryPartData => {
-//   // Remove brackets and split by comma
-//   const cleanString = dataString.replace(/^\[|\]$/g, '').trim();
-//   const pairs = cleanString.split(',').map(pair => pair.trim());
-
-//   const data: Record<string, any> = {};
-
-//   pairs.forEach(pair => {
-//     const [key, value] = pair.split(':').map(item => item.trim());
-//     // Remove quotes and clean the value
-//     data[key] = value.replace(/"/g, '').trim();
-//   });
-
-//   return {
-//     leftChain: {
-//       label: data.leftChainLabel,
-//       model: data.leftChainModel,
-//       price: Number(data.leftChainPrice),
-//       plating: data.leftChainPlating
-
-//     },
-//     rightChain: {
-//       label: data.rightChainLabel,
-//       model: data.rightChainModel,
-//       price: Number(data.rightChainPrice),
-//       plating: data.rightChainPlating
-//     },
-//     additionalChain: {
-//       label: data.additionalChainLabel,
-//       model: data.additionalChainModel,
-//       price: Number(data.additionalChainPrice),
-//       plating: data.additionalChainPlating
-//     },
-//     lockBottom: {
-//       label: data.lockBottomLabel,
-//       model: data.lockBottomModel,
-//       price: Number(data.lockBottomPrice),
-//       plating: data.lockBottomPlating
-//     },
-//     lockTop: {
-//       label: data.lockTopLabel,
-//       model: data.lockTopModel,
-//       price: Number(data.lockTopPrice),
-//       plating: data.lockTopPlating
-//     }
-//   };
-// };
-
 const mapAttributeToChainPart = (attributeName: string): ChainPart | null => {
   const mapping: Record<string, ChainPart> = {
     'Right Chain': 'rightChain',
@@ -63,7 +15,7 @@ const mapAttributeToChainPart = (attributeName: string): ChainPart | null => {
 
 const getModelNumber = (value: string): number => {
   const match = value.match(/model-(\d+)/);
-  return match ? parseInt(match[1], 10) - 1 : 0; // Subtract 1 since our models are 0-based
+  return match ? parseInt(match[1], 10) - 1 : 0;
 }
 
 const getModelCount = (productType: string, partType: ChainPart): number => {
@@ -93,27 +45,37 @@ const getPartPrice = (productType: string, partType: ChainPart, modelIndex: numb
   } else {
     category = productType === 'necklace' ? 'necklaces' : 'bracelets';
   }
-  const price = options.categories[category]?.[modelIndex]?.price || 0;
-  console.log(`getPartPrice: type=${productType}, part=${partType}, model=${modelIndex}, category=${category}, price=${price}`);
-  return price;
+  return options.categories[category]?.[modelIndex]?.price || 0;
+};
+
+const getItemCode = (productType: string, partType: ChainPart, modelIndex: number, plating: Metal): string => {
+  let category: string;
+  if (partType === 'topLock' || partType === 'bottomLock') {
+    category = 'hooks';
+  } else {
+    category = productType === 'necklace' ? 'necklaces' : 'bracelets';
+  }
+  return options.categories[category]?.[modelIndex]?.variants?.[plating]?.['item-code'] || '';
 };
 
 const useProductStore = create<ProductStore>((set, get) => ({
-  productData: window.productData || {},  // Get the WordPress localized productData
+  productData: window.productData || {},
   jewelryData: null,
   selectedPart: 'leftChain',
-  productType: 'necklace', // Explicitly set this to 'necklace'
+  productType: 'necklace',
   parts: {
     leftChain: {
       plating: 'gold',
       label: 'Left Chain',
       selectedModel: 0,
-      // Use a function to get model count that depends on product type
       get modelCount() {
         return getModelCount(get().productType, 'leftChain');
       },
       get prices() {
         return getModelPrices(get().productType, 'leftChain');
+      },
+      get itemCode() {
+        return getItemCode(get().productType, 'leftChain', this.selectedModel, this.plating);
       }
     },
     rightChain: {
@@ -125,6 +87,9 @@ const useProductStore = create<ProductStore>((set, get) => ({
       },
       get prices() {
         return getModelPrices(get().productType, 'rightChain');
+      },
+      get itemCode() {
+        return getItemCode(get().productType, 'rightChain', this.selectedModel, this.plating);
       }
     },
     topLock: {
@@ -136,6 +101,9 @@ const useProductStore = create<ProductStore>((set, get) => ({
       },
       get prices() {
         return getModelPrices(get().productType, 'topLock');
+      },
+      get itemCode() {
+        return getItemCode(get().productType, 'topLock', this.selectedModel, this.plating);
       }
     },
     bottomLock: {
@@ -147,6 +115,9 @@ const useProductStore = create<ProductStore>((set, get) => ({
       },
       get prices() {
         return getModelPrices(get().productType, 'bottomLock');
+      },
+      get itemCode() {
+        return getItemCode(get().productType, 'bottomLock', this.selectedModel, this.plating);
       }
     },
     additionalChain: {
@@ -158,14 +129,15 @@ const useProductStore = create<ProductStore>((set, get) => ({
       },
       get prices() {
         return getModelPrices(get().productType, 'additionalChain');
+      },
+      get itemCode() {
+        return getItemCode(get().productType, 'additionalChain', this.selectedModel, this.plating);
       }
     }
   },
   totalPrice: 0,
 
   setProductType: (type) => set((state) => {
-    // When product type changes, we need to reset selected models
-    // to prevent out-of-bounds indices
     const updatedParts = Object.entries(state.parts).reduce((acc, [key, part]) => {
       const partKey = key as ChainPart;
       const newModelCount = getModelCount(type, partKey);
@@ -181,6 +153,7 @@ const useProductStore = create<ProductStore>((set, get) => ({
       parts: updatedParts
     };
   }),
+
   setPartPrice: (part: ChainPart, price: number) => set((state) => ({
     parts: {
       ...state.parts,
@@ -190,10 +163,10 @@ const useProductStore = create<ProductStore>((set, get) => ({
       }
     }
   })),
+
   setProductData: (data) => set((state) => {
     const updatedParts = { ...state.parts };
 
-    // Update parts based on the jewelry_parts data
     if (data.jewelry_parts) {
       const mapping = {
         leftChain: data.jewelry_parts.leftChain,
@@ -210,14 +183,12 @@ const useProductStore = create<ProductStore>((set, get) => ({
             ...updatedParts[key as ChainPart],
             label: value.label,
             selectedModel: modelNumber,
-            plating: value.plating as Metal,
-            prices: Array(updatedParts[key as ChainPart].modelCount).fill(value.price)
+            plating: value.plating as Metal
           };
         }
       });
     }
 
-    // Set default attributes
     if (Array.isArray(data.default_attributes)) {
       data.default_attributes.forEach((attr) => {
         const partKey = mapAttributeToChainPart(attr.name);
@@ -226,58 +197,27 @@ const useProductStore = create<ProductStore>((set, get) => ({
         }
       });
     }
-    // Determine product type from the name or set a default
-    const productType = data.name.toLowerCase().includes('necklace') ? 'necklace' : 'bracelet';
 
+    const productType = data.name.toLowerCase().includes('necklace') ? 'necklace' : 'bracelet';
     const initialTotalPrice = Object.entries(updatedParts).reduce((total, [partKey, partData]) => {
       return total + getPartPrice(productType, partKey as ChainPart, partData.selectedModel);
     }, 0);
 
-    const updatedState = {
+    return {
       productData: {
         ...data,
         productType,
       },
-      productType, // Set this explicitly
+      productType,
       parts: updatedParts,
       totalPrice: initialTotalPrice
     };
-
-    return updatedState;
   }),
-  // setJewelryData: (dataString) => set((state) => {
-  //   const jewelryData = parseJewelryData(dataString);
-  //   const updatedParts = { ...state.parts };
 
-  //   // Map the parsed jewelry data to the parts state
-  //   const mappings = {
-  //     leftChain: jewelryData.leftChain,
-  //     rightChain: jewelryData.rightChain,
-  //     additionalChain: jewelryData.additionalChain,
-  //     bottomLock: jewelryData.lockBottom,
-  //     topLock: jewelryData.lockTop
-  //   };
-
-  //   // Update each part with the corresponding jewelry data
-  //   Object.entries(mappings).forEach(([partKey, jewelryPart]) => {
-  //     const key = partKey as ChainPart;
-  //     if (updatedParts[key] && jewelryPart) {
-  //       updatedParts[key] = {
-  //         ...updatedParts[key],
-  //         label: jewelryPart.label,
-  //         selectedModel: parseInt(jewelryPart.model.replace('Model-', '')) - 1,
-  //         prices: Array(updatedParts[key].modelCount).fill(jewelryPart.price)
-  //       };
-  //     }
-  //   });
-
-  //   return {
-  //     jewelryData,
-  //     parts: updatedParts
-  //   };
-  // }),
-  setSelectedPart: (part) => set({ selectedPart: part }),
   setJewelryData: () => {},
+
+  setSelectedPart: (part) => set({ selectedPart: part }),
+
   setPartPlating: (part, plating) => set((state) => ({
     parts: {
       ...state.parts,
@@ -302,8 +242,6 @@ const useProductStore = create<ProductStore>((set, get) => ({
       return total + price;
     }, 0);
 
-    console.log(`New total price: ${newTotalPrice}`);
-
     return {
       parts: updatedParts,
       totalPrice: newTotalPrice
@@ -318,11 +256,23 @@ const useProductStore = create<ProductStore>((set, get) => ({
     }, 0);
   },
 
+  getSelectedItemCodes: () => {
+    const state = get();
+    return Object.entries(state.parts).reduce((codes, [partKey, part]) => {
+      codes[partKey as ChainPart] = getItemCode(
+        state.productType,
+        partKey as ChainPart,
+        part.selectedModel,
+        part.plating
+      );
+      return codes;
+    }, {} as Record<ChainPart, string>);
+  },
+
   logState: () => {
     const state = get();
     console.log('Current state:', JSON.stringify(state, null, 2));
   },
-
 }));
 
 export default useProductStore;

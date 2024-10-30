@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
 import useProductStore from "../../store/store";
+import { ChainPart } from '../../types/type';
+import options from '../../../public/product_array.json';
 
 const AddToCartButton = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const productData = useProductStore(state => state.productData);
   const calculateTotalPrice = useProductStore(state => state.calculateTotalPrice);
+  const getSelectedItemCodes = useProductStore(state => state.getSelectedItemCodes);
   const parts = useProductStore(state => state.parts);
+  const productType = useProductStore(state => state.productType);
 
   // Access WordPress localized variables
   const { pc_ajax } = window;
+
+  const getModelName = (partType: ChainPart, modelIndex: number): string => {
+    const category = partType === 'topLock' || partType === 'bottomLock' 
+      ? 'hooks' 
+      : productType === 'necklace' ? 'necklaces' : 'bracelets';
+    
+    return options.categories[category]?.[modelIndex]?.name || 'Unknown Model';
+  };
 
   const handleAddToCart = async () => {
     setIsLoading(true);
@@ -27,15 +39,19 @@ const AddToCartButton = () => {
 
       // Get the custom price
       const customPrice = calculateTotalPrice();
+      const itemCodes = useProductStore.getState().getSelectedItemCodes();
 
       // Format the parts data
       const formattedParts = {};
       Object.entries(parts).forEach(([partKey, part]) => {
         if (part.selectedModel !== undefined && part.plating && part.prices) {
+          const modelName = getModelName(partKey as ChainPart, part.selectedModel)
           formattedParts[partKey] = {
             model: `Model-${part.selectedModel + 1}`,
+            modelName: modelName,
             plating: part.plating,
-            price: part.prices[part.selectedModel]
+            price: part.prices[part.selectedModel],
+            itemCode: itemCodes[partKey as ChainPart]
           };
         }
       });

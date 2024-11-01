@@ -625,3 +625,18 @@ button:not(.cms-search-submit):hover, .button:hover, input[type="submit"]:hover,
 .custom-bottom-border {
     border-bottom: 1px solid #00000020;
 }
+
+.tdt-product-reset-view {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 99;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}

@@ -4,10 +4,9 @@ import * as THREE from 'three';
 import { OrbitControls, PresentationControls } from '@react-three/drei';
 import Bracelet from '../../Bracelet';
 import Necklace from '../../Necklace';
-import { Perf } from 'r3f-perf';
 import EnhancedLighting from './EnhancedLighting';
-import { SSAO, EffectComposer, Bloom, ToneMapping } from '@react-three/postprocessing';
-import { BlendFunction, Resolution } from 'postprocessing';
+import { SSAO, EffectComposer, Bloom } from '@react-three/postprocessing';
+import { BlendFunction } from 'postprocessing';
 
 interface ProductViewProps {
   productType: 'necklace' | 'bracelet';
@@ -15,7 +14,7 @@ interface ProductViewProps {
 
 const ProductView = memo(({ productType }: ProductViewProps) => {
   const orbitControlsRef = useRef();
-  
+
   const initialCameraSettings = React.useMemo(() => ({
     position: [0, 0, 12],
     fov: 50
@@ -46,7 +45,6 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
     bias: 0.025,          // Increased to reduce self-shadowing (0.01 -> 0.025)
     intensity: 5.0,       // Reduced for less harsh shadows (10.0 -> 5.0)
     color: new THREE.Color('#1a1a1a'), // Lighter shadow color (pure black -> dark gray)
-    resolution: new Resolution(512, 512)
   }), []);
 
   // Optimize Bloom settings for jewelry
@@ -66,26 +64,12 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
 
   return (
     <div style={{ position: 'relative', height: '100%', width: '100%' }}>
-      <button
-        title='reset view'
+      <div
+        className='tdt-product-reset-view'
         onClick={handleReset}
-        style={{
-          position: 'absolute',
-          bottom: '10px',
-          right: '10px',
-          zIndex: 1000,
-          backgroundColor: 'white',
-          width: '40px',
-          height: '40px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-          border: 'none',
-        }}
       >
         <img title='reset view' src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtcmVmcmVzaC1jdyI+PHBhdGggZD0iTTMgMTJhOSA5IDAgMCAxIDktOSA5Ljc1IDkuNzUgMCAwIDEgNi43NCAyLjc0TDIxIDgiLz48cGF0aCBkPSJNMjEgM3Y1aC01Ii8+PHBhdGggZD0iTTIxIDEyYTkgOSAwIDAgMS05IDkgOS43NSA5Ljc1IDAgMCAxLTYuNzQtMi43NEwzIDE2Ii8+PHBhdGggZD0iTTggMTZIM3Y1Ii8+PC9zdmc+" />
-      </button>
+      </div>
       <Canvas
         dpr={[1, 2]}
         camera={initialCameraSettings}
@@ -122,7 +106,7 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
             {productType === 'necklace' ? <Necklace /> : <Bracelet />}
           </PresentationControls>
         </Suspense>
-        <Perf deepAnalyze={true} minimal={false} charts={true} position="bottom-left" />
+        {/* <Perf deepAnalyze={true} minimal={false} charts={true} position="bottom-left" /> */}
       </Canvas>
     </div>
   );

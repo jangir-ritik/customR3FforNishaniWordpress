@@ -36,20 +36,56 @@ function NecklaceContent() {
           opacity: 0.9
         });
 
-      case 'pearl':
-        return new THREE.MeshPhysicalMaterial({
-          color: new THREE.Color(0xfffaf0),
-          metalness: 0.1,
-          roughness: 0.3,
-          envMapIntensity: 1.0,
-          clearcoat: 0.8,
-          clearcoatRoughness: 0.1,
-          iridescence: 1.0,
-          iridescenceIOR: 1.5,
-          sheen: 1.0,
-          sheenRoughness: 0.3,
-          sheenColor: new THREE.Color(0xffffff)
-        });
+        case 'pearl': {
+          // Base color with slight pink/cream tint
+          const baseColor = new THREE.Color(0xfff5ee);
+          // Iridescent color with subtle rainbow effect
+          const iridescenceColor = new THREE.Color(0xe8f0ff);
+          // Sheen color with slight blue/green tint for depth
+          const sheenBaseColor = new THREE.Color(0xf0f8ff);
+          
+          return new THREE.MeshPhysicalMaterial({
+            // Base material properties
+            color: baseColor,
+            metalness: 0.15,      // Slightly increased for more reflectivity
+            roughness: 0.2,       // Decreased for more shine
+            
+            // Enhanced reflection and coating
+            envMapIntensity: 2.0, // Increased environment map influence
+            clearcoat: 1.0,       // Maximum clearcoat for glossy finish
+            clearcoatRoughness: 0.1,
+            reflectivity: 1.0,    // Maximum reflectivity
+            
+            // Iridescence settings
+            iridescence: 0.9,     // Strong but not overwhelming
+            iridescenceIOR: 2.2,  // Higher IOR for more pronounced color shift
+            iridescenceThicknessRange: [100, 400], // Wider range for more variety
+            
+            // Sheen for pearly luster
+            sheen: 1.0,           // Maximum sheen
+            sheenRoughness: 0.2,  // Reduced roughness for smoother appearance
+            sheenColor: sheenBaseColor,
+            
+            // Transmission and thickness
+            transmission: 0.1,    // Slight translucency
+            thickness: 0.5,       // Moderate thickness for internal effects
+            
+            // Additional properties
+            attenuationDistance: 0.3,
+            attenuationColor: new THREE.Color(0xfaf0e6),
+            ior: 1.8,            // Higher IOR for more realistic light interaction
+            
+            // Ensure both sides are rendered
+            side: THREE.DoubleSide,
+            
+            // Enable all relevant features
+            transparent: true,
+            
+            // Optional emission for subtle glow
+            emissive: new THREE.Color(0xffffff),
+            emissiveIntensity: 0.05
+          });
+        }
 
       default:
         const isGold = partData.plating === 'gold';

@@ -1,42 +1,51 @@
 import React from 'react';
 import { Environment } from '@react-three/drei';
-import { useControls } from 'leva';
+import { useControls, folder } from 'leva';
+import { DirectionalLight } from 'three';
 
 function EnhancedLighting() {
-  // Create Leva controls for environment rotation
-  const { rotationX, rotationY, rotationZ } = useControls('Environment Rotation', {
-    rotationX: {
-      value: 0,
-      min: -Math.PI,
-      max: Math.PI,
-      step: 0.1,
-      label: 'Rotation X'
-    },
-    rotationY: {
-      value: Math.PI / 3, // Initial value from your original code
-      min: -Math.PI,
-      max: Math.PI,
-      step: 0.1,
-      label: 'Rotation Y'
-    },
-    rotationZ: {
-      value: 0,
-      min: -Math.PI,
-      max: Math.PI,
-      step: 0.1,
-      label: 'Rotation Z'
+  // Create Leva controls grouped in folders
+  const envControls = useControls('Environment', {
+    rotation: folder({
+      rotationX: {
+        value: 0,
+        min: -Math.PI,
+        max: Math.PI,
+        step: 0.1,
+        label: 'Rotation X'
+      },
+      rotationY: {
+        value: Math.PI / 3,
+        min: -Math.PI,
+        max: Math.PI,
+        step: 0.1,
+        label: 'Rotation Y'
+      },
+      rotationZ: {
+        value: 0,
+        min: -Math.PI,
+        max: Math.PI,
+        step: 0.1,
+        label: 'Rotation Z'
+      }
+    }),
+    intensity: {
+      value: 0.8,
+      min: 0,
+      max: 2,
+      step: 0.05,
+      label: 'Environment Intensity'
     }
   });
 
-  // Add optional intensity control
-  const { envIntensity } = useControls('Environment Settings', {
-    envIntensity: {
-      value: 0.6,
-      min: 0,
-      max: 2,
-      step: 0.1,
-      label: 'Environment Intensity'
-    }
+  // Add controls for the three directional lights
+  const lightControls = useControls('Directional Lights', {
+    light2: folder({
+      position2: { value: [0, 5, 10], step: 1, label: 'Position' },
+      intensity2: { value: 1.5, min: 0, max: 2, step: 0.1, label: 'Intensity' },
+      color2: { value: '#ffffff', label: 'Color' },
+      visible2: { value: true, label: 'Visible' }
+    }),
   });
 
   return (
@@ -44,59 +53,19 @@ function EnhancedLighting() {
       {/* Environment map for overall reflections */}
       <Environment
         files="./Studio.hdr"
-        environmentRotation={[rotationX, rotationY, rotationZ]}
-        environmentIntensity={envIntensity}
+        environmentRotation={[envControls.rotationX, envControls.rotationY, envControls.rotationZ]}
+        environmentIntensity={envControls.intensity}
       />
-      {/* Ambient light for base illumination */}
-      <ambientLight intensity={0.2} color="#FFFFFF" />
+      
+      {/* Three controllable directional lights */}
+      <directionalLight
+        position={lightControls.position2}
+        intensity={lightControls.intensity2}
+        color={lightControls.color2}
+        visible={lightControls.visible2}
+      />
     </>
   );
 }
 
 export default EnhancedLighting;
-
-
-    // //   {/* Main front light */}
-    //   <directionalLight
-    //     castShadow
-    //     position={[0, 0, 5]}
-    //     intensity={1.2}
-    //     color="#FFF9E5"
-    //   />
-     
-    // //   {/* Rim lights to create outline effect */}
-    //   <spotLight
-    //     castShadow
-    //     position={[-5, 0, -2]}
-    //     intensity={0.8}
-    //     color="#FFFFFF"
-    //     angle={Math.PI / 4}
-    //     penumbra={0.2}
-    //   />
-     
-    //   <spotLight
-    //     castShadow
-    //     position={[5, 0, -2]}
-    //     intensity={0.8}
-    //     color="#FFFFFF"
-    //     angle={Math.PI / 4}
-    //     penumbra={0.2}
-    //   />
-    // //   {/* Top rim light */}
-    //   <spotLight
-    //     castShadow
-    //     position={[0, 5, -2]}
-    //     intensity={0.6}
-    //     color="#FFFFFF"
-    //     angle={Math.PI / 4}
-    //     penumbra={0.2}
-    //   />
-    // //   {/* Subtle fill light from bottom */}
-    //   <spotLight
-    //     castShadow
-    //     position={[0, -5, 2]}
-    //     intensity={0.3}
-    //     color="#FFE5CC"
-    //     angle={Math.PI / 4}
-    //     penumbra={0.5}
-    //   />

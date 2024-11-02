@@ -608,15 +608,17 @@ button:not(.cms-search-submit):hover, .button:hover, input[type="submit"]:hover,
     }
 }
 
-.tdt-product-image-wrapper {
+.tdt-product-images-wrapper {
+    display: flex;
     width: 100%;
-    aspect-ratio: 1;
-    // order: 2;
-    // height: 100%;
+    gap: 24px;
+    order: 2;
+    height: 100%;
 
     @media (min-width: 768px) {
-        width: 300px;
-        height: 300px;
+        max-height: 40%;
+        // width: 300px;
+        // height: 300px;
         order: initial;
     }
 }

@@ -65,7 +65,7 @@ function EnhancedLighting() {
             <Environment
         files="./Studio.hdr"
         environmentRotation={[0, Math.PI / 3, 0]}
-        environmentIntensity={1.0}
+        environmentIntensity={0.8}
       />
       
       <directionalLight

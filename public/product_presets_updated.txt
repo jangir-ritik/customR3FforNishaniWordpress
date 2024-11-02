@@ -1,0 +1,269 @@
+// -------------- twist link necklace preset
+// [leftChainLabel: "Signature diamond-cut chain (Smll Link)", 
+//  leftChainModel: "Model-3", 
+//  leftChainPrice: 6500, 
+//  leftChainPlating: "gold", 
+
+//  rightChainLabel: "Crub Chain", 
+//  rightChainModel: "Model-1", 
+//  rightChainPrice: 3600, 
+//  rightChainPlating: "gold", 
+
+//  additionalChainLabel: "none", 
+//  additionalChainModel: "null", 
+//  additionalChainPrice: 0, 
+//  additionalChainPlating: "null", 
+
+//  topLockLabel: "Signature lock", 
+//  topLockModel: "Model-1", 
+//  topLockPrice: 1900, 
+//  topLockPlating: "gold", 
+
+//  bottomLockLabel: "Hexagonal Textured Lock", 
+//  bottomLockModel: "Model-3", 
+//  bottomLockPrice: 2300, 
+//  bottomLockPlating: "silver"]
+// --------------
+
+// -------------- minimalist twist necklace preset
+// [leftChainLabel: "Crub chain", 
+//  leftChainModel: "Model-1", 
+//  leftChainPrice: 3600, 
+//  leftChainPlating: "silver", 
+
+//  rightChainLabel: "Ball chain", 
+//  rightChainModel: "Model-5", 
+//  rightChainPrice: 4600, 
+//  rightChainPlating: "silver", 
+
+//  additionalChainLabel: "Box chain with Pearls", 
+//  additionalChainModel: "Model-2", 
+//  additionalChainPrice: 4400, 
+//  additionalChainPlating: "gold", 
+
+//  topLockLabel: "Twisted lock", 
+//  topLockModel: "Model-2", 
+//  topLockPrice: 2400, 
+//  topLockPlating: "silver", 
+
+//  bottomLockLabel: "Signature lock", 
+//  bottomLockModel: "Model-1", 
+//  bottomLockPrice: 1900, 
+//  bottomLockPlating: "gold"]
+// --------------
+
+// -------------- classic link necklace preset
+// [leftChainLabel: "Crub chain", 
+//  leftChainModel: "Model-1", 
+//  leftChainPrice: 3600, 
+//  leftChainPlating: "gold", 
+
+//  rightChainLabel: "Box chain with Pearls", 
+//  rightChainModel: "Model-2", 
+//  rightChainPrice: 4400, 
+//  rightChainPlating: "silver", 
+
+//  additionalChainLabel: "none", 
+//  additionalChainModel: "null", 
+//  additionalChainPrice: 0, 
+//  additionalChainPlating: "null", 
+
+//  topLockLabel: "Twisted lock", 
+//  topLockModel: "Model-2", 
+//  topLockPrice: 2400, 
+//  topLockPlating: "silver", 
+
+//  bottomLockLabel: "Hexagonal Textured Lock", 
+//  bottomLockModel: "Model-3", 
+//  bottomLockPrice: 2300, 
+//  bottomLockPlating: "gold"]
+// --------------
+
+// -------------- bold link necklace preset
+// [leftChainLabel: "Ball chain", 
+//  leftChainModel: "Model-5", 
+//  leftChainPrice: 4600, 
+//  leftChainPlating: "gold", 
+
+//  rightChainLabel: "Signature diamond-cut chain (Smll Link)", 
+//  rightChainModel: "Model-3", 
+//  rightChainPrice: 6500, 
+//  rightChainPlating: "silver", 
+
+//  additionalChainLabel: "Paperclip chain with studded links", 
+//  additionalChainModel: "Model-6", 
+//  additionalChainPrice: 7900, 
+//  additionalChainPlating: "gold", 
+
+//  topLockLabel: "Half Studded Lock", 
+//  topLockModel: "Model-4", 
+//  topLockPrice: 2500, 
+//  topLockPlating: "gold", 
+
+//  bottomLockLabel: "Octagonal Lock", 
+//  bottomLockModel: "Model-5", 
+//  bottomLockPrice: 2200, 
+//  bottomLockPlating: "silver"]
+// --------------
+
+// -------------- the minimalist bracelet preset
+// [leftChainLabel: "Ball chain", 
+//  leftChainModel: "Model-5", 
+//  leftChainPrice: 2300, 
+//  leftChainPlating: "silver", 
+
+//  rightChainLabel: "Paper clip 11 links", 
+//  rightChainModel: "Model-4", 
+//  rightChainPrice: 2500, 
+//  rightChainPlating: "gold", 
+
+//  additionalChainLabel: "none", 
+//  additionalChainModel: "null", 
+//  additionalChainPrice: 0, 
+//  additionalChainPlating: "null", 
+
+//  topLockLabel: "Signature Lock", 
+//  topLockModel: "Model-1", 
+//  topLockPrice: 1900, 
+//  topLockPlating: "silver", 
+
+//  bottomLockLabel: "Octagonal Lock", 
+//  bottomLockModel: "Model-5", 
+//  bottomLockPrice: 2200, 
+//  bottomLockPlating: "gold"]
+// --------------
+
+// -------------- signature fusion bracelet preset
+// [leftChainLabel: "Paper clip 7 links", 
+//  leftChainModel: "Model-3", 
+//  leftChainPrice: 3300, 
+//  leftChainPlating: "silver", 
+
+//  rightChainLabel: "Paper clip 11 links", 
+//  rightChainModel: "Model-4", 
+//  rightChainPrice: 2500, 
+//  rightChainPlating: "gold", 
+
+//  additionalChainLabel: "Box Chain", 
+//  additionalChainModel: "Model-1", 
+//  additionalChainPrice: 2200, 
+//  additionalChainPlating: "silver", 
+
+//  topLockLabel: "Half Studded Lock", 
+//  topLockModel: "Model-4", 
+//  topLockPrice: 2500, 
+//  topLockPlating: "gold", 
+
+//  bottomLockLabel: "Twisted Lock", 
+//  bottomLockModel: "Model-2", 
+//  bottomLockPrice: 2400, 
+//  bottomLockPlating: "silver"]
+// --------------
+
+// -------------- Modern link bracelet preset
+// [leftChainLabel: "Ball chain", 
+//  leftChainModel: "Model-5", 
+//  leftChainPrice: 2300, 
+//  leftChainPlating: "gold", 
+
+//  rightChainLabel: "Crub chain", 
+//  rightChainModel: "Model-6", 
+//  rightChainPrice: 1800, 
+//  rightChainPlating: "silver", 
+
+//  additionalChainLabel: "Box Chain", 
+//  additionalChainModel: "Model-1", 
+//  additionalChainPrice: 2200, 
+//  additionalChainPlating: "silver", 
+
+//  topLockLabel: "Signature Lock", 
+//  topLockModel: "Model-1", 
+//  topLockPrice: 1900, 
+//  topLockPlating: "silver", 
+
+//  bottomLockLabel: "Signature Lock", 
+//  bottomLockModel: "Model-1", 
+//  bottomLockPrice: 1900, 
+//  bottomLockPlating: "gold"]
+// --------------
+
+// -------------- Statement link bracelet preset
+// [leftChainLabel: "Paper clip 5 links", 
+//  leftChainModel: "Model-2", 
+//  leftChainPrice: 4500, 
+//  leftChainPlating: "silver", 
+
+//  rightChainLabel: "Crub chain", 
+//  rightChainModel: "Model-6", 
+//  rightChainPrice: 1800, 
+//  rightChainPlating: "gold", 
+
+//  additionalChainLabel: "none", 
+//  additionalChainModel: "null", 
+//  additionalChainPrice: 0, 
+//  additionalChainPlating: "null", 
+
+//  topLockLabel: "Hexagonal Textured Lock", 
+//  topLockModel: "Model-3", 
+//  topLockPrice: 2300, 
+//  topLockPlating: "silver", 
+
+//  bottomLockLabel: "Signature Lock", 
+//  bottomLockModel: "Model-1", 
+//  bottomLockPrice: 1900, 
+//  bottomLockPlating: "gold"]
+// --------------
+
+// -------------- Custom Bracelet
+// [leftChainLabel: "Box Chain", 
+//  leftChainModel: "Model-1", 
+//  leftChainPrice: 2200, 
+//  leftChainPlating: "gold", 
+
+//  rightChainLabel: "Box Chain", 
+//  rightChainModel: "Model-1", 
+//  rightChainPrice: 2200, 
+//  rightChainPlating: "gold", 
+
+//  additionalChainLabel: "Box Chain", 
+//  additionalChainModel: "Model-1", 
+//  additionalChainPrice: 2200, 
+//  additionalChainPlating: "gold", 
+
+//  topLockLabel: "Signature Lock", 
+//  topLockModel: "Model-1", 
+//  topLockPrice: 1900, 
+//  topLockPlating: "gold", 
+
+//  bottomLockLabel: "Signature Lock", 
+//  bottomLockModel: "Model-1", 
+//  bottomLockPrice: 1900, 
+//  bottomLockPlating: "gold"]
+// --------------
+
+// -------------- Custom Necklace
+// [leftChainLabel: "Crub Chain", 
+//  leftChainModel: "Model-1", 
+//  leftChainPrice: 3600, 
+//  leftChainPlating: "gold", 
+
+//  rightChainLabel: "Crub Chain", 
+//  rightChainModel: "Model-1", 
+//  rightChainPrice: 3600, 
+//  rightChainPlating: "gold", 
+
+//  additionalChainLabel: "Crub Chain", 
+//  additionalChainModel: "Model-1", 
+//  additionalChainPrice: 3600, 
+//  additionalChainPlating: "gold", 
+
+//  topLockLabel: "Signature Lock", 
+//  topLockModel: "Model-1", 
+//  topLockPrice: 1900, 
+//  topLockPlating: "gold", 
+
+//  bottomLockLabel: "Signature Lock", 
+//  bottomLockModel: "Model-1", 
+//  bottomLockPrice: 1900, 
+//  bottomLockPlating: "gold"]
+// --------------

@@ -6,7 +6,7 @@
                 "name": "Twist Link Necklace",
                 "components": {
                     "chainRight": {
-                        "type": "curb chain",
+                        "type": "crub chain",
                         "model": "model1",
                         "price": 3600
                     },

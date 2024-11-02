@@ -177,12 +177,12 @@ const App = () => {
 
   return (
     <div className="tdt-product-customization-page">
-      <button
+      {/* <button
         style={{ position: 'absolute', top: '140px', left: 0, padding: 10 }}
         onClick={handleProductTypeChange}
       >
         {productType === 'necklace' ? 'Necklace' : 'Bracelet'}
-      </button>
+      </button> */}
 
       <div className="tdt-product-customization-left-section">
         <div className="tdt-product-3d-view">

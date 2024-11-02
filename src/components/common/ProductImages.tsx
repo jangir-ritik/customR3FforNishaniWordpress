@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 
 const ProductImages = memo(({ gallery_images }: { gallery_images: { url: string, alt: string }[] }) => (
-  gallery_images && (
+  gallery_images.length > 0 && (
     <div className="tdt-product-images-wrapper">
       {gallery_images.map((image) => (
         <img 

@@ -38,7 +38,8 @@ const getModelPrices = (productType: string, partType: ChainPart): number[] => {
   return options.categories[category]?.map(item => item.price) || [];
 };
 
-const getPartPrice = (productType: string, partType: ChainPart, modelIndex: number): number => {
+const getPartPrice = (productType: string, partType: ChainPart, modelIndex: number | null): number => {
+  if (modelIndex === null) return 0;
   let category: string;
   if (partType === 'topLock' || partType === 'bottomLock') {
     category = 'hooks';
@@ -48,7 +49,8 @@ const getPartPrice = (productType: string, partType: ChainPart, modelIndex: numb
   return options.categories[category]?.[modelIndex]?.price || 0;
 };
 
-const getItemCode = (productType: string, partType: ChainPart, modelIndex: number, plating: Metal): string => {
+const getItemCode = (productType: string, partType: ChainPart, modelIndex: number | null, plating: Metal): string => {
+  if (modelIndex === null) return '';
   let category: string;
   if (partType === 'topLock' || partType === 'bottomLock') {
     category = 'hooks';
@@ -123,7 +125,7 @@ const useProductStore = create<ProductStore>((set, get) => ({
     additionalChain: {
       plating: 'silver',
       label: 'Additional Chain',
-      selectedModel: 0,
+      selectedModel: null,
       get modelCount() {
         return getModelCount(get().productType, 'additionalChain');
       },
@@ -228,7 +230,12 @@ const useProductStore = create<ProductStore>((set, get) => ({
     }
   })),
 
-  setPartModel: (part, modelIndex) => set((state) => {
+  setPartModel: (part: ChainPart, modelIndex: number | null) => set((state) => {
+    if (!state.parts[part]) {
+      console.error(`Part ${part} not found`);
+      return state;
+    }
+
     const updatedParts = {
       ...state.parts,
       [part]: {
@@ -238,6 +245,7 @@ const useProductStore = create<ProductStore>((set, get) => ({
     };
 
     const newTotalPrice = Object.entries(updatedParts).reduce((total, [partKey, partData]) => {
+      if (partData.selectedModel === null) return total;
       const price = getPartPrice(state.productType, partKey as ChainPart, partData.selectedModel);
       return total + price;
     }, 0);

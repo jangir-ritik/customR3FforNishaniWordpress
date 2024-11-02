@@ -14,7 +14,7 @@ function EnhancedLighting() {
   //       label: 'Rotation X'
   //     },
   //     rotationY: {
-  //       value: Math.PI / 3,
+  //       value: Math.PI * .445,
   //       min: -Math.PI,
   //       max: Math.PI,
   //       step: 0.1,
@@ -29,7 +29,7 @@ function EnhancedLighting() {
   //     }
   //   }),
   //   intensity: {
-  //     value: 0.8,
+  //     value: 0.7,
   //     min: 0,
   //     max: 2,
   //     step: 0.05,
@@ -41,7 +41,7 @@ function EnhancedLighting() {
   // const lightControls = useControls('Directional Lights', {
   //   light2: folder({
   //     position2: { value: [0, 5, 10], step: 1, label: 'Position' },
-  //     intensity2: { value: 1.5, min: 0, max: 2, step: 0.1, label: 'Intensity' },
+  //     intensity2: { value: 0.4, min: 0, max: 2, step: 0.1, label: 'Intensity' },
   //     color2: { value: '#ffffff', label: 'Color' },
   //     visible2: { value: true, label: 'Visible' }
   //   }),
@@ -65,13 +65,12 @@ function EnhancedLighting() {
             <Environment
         files="./Studio.hdr"
         environmentRotation={[0, Math.PI / 3, 0]}
-        environmentIntensity={0.8}
+        environmentIntensity={1.0}
       />
       
-      {/* Three controllable directional lights */}
       <directionalLight
         position={[0, 5, 10]}
-        intensity={1.5}
+        intensity={0.8}
         color={'#ffffff'}
         visible={true}
       />

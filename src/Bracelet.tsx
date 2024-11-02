@@ -20,11 +20,11 @@ function BraceletContent() {
 
   const getMaterial = (partType, materialType) => {
     const partData = parts[partType];
-    const env = useEnvironment({ 
-      files: 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/peppermint_powerplant_2_1k.hdr' 
+    const env = useEnvironment({
+      files: 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/peppermint_powerplant_2_1k.hdr'
     });
-    
-    switch(materialType) {
+
+    switch (materialType) {
       case 'diamond':
         return new THREE.MeshPhysicalMaterial({
           color: new THREE.Color(0xffffff),
@@ -45,78 +45,66 @@ function BraceletContent() {
           side: THREE.DoubleSide
         });
 
-case 'pearl': {
-  // Base color with slight pink/cream tint
-  const baseColor = new THREE.Color(0xfff5ee);
-  // Iridescent color with subtle rainbow effect
-  const iridescenceColor = new THREE.Color(0xe8f0ff);
-  // Sheen color with slight blue/green tint for depth
-  const sheenBaseColor = new THREE.Color(0xf0f8ff);
-  
-  return new THREE.MeshPhysicalMaterial({
-    // Base material properties
-    color: baseColor,
-    metalness: 0.15,      // Slightly increased for more reflectivity
-    roughness: 0.2,       // Decreased for more shine
-    
-    // Enhanced reflection and coating
-    envMapIntensity: 2.0, // Increased environment map influence
-    clearcoat: 1.0,       // Maximum clearcoat for glossy finish
-    clearcoatRoughness: 0.1,
-    reflectivity: 1.0,    // Maximum reflectivity
-    
-    // Iridescence settings
-    iridescence: 0.9,     // Strong but not overwhelming
-    iridescenceIOR: 2.2,  // Higher IOR for more pronounced color shift
-    iridescenceThicknessRange: [100, 400], // Wider range for more variety
-    
-    // Sheen for pearly luster
-    sheen: 1.0,           // Maximum sheen
-    sheenRoughness: 0.2,  // Reduced roughness for smoother appearance
-    sheenColor: sheenBaseColor,
-    
-    // Transmission and thickness
-    transmission: 0.1,    // Slight translucency
-    thickness: 0.5,       // Moderate thickness for internal effects
-    
-    // Additional properties
-    attenuationDistance: 0.3,
-    attenuationColor: new THREE.Color(0xfaf0e6),
-    ior: 1.8,            // Higher IOR for more realistic light interaction
-    
-    // Ensure both sides are rendered
-    side: THREE.DoubleSide,
-    
-    // Enable all relevant features
-    transparent: true,
-    
-    // Optional emission for subtle glow
-    emissive: new THREE.Color(0xffffff),
-    emissiveIntensity: 0.05
-  });
-}
+      case 'pearl': {
+        // Base color with slight pink/cream tint
+        const baseColor = new THREE.Color(0xfff5ee);
+        // Iridescent color with subtle rainbow effect
+        const iridescenceColor = new THREE.Color(0xe8f0ff);
+        // Sheen color with slight blue/green tint for depth
+        const sheenBaseColor = new THREE.Color(0xf0f8ff);
+
+        return new THREE.MeshPhysicalMaterial({
+          // Base material properties
+          color: baseColor,
+          metalness: 0.15,      // Slightly increased for more reflectivity
+          roughness: 0.2,       // Decreased for more shine
+
+          // Enhanced reflection and coating
+          envMapIntensity: 2.0, // Increased environment map influence
+          clearcoat: 1.0,       // Maximum clearcoat for glossy finish
+          clearcoatRoughness: 0.1,
+          reflectivity: 1.0,    // Maximum reflectivity
+
+          // Iridescence settings
+          iridescence: 0.9,     // Strong but not overwhelming
+          iridescenceIOR: 2.2,  // Higher IOR for more pronounced color shift
+          iridescenceThicknessRange: [100, 400], // Wider range for more variety
+
+          // Sheen for pearly luster
+          sheen: 1.0,           // Maximum sheen
+          sheenRoughness: 0.2,  // Reduced roughness for smoother appearance
+          sheenColor: sheenBaseColor,
+
+          // Transmission and thickness
+          transmission: 0.1,    // Slight translucency
+          thickness: 0.5,       // Moderate thickness for internal effects
+
+          // Additional properties
+          attenuationDistance: 0.3,
+          attenuationColor: new THREE.Color(0xfaf0e6),
+          ior: 1.8,            // Higher IOR for more realistic light interaction
+
+          // Ensure both sides are rendered
+          side: THREE.DoubleSide,
+
+          // Enable all relevant features
+          transparent: true,
+
+          // Optional emission for subtle glow
+          emissive: new THREE.Color(0xffffff),
+          emissiveIntensity: 0.05
+        });
+      }
 
       default:
         const isGold = partData.plating === 'gold';
-        // const baseColor = isGold ? 0xE6Bf80 : 0xd4d4d1;
-        const baseColor = isGold ? 0xE6Bf80 : 0xd4d4d1;
-        const metalness = isGold ? 1.0 : 0.99; // Slightly lower metalness
-        const roughness = isGold ? 0.1 : 0.03; // Slightly higher roughness
+        const baseColor = isGold ? 0xFED88B : 0xd4d4d1;
+        const metalness = isGold ? 1.0 : 1.0; // Slightly lower metalness
+        const roughness = isGold ? 0.1 : 0.15; // Slightly higher roughness
         return new THREE.MeshPhysicalMaterial({
           color: new THREE.Color(baseColor),
           metalness: metalness,
           roughness: roughness,
-          // envMapIntensity: envMapIntensity,
-    //       anisotropy: 0.1,                   
-        // anisotropyRotation: Math.PI / 2,
-          // clearcoat: 0.5,
-          // clearcoatRoughness: 0.1,
-          // reflectivity: 1.0,
-          // emissive: new THREE.Color('#FED93D'),
-          // emissiveIntensity: 0.2,
-          // ior: 2.4,
-          // emissive: isGold ? new THREE.Color(0xF0C883).multiplyScalar(0.05) : new THREE.Color(0xCFD0CA).multiplyScalar(0.1),
-          // emissiveIntensity: 0.15
         });
     }
   };
@@ -165,7 +153,7 @@ case 'pearl': {
     { name: 'BraceletA4', partType: 'additionalChain', modelIndex: 3, material: 'metal' },
     { name: 'BraceletA5', partType: 'additionalChain', modelIndex: 4, material: 'metal' },
     { name: 'BraceletA6', partType: 'additionalChain', modelIndex: 5, material: 'metal' },
-    
+
   ], []);
 
   return (

@@ -18,8 +18,8 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
   const orbitControlsRef = useRef();
 
   const initialCameraSettings = React.useMemo(() => ({
-    position: [0, 0, 12],
-    fov: 50
+    position: [0, 0, 30],
+    fov: 20
   }), []);
 
   const presentationSettings = React.useMemo(() => ({

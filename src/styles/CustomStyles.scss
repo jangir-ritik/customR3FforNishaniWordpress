@@ -212,7 +212,6 @@
     .tdt-model-option {
         min-width: 80px;
         min-height: 80px;
-        background: #f4f0ed;
         color: #ccc;
         display: flex;
         justify-content: center;
@@ -230,7 +229,7 @@
         }
 
         &:hover {
-            background: #e9e5e2;
+            border: 1px solid #e9e5e2;
         }
 
         @media (min-width: 768px) {

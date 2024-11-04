@@ -614,12 +614,22 @@ button:not(.cms-search-submit):hover, .button:hover, input[type="submit"]:hover,
     gap: 24px;
     order: 2;
     height: 100%;
+    overflow: hidden;
+    flex-direction: column;
+    max-height: fit-content;
 
     @media (min-width: 768px) {
-        max-height: 40%;
+        // flex-direction: row;
+        max-height: fit-content;
+        // max-height: 40%;
         // width: 300px;
         // height: 300px;
         order: initial;
+    }
+
+    @media (min-width: 1224px) {
+        flex-direction: row;
+        max-height: 450px;
     }
 }
 

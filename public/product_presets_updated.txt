@@ -1,5 +1,5 @@
 // -------------- twist link necklace preset
-// [leftChainLabel: "Signature diamond-cut chain (Smll Link)", 
+// [leftChainLabel: "Signature diamond-cut chain (Small Link)", 
 //  leftChainModel: "Model-3", 
 //  leftChainPrice: 6500, 
 //  leftChainPlating: "gold", 
@@ -85,7 +85,7 @@
 //  leftChainPrice: 4600, 
 //  leftChainPlating: "gold", 
 
-//  rightChainLabel: "Signature diamond-cut chain (Smll Link)", 
+//  rightChainLabel: "Signature diamond-cut chain (Small Link)", 
 //  rightChainModel: "Model-3", 
 //  rightChainPrice: 6500, 
 //  rightChainPlating: "silver", 

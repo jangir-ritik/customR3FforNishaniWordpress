@@ -143,11 +143,12 @@ function NecklaceContent() {
     // Right Chain
     { name: 'NecklaceR1', partType: 'rightChain', modelIndex: 0, material: 'metal' },
     { name: 'NecklaceR2', partType: 'rightChain', modelIndex: 1, material: 'metal' },
-    { name: 'NecklaceR2Pearls', partType: 'rightChain', modelIndex: 1, material: 'metal' },
+    { name: 'NecklaceR2Pearls', partType: 'rightChain', modelIndex: 1, material: 'pearl' },
     { name: 'NecklaceR3', partType: 'rightChain', modelIndex: 2, material: 'metal' },
     { name: 'NecklaceR4', partType: 'rightChain', modelIndex: 3, material: 'metal' },
     { name: 'NecklaceR5', partType: 'rightChain', modelIndex: 4, material: 'metal' },
     { name: 'NecklaceR6', partType: 'rightChain', modelIndex: 5, material: 'metal' },
+    { name: 'NecklaceR6Daimonds', partType: 'rightChain', modelIndex: 5, material: 'diamond' },
     // Necklace A
     { name: 'NecklaceA1', partType: 'additionalChain', modelIndex: 0, material: 'metal' },
     { name: 'NecklaceA2Base', partType: 'additionalChain', modelIndex: 1, material: 'metal' }, // typo in 

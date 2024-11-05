@@ -53,7 +53,7 @@
             },
             {
                 "id": "model3",
-                "name": "Signature diamond-cut chain (Small Link)",
+                "name": "Signature diamond-cut chain (s)",
                 "price": 6500,
                 "variants": {
                     "gold": {
@@ -78,7 +78,7 @@
             },
             {
                 "id": "model4",
-                "name": "Signature diamond-cut chain (Big Link)",
+                "name": "Signature diamond-cut chain (l)",
                 "price": 8800,
                 "variants": {
                     "gold": {

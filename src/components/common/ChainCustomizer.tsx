@@ -41,6 +41,12 @@ const ChainCustomizer = () => {
     return items[index].images[selectedMetal === 'gold' ? 0 : 1].url;
   };
 
+  const getImageRotation = (partType: ChainPart) => {
+    if (partType === 'rightChain') {
+      return { transform: 'rotate(180deg)' }
+    }
+  }
+
   return (
     <div className="tdt-chain-customizer">
       <ProductVariantLabel />
@@ -68,6 +74,7 @@ const ChainCustomizer = () => {
             <img
               src={getImageSrc(selectedPart, index)}
               alt={`${selectedPart} model ${index + 1}`}
+              style={getImageRotation(selectedPart)}
               title={options.categories[category]?.[index]?.name || `Model ${index + 1}`}
               onError={(e) => {
                 console.error('Image failed to load:', e.currentTarget.src);

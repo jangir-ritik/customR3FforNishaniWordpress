@@ -3,7 +3,7 @@
     flex-direction: column-reverse;
     justify-content: center;
     max-width: 100%;
-    padding: 24px;
+    padding: 24px 0;
 
     @media (min-width: 768px) {
         flex-direction: row;
@@ -339,6 +339,7 @@
         color: #111;
         white-space: nowrap;
         word-break: keep-all;
+        margin-bottom: 0 !important;
 
         @media (min-width: 768px) {
             margin: 0 16px 0 0;
@@ -736,6 +737,7 @@ button:not(.cms-search-submit):hover, .button:hover, input[type="submit"]:hover,
     align-items: center;
     justify-content: center;
     padding: 4px;
+    flex-shrink: 0;
 
     &:hover {
         opacity: 1;

@@ -764,3 +764,7 @@ button:not(.cms-search-submit):hover, .button:hover, input[type="submit"]:hover,
 .tdt-model-selector::-webkit-scrollbar {
     display: none;
 }
+
+.tdt-model-option img {
+    transition: none;
+}

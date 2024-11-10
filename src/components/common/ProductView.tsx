@@ -1,14 +1,16 @@
-import React, { Suspense, memo, useRef } from 'react';
+import React, { Suspense, lazy, memo, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
 import { OrbitControls, PresentationControls } from '@react-three/drei';
-import Bracelet from '../../Bracelet';
-import Necklace from '../../Necklace';
 import EnhancedLighting from './EnhancedLighting';
 import { SSAO, EffectComposer, Bloom } from '@react-three/postprocessing';
 import { BlendFunction } from 'postprocessing';
 import ProductViewerButtons from './ProductViewerButtons';
 import HelpModal from './HelpModal';
+
+// Lazy load the components
+const Bracelet = lazy(() => import('../../Bracelet'));
+const Necklace = lazy(() => import('../../Necklace'));
 
 interface ProductViewProps {
   productType: 'necklace' | 'bracelet';
@@ -70,6 +72,9 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
     setShowHelp(true);
   };
 
+  // Component selection based on productType
+  const ProductComponent = productType === 'necklace' ? Necklace : Bracelet;
+
   return (
     <div style={{ position: 'relative', height: '100%', width: '100%' }}>
       {showHelp && <HelpModal setShowHelp={setShowHelp} />}
@@ -107,7 +112,7 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
           />
 
           <PresentationControls {...presentationSettings}>
-            {productType === 'necklace' ? <Necklace /> : <Bracelet />}
+            <ProductComponent />
           </PresentationControls>
         </Suspense>
         {/* <Perf deepAnalyze={true} minimal={false} charts={true} position="bottom-left" /> */}

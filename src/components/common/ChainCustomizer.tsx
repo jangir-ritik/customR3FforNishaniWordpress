@@ -59,7 +59,7 @@ const ChainCustomizer = () => {
   };
 
   const getImageRotation = (partType: ChainPart) => {
-    if (partType === 'rightChain') {
+    if (partType === 'rightChain' || partType === 'additionalChain') {
       return { transform: 'rotate(180deg)' }
     }
     return { transform: 'rotate(0deg)' }

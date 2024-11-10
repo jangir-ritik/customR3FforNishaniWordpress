@@ -33,7 +33,7 @@ function BraceletContent() {
           transmission: 0.99, // High transmission for transparency
           thickness: 0.5,    // Controls internal refraction
           envMap: env,       // Important for reflections
-          envMapIntensity: 5.0,
+          envMapIntensity: 1.5,
           clearcoat: 1.0,
           clearcoatRoughness: 0.0,
           ior: 2.42,        // Diamond's index of refraction

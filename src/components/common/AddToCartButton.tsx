@@ -8,11 +8,9 @@ const AddToCartButton = () => {
   const [error, setError] = useState(null);
   const productData = useProductStore(state => state.productData);
   const calculateTotalPrice = useProductStore(state => state.calculateTotalPrice);
-  const getSelectedItemCodes = useProductStore(state => state.getSelectedItemCodes);
   const parts = useProductStore(state => state.parts);
   const productType = useProductStore(state => state.productType);
 
-  // Access WordPress localized variables
   const { pc_ajax } = window;
 
   const getModelName = (partType: ChainPart, modelIndex: number): string => {
@@ -23,11 +21,32 @@ const AddToCartButton = () => {
     return options.categories[category]?.[modelIndex]?.name || 'Unknown Model';
   };
 
+  const handleSnapshot = async (): Promise<string | null> => {
+    try {
+      const canvas = document.querySelector('canvas');
+      if (!canvas) {
+        throw new Error('Canvas element not found');
+      }
+      
+      // Get higher quality image
+      const url = canvas.toDataURL('image/jpeg', 0.9);
+      return url;
+    } catch (error) {
+      console.error('Error taking snapshot:', error);
+      return null;
+    }
+  };
+
   const handleAddToCart = async () => {
     setIsLoading(true);
     setError(null);
 
     try {
+      const productImage = await handleSnapshot();
+      if (!productImage) {
+        throw new Error('Failed to capture product image');
+      }
+
       // Validate required data
       if (!pc_ajax?.ajax_url || !pc_ajax?.nonce) {
         throw new Error('Required configuration is missing');
@@ -37,11 +56,9 @@ const AddToCartButton = () => {
         throw new Error('Product ID is missing');
       }
 
-      // Get the custom price
       const customPrice = calculateTotalPrice();
       const itemCodes = useProductStore.getState().getSelectedItemCodes();
 
-      // Format the parts data
       const formattedParts = {};
       Object.entries(parts).forEach(([partKey, part]) => {
         if (part.selectedModel !== undefined && part.plating && part.prices) {
@@ -56,23 +73,19 @@ const AddToCartButton = () => {
         }
       });
 
-      // Validate parts data
       if (Object.keys(formattedParts).length === 0) {
         throw new Error('Please select all required parts');
       }
 
-      // Create the FormData object
       const formData = new FormData();
-
-      // Add all required fields
       formData.append('action', 'pc_add_to_cart');
       formData.append('security', pc_ajax.nonce);
       formData.append('product_id', productData.id);
       formData.append('quantity', '1');
       formData.append('custom_price', customPrice.toString());
       formData.append('parts', JSON.stringify(formattedParts));
+      formData.append('product_image', productImage); // Add the image data
 
-      // Make the AJAX request
       const response = await fetch(pc_ajax.ajax_url, {
         method: 'POST',
         credentials: 'same-origin',
@@ -86,14 +99,10 @@ const AddToCartButton = () => {
       const responseData = await response.json();
 
       if (!responseData.success) {
-        console.error(responseData.data?.message);
         throw new Error(responseData.data?.message || 'Failed to add product to cart');
       }
 
-      // Success handling
       document.body.dispatchEvent(new Event('wc_fragment_refresh'));
-      console.log(responseData.message);
-      // Optional: Update mini cart if you're using WooCommerce fragments
       if (typeof jQuery !== 'undefined') {
         jQuery(document.body).trigger('wc_fragment_refresh');
         jQuery(document.body).trigger('added_to_cart');

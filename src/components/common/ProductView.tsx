@@ -7,10 +7,12 @@ import { SSAO, EffectComposer, Bloom } from '@react-three/postprocessing';
 import { BlendFunction } from 'postprocessing';
 import ProductViewerButtons from './ProductViewerButtons';
 import HelpModal from './HelpModal';
+import Bracelet from '../../Bracelet';
+import Necklace from '../../Necklace';
 
-// Lazy load the components
-const Bracelet = lazy(() => import('../../Bracelet'));
-const Necklace = lazy(() => import('../../Necklace'));
+// // Lazy load the components
+// const Bracelet = lazy(() => import('../../Bracelet'));
+// const Necklace = lazy(() => import('../../Necklace'));
 
 interface ProductViewProps {
   productType: 'necklace' | 'bracelet';

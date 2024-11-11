@@ -5,11 +5,12 @@ const ProductImages = memo(({ gallery_images }: { gallery_images: { url: string,
     <div className="tdt-product-images-wrapper">
       {gallery_images.map((image) => (
         <img 
-        src={image.url} 
-        alt={image.alt} 
-        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        loading="lazy"
-      />
+          key={image.url}
+          src={image.url} 
+          alt={image.alt} 
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          loading="lazy"
+        />
       ))}
     </div>
   )

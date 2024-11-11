@@ -20,7 +20,7 @@ function NecklaceContent() {
   const getMaterial = (partType, materialType) => {
     const partData = parts[partType];
     const env = useEnvironment({
-      files: 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/peppermint_powerplant_2_1k.hdr'
+      files: 'https://demo-assets.pixotronics.com/pixo/presets/environment/env-gem-4.exr'
     });
     
     switch(materialType) {
@@ -32,14 +32,14 @@ function NecklaceContent() {
           transmission: 0.99, // High transmission for transparency
           thickness: 0.5,    // Controls internal refraction
           envMap: env,       // Important for reflections
-          envMapIntensity: 1.5,
+          envMapIntensity: 2,
           clearcoat: 1.0,
           clearcoatRoughness: 0.0,
           ior: 2.42,        // Diamond's index of refraction
           attenuationColor: new THREE.Color(0xffffff),
           attenuationDistance: 0.1,
           specularIntensity: 1.0,
-          specularColor: new THREE.Color(0xffffff),
+          specularColor: new THREE.Color(0xB5B5DC),
           transparent: true,
           side: THREE.DoubleSide
         });

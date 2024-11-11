@@ -17,7 +17,7 @@ function NecklaceContent() {
   const { nodes } = useGLTF('/NecklaceFile.gltf');
   const { parts } = useProductStore();
 
-  const getMaterial = (partType, materialType) => {
+  const getMaterial = (partType, materialType, finish) => {
     const partData = parts[partType];
     const env = useEnvironment({
       files: 'https://demo-assets.pixotronics.com/pixo/presets/environment/env-gem-4.exr'
@@ -98,9 +98,29 @@ function NecklaceContent() {
 
         default:
           const isGold = partData.plating === 'gold';
+          const isMatte = finish === 'matte';
+
           const baseColor = isGold ? 0xFED88B : 0xDDDED8;
           const metalness = isGold ? 1.0 : 1.0; // Slightly lower metalness
           const roughness = isGold ? 0.1 : 0.05; // Slightly higher roughness
+          
+
+          if (isMatte) {
+            return new THREE.MeshPhysicalMaterial({
+              color: isGold ? new THREE.Color(0xFED88B).multiplyScalar(0.8) : new THREE.Color(0xD0D1CC),
+              metalness: 0.8,         // Increased slightly for better metallic look
+              roughness: 0.6,         // Increased for more pronounced matte effect
+              envMap: env,
+              envMapIntensity: 1.3,   // Reduced for more subtle reflections
+              clearcoat: 0.1,         // Slight clearcoat for subtle shine
+              clearcoatRoughness: 0.8, // High roughness for matte clearcoat
+              reflectivity: 0.7,      // Moderate reflectivity
+              side: THREE.DoubleSide,
+              flatShading: true,      // Emphasizes the matte surface
+              normalScale: new THREE.Vector2(0.5, 0.5), // Subtle surface detail
+            });
+          }
+
           return new THREE.MeshPhysicalMaterial({
             color: new THREE.Color(baseColor),
             metalness: metalness,
@@ -131,7 +151,7 @@ function NecklaceContent() {
     { name: 'TopHook4Base', partType: 'topLock', modelIndex: 3, material: 'metal' },
     { name: 'TopHook4Daimonds', partType: 'topLock', modelIndex: 3, material: 'diamond' },
     { name: 'TopHook5', partType: 'topLock', modelIndex: 4, material: 'metal' },
-    { name: 'TopHook1', partType: 'topLock', modelIndex: 5, material: 'metal' },
+    { name: 'TopHook1', partType: 'topLock', modelIndex: 5, material: 'metal', finish: 'matte' },
     // Bottom Lock
     { name: 'BottomHook1', partType: 'bottomLock', modelIndex: 0, material: 'metal' },
     { name: 'BottomHook2', partType: 'bottomLock', modelIndex: 1, material: 'metal' },
@@ -139,7 +159,7 @@ function NecklaceContent() {
     { name: 'BottomHook4Base', partType: 'bottomLock', modelIndex: 3, material: 'metal' },
     { name: 'BottomHook4Daimonds', partType: 'bottomLock', modelIndex: 3, material: 'diamond' },
     { name: 'BottomHook5', partType: 'bottomLock', modelIndex: 4, material: 'metal' },
-    { name: 'BottomHook1', partType: 'bottomLock', modelIndex: 5, material: 'metal' },
+    { name: 'BottomHook1', partType: 'bottomLock', modelIndex: 5, material: 'metal', finish: 'matte' },
     // Right Chain
     { name: 'NecklaceR1', partType: 'rightChain', modelIndex: 0, material: 'metal' },
     { name: 'NecklaceR2', partType: 'rightChain', modelIndex: 1, material: 'metal' },
@@ -169,7 +189,7 @@ function NecklaceContent() {
           <mesh
             key={mesh.name + mesh.modelIndex}
             geometry={node.geometry}
-            material={getMaterial(mesh.partType, mesh.material)}
+            material={getMaterial(mesh.partType, mesh.material, mesh.finish)}
             position={node.position}
             rotation={node.rotation}
             scale={node.scale}

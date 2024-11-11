@@ -3,7 +3,7 @@
         "necklaces": [
             {
                 "id": "model1",
-                "name": "Crub Chain",
+                "name": "Curb Chain",
                 "price": 3600,
                 "variants": {
                     "gold": {
@@ -180,7 +180,7 @@
             },
             {
                 "id": "model2",
-                "name": "Paper clip 5 links",
+                "name": "Signature diamond-cut chain (s)",
                 "price": 4500,
                 "variants": {
                     "gold": {
@@ -205,7 +205,7 @@
             },
             {
                 "id": "model3",
-                "name": "Paper clip 7 links",
+                "name": "Signature diamond-cut chain (l)",
                 "price": 3300,
                 "variants": {
                     "gold": {
@@ -230,7 +230,7 @@
             },
             {
                 "id": "model4",
-                "name": "Paper clip 11 links",
+                "name": "Paper clip chain",
                 "price": 2500,
                 "variants": {
                     "gold": {
@@ -280,7 +280,7 @@
             },
             {
                 "id": "model6",
-                "name": "Crub Chain",
+                "name": "Curb Chain",
                 "price": 1800,
                 "variants": {
                     "gold": {

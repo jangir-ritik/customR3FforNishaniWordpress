@@ -4,7 +4,7 @@
 //  leftChainPrice: 6500, 
 //  leftChainPlating: "gold", 
 
-//  rightChainLabel: "Crub Chain", 
+//  rightChainLabel: "Curb Chain", 
 //  rightChainModel: "Model-1", 
 //  rightChainPrice: 3600, 
 //  rightChainPlating: "gold", 
@@ -26,7 +26,7 @@
 // --------------
 
 // -------------- minimalist twist necklace preset
-// [leftChainLabel: "Crub chain", 
+// [leftChainLabel: "Curb chain", 
 //  leftChainModel: "Model-1", 
 //  leftChainPrice: 3600, 
 //  leftChainPlating: "silver", 
@@ -53,7 +53,7 @@
 // --------------
 
 // -------------- classic link necklace preset
-// [leftChainLabel: "Crub chain", 
+// [leftChainLabel: "Curb chain", 
 //  leftChainModel: "Model-1", 
 //  leftChainPrice: 3600, 
 //  leftChainPlating: "gold", 
@@ -112,7 +112,7 @@
 //  leftChainPrice: 2300, 
 //  leftChainPlating: "silver", 
 
-//  rightChainLabel: "Paper clip 11 links", 
+//  rightChainLabel: "Paper clip chain", 
 //  rightChainModel: "Model-4", 
 //  rightChainPrice: 2500, 
 //  rightChainPlating: "gold", 
@@ -134,12 +134,12 @@
 // --------------
 
 // -------------- signature fusion bracelet preset
-// [leftChainLabel: "Paper clip 7 links", 
+// [leftChainLabel: "Signature diamond-cut chain (l)", 
 //  leftChainModel: "Model-3", 
 //  leftChainPrice: 3300, 
 //  leftChainPlating: "silver", 
 
-//  rightChainLabel: "Paper clip 11 links", 
+//  rightChainLabel: "Paper clip chain", 
 //  rightChainModel: "Model-4", 
 //  rightChainPrice: 2500, 
 //  rightChainPlating: "gold", 
@@ -166,7 +166,7 @@
 //  leftChainPrice: 2300, 
 //  leftChainPlating: "gold", 
 
-//  rightChainLabel: "Crub chain", 
+//  rightChainLabel: "Curb chain", 
 //  rightChainModel: "Model-6", 
 //  rightChainPrice: 1800, 
 //  rightChainPlating: "silver", 
@@ -188,12 +188,12 @@
 // --------------
 
 // -------------- Statement link bracelet preset
-// [leftChainLabel: "Paper clip 5 links", 
+// [leftChainLabel: "Signature diamond-cut chain (s)", 
 //  leftChainModel: "Model-2", 
 //  leftChainPrice: 4500, 
 //  leftChainPlating: "silver", 
 
-//  rightChainLabel: "Crub chain", 
+//  rightChainLabel: "Curb chain", 
 //  rightChainModel: "Model-6", 
 //  rightChainPrice: 1800, 
 //  rightChainPlating: "gold", 
@@ -242,17 +242,17 @@
 // --------------
 
 // -------------- Custom Necklace
-// [leftChainLabel: "Crub Chain", 
+// [leftChainLabel: "Curb Chain", 
 //  leftChainModel: "Model-1", 
 //  leftChainPrice: 3600, 
 //  leftChainPlating: "gold", 
 
-//  rightChainLabel: "Crub Chain", 
+//  rightChainLabel: "Curb Chain", 
 //  rightChainModel: "Model-1", 
 //  rightChainPrice: 3600, 
 //  rightChainPlating: "gold", 
 
-//  additionalChainLabel: "Crub Chain", 
+//  additionalChainLabel: "Curb Chain", 
 //  additionalChainModel: "Model-1", 
 //  additionalChainPrice: 3600, 
 //  additionalChainPlating: "gold", 

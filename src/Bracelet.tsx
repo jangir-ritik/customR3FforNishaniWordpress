@@ -30,19 +30,22 @@ function BraceletContent() {
           color: new THREE.Color(0xffffff),
           metalness: 0.0,
           roughness: 0.0,
-          transmission: 0.99, // High transmission for transparency
-          thickness: 0.5,    // Controls internal refraction
+          transmission: 0.8, // High transmission for transparency
+          thickness: 2,    // Controls internal refraction
           envMap: env,       // Important for reflections
-          envMapIntensity: 2,
+          envMapIntensity: 1.5,
           clearcoat: 1.0,
           clearcoatRoughness: 0.0,
           ior: 2.42,        // Diamond's index of refraction
           attenuationColor: new THREE.Color(0xffffff),
-          attenuationDistance: 0.1,
-          specularIntensity: 1.0,
-          specularColor: new THREE.Color(0xB5B5DC),
+          attenuationDistance: 0.2,
+          specularIntensity: 1.5,
+          specularColor: new THREE.Color(0xffffff),
           transparent: true,
-          side: THREE.DoubleSide
+          side: THREE.DoubleSide,
+          sheen: 1.0,                         // Added sheen for extra sparkle
+          sheenRoughness: 0.0,                // Smooth sheen
+          sheenColor: new THREE.Color(0xffffff) // White sheen
         });
 
       case 'pearl': {

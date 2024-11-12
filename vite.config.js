@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  
   assetsInclude: ['**/*.gltf'],  // Add this line
   server: {
     host: true, // or '0.0.0.0'

@@ -17,22 +17,34 @@ const ProductDescription = () => {
     details: ProductDetail[];
     note: string;
   } => {
-    const parts = description.split('<ul>');
+    // Split by double newline to separate main description from details
+    const parts = description.split(/\r\n\r\n/);
     const mainDescription = parts[0].trim();
     let details: ProductDetail[] = [];
     let note = '';
 
-    if (parts[1]) {
-      const detailsPart = parts[1].split('</ul>');
-      const listItems = detailsPart[0].match(/<li>(.*?)<\/li>/g) || [];
+    // Handle both list formats
+    if (description.includes('<ul>')) {
+      // Original format with <ul> and <li>
+      const listPart = description.split('<ul>')[1]?.split('</ul>')[0];
+      const listItems = listPart?.match(/<li>(.*?)<\/li>/g) || [];
       details = listItems.map(item => ({
         text: item.replace(/<\/?li>/g, '').trim()
       }));
-      const notePart = detailsPart[1].match(/<p.*?>(.*?)<\/p>/);
-      if (notePart) {
-        note = notePart[1].trim();
-      }
+    } else if (description.includes('<strong>')) {
+      // New format with <strong> tags
+      const matches = description.matchAll(/<strong>([^<]+)<\/strong>\s*:\s*([^<\r\n]+)/g);
+      details = Array.from(matches).map(match => ({
+        text: `${match[1].trim()} - ${match[2].trim()}`
+      }));
     }
+
+    // Extract note (works for both formats)
+    const notePart = description.match(/<p.*?>(.*?)<\/p>/);
+    if (notePart) {
+      note = notePart[1].trim();
+    }
+
     return { mainDescription, details, note };
   };
 

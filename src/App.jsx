@@ -18,105 +18,122 @@ const App = () => {
   const productType = useProductStore(state => state.productType);
   const totalPrice = useProductStore(state => state.totalPrice);
 
-  const productData = useProductStore(state => state.productData);
-  // const productData = {
-  //     "id": "4712",
-  //     "name": "Twist Link Necklace",
-  //     "description": "Introducing our pre-designed necklaces, curated to perfectly pair our signature chains and locks for a bold, effortless look. From the strikingly bold chains to classic delicate ones or our signature diamond-cut chain, each piece offers a unique combination of modern style and timeless elegance. Featuring iconic locks like the hexagonal hammered texture or the sleek high-polish finish, these necklaces are designed to make a statement.While each look is ready to wear, you can still make it your own! Whether you want to add, remove, or swap elements, our designs are fully customizable, allowing you to create a piece that reflects your personal style.\r\n<ul>\r\n \t<li>Material- Sterling Silver 925</li>\r\n \t<li>Plating- Rhodium and yellow gold</li>\r\n \t<li>Size- 18 inch</li>\r\n \t<li>AntiTarnish</li>\r\n</ul>\r\n<p style=\"color: #666666; font-size: 15px;\" data-darkreader-inline-color=\"\">*Please note that slight color variations may occur due to photoshoot conditions and studio lighting settings.</p>",
-  //     "price": "14300",
-  //     "regular_price": "14300",
-  //     "sale_price": "",
-  //     "image_url": "https://nishanistudio.com/wp-content/uploads/428-17.png",
-  //     "gallery_images": [
-  //       {
-  //         "id": "4731",
-  //         "url": "https://nishanistudio.com/wp-content/uploads/428-17.png",
-  //         "alt": "",
-  //         "caption": ""
-  //       },
-  //       {
-  //         "id": 4732,
-  //         "url": "https://nishanistudio.com/wp-content/uploads/428136.png",
-  //         "alt": "",
-  //         "caption": ""
-  //       }
-  //     ],
-  //     "attributes": {
-  //       "pa_right-chain": [
-  //         125,
-  //         126,
-  //         127,
-  //         128,
-  //         129
-  //       ],
-  //       "pa_left-chain": [
-  //         114,
-  //         118,
-  //         117,
-  //         115,
-  //         119
-  //       ],
-  //       "pa_front-lock": [
-  //         123,
-  //         124,
-  //         134,
-  //         135,
-  //         136
-  //       ],
-  //       "pa_back-lock": [
-  //         121,
-  //         122,
-  //         137,
-  //         138,
-  //         139
-  //       ]
-  //     },
-  //     "variations": [],
-  //     "default_attributes": [],
-  //     "jewelry_parts": {
-  //       "leftChain": {
-  //         "label": "Signature diamond-cut chain (Smll Link)",
-  //         "model": "Model-3",
-  //         "price": 6500,
-  //         "plating": "gold"
-  //       },
-  //       "rightChain": {
-  //         "label": "Crub Chain",
-  //         "model": "Model-1",
-  //         "price": 3600,
-  //         "plating": "gold"
-  //       },
-  //       "additionalChain": {
-  //         "label": "none",
-  //         "model": "null",
-  //         "price": 0,
-  //         "plating": "null"
-  //       },
-  //       "bottomLock": {
-  //         "label": "Hexagonal Textured Lock",
-  //         "model": "Model-3",
-  //         "price": 2300,
-  //         "plating": "silver"
-  //       },
-  //       "topLock": {
-  //         "label": "Signature lock",
-  //         "model": "Model-1",
-  //         "price": 1900,
-  //         "plating": "gold"
-  //       }
-  //     }
-  //   }
+  // const productData = useProductStore(state => state.productData);
+  const productData = {
+    "id": "5460",
+    "name": "Custom Necklace",
+    "description": "Craft your unique style with our custom bracelets and necklaces, designed to reflect your personal touch. Choose from a selection of elegant chains and signature locks, mix and match to create jewelry as unique as you. Make your mark with timeless pieces tailored just for you!\r\n\r\n<strong>Material : </strong>Sterling Silver 925\r\n<strong>Plating : </strong>Rhodium and yellow gold\r\n<strong>Size</strong> : 15 + 3 inches (extension)\r\n<strong>AntiTarnish</strong>\r\n<p data-darkreader-inline-color=\"\">*Please note that slight color variations may occur due to photoshoot conditions and studio lighting settings.</p>",
+    "price": "11100",
+    "regular_price": "11100",
+    "sale_price": "",
+    "image_url": "https://nishanistudio.com/wp-content/uploads/426-5.png",
+    "gallery_images": [
+      {
+        "id": "4734",
+        "url": "https://nishanistudio.com/wp-content/uploads/426-5.png",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "id": 6690,
+        "url": "https://nishanistudio.com/wp-content/uploads/Home-banner-img-change-1.png",
+        "alt": "",
+        "caption": ""
+      }
+    ],
+    "attributes": {
+      "Right Chain Plating": [
+        "Gold",
+        "Rhodium"
+      ],
+      "Additional Chain": [
+        "Model 1",
+        "Model 2",
+        "Model 3",
+        "Model 4",
+        "Model 5",
+        "Model 6",
+        "null"
+      ],
+      "Additional Chain Plating": [
+        "Gold",
+        "Rhodium",
+        "null"
+      ],
+      "Left Chain Plating": [
+        "Gold",
+        "Rhodium"
+      ],
+      "Bottom Lock": [
+        "Model 1",
+        "Model 2",
+        "Model 3",
+        "Model 4",
+        "Model 5",
+        "Model 6"
+      ],
+      "Bottom Lock Plating": [
+        "Gold",
+        "Rhodium"
+      ],
+      "Top Lock": [
+        "Model 1",
+        "Model 2",
+        "Model 3",
+        "Model 4",
+        "Model 5",
+        "Model 6"
+      ],
+      "Top Lock Plating": [
+        "Gold",
+        "Rhodium"
+      ]
+    },
+    "variations": [],
+    "jewelry_parts": {
+      "leftChain": {
+        "label": "Crub Chain",
+        "model": "Model-1",
+        "price": 3600,
+        "plating": "gold"
+      },
+      "rightChain": {
+        "label": "Crub Chain",
+        "model": "Model-1",
+        "price": 3600,
+        "plating": "gold"
+      },
+      "additionalChain": {
+        "label": "null",
+        "model": "null",
+        "price": 0,
+        "plating": "null"
+      },
+      "bottomLock": {
+        "label": "Signature Lock",
+        "model": "Model-1",
+        "price": 1900,
+        "plating": "gold"
+      },
+      "topLock": {
+        "label": "Signature Lock",
+        "model": "Model-1",
+        "price": 1900,
+        "plating": "gold"
+      }
+    }
+  }
 
   useEffect(() => {
     try {
       // Find the main element with cms-main class
       const mainElement = document.getElementById('cms-main');
       const headerElement = document.getElementById('cms-header');
-      
+
       if (mainElement) {
         // Remove the cms-main class
         mainElement.classList.remove('cms-main');
-        
+
         // Optional: Log success for debugging
         console.log('Successfully removed cms-main class');
       } else {
@@ -135,7 +152,7 @@ const App = () => {
       // Log any errors that occur during the process
       console.error('Error removing cms-main class:', error);
     }
-    
+
     // Cleanup function (optional)
     return () => {
       try {
@@ -155,12 +172,12 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if (window.productData) {
-      // if (productData) {
-      console.log('Product data from WordPress:', window.productData);
-      // console.log('Product data from WordPress:', productData);
-      setProductData(window.productData);
-      // setProductData(productData);
+    // if (window.productData) {
+    if (productData) {
+      // console.log('Product data from WordPress:', window.productData);
+      console.log('Product data from WordPress:', productData);
+      // setProductData(window.productData);
+      setProductData(productData);
     } else {
       console.error('No product data found.');
     }

@@ -9,6 +9,7 @@ import ProductViewerButtons from './ProductViewerButtons';
 import HelpModal from './HelpModal';
 import Bracelet from '../../Bracelet';
 import Necklace from '../../Necklace';
+import WebGL from 'three/addons/capabilities/WebGL.js';
 
 // // Lazy load the components
 // const Bracelet = lazy(() => import('../../Bracelet'));
@@ -77,6 +78,34 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
   // Component selection based on productType
   const ProductComponent = productType === 'necklace' ? Necklace : Bracelet;
 
+  // Add WebGL detection
+  const [isWebGLSupported] = React.useState(() => WebGL.isWebGLAvailable());
+
+  // Add fallback render logic
+  if (!isWebGLSupported) {
+    return (
+      <div style={{
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '2rem',
+        backgroundColor: '#f4f0ed',
+      }}>
+        <p style={{
+          textAlign: 'center',
+          color: '#666',
+          maxWidth: '400px'
+        }}>
+          Your browser doesn't support 3D viewing.
+          Please use a modern browser like Chrome, Firefox, or Safari for the full experience.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div style={{ position: 'relative', height: '100%', width: '100%' }}>
       {showHelp && <HelpModal setShowHelp={setShowHelp} />}
@@ -87,7 +116,6 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
         gl={{
           preserveDrawingBuffer: true,
           antialias: true,
-
         }}
         style={{
           touchAction: 'none',

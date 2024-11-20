@@ -64,8 +64,8 @@ const ProductDescription = () => {
 
   const { mainDescription } = parseDescription(productData.description);
 
-  const displayText = isExpanded 
-    ? mainDescription 
+  const displayText = isExpanded
+    ? mainDescription
     : mainDescription.slice(0, MAX_CHARS).trim();
 
   return (

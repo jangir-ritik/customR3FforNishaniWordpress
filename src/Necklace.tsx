@@ -20,10 +20,10 @@ function NecklaceContent() {
   const getMaterial = (partType, materialType, finish) => {
     const partData = parts[partType];
     const env = useEnvironment({
-      files: 'https://demo-assets.pixotronics.com/pixo/presets/environment/env-gem-4.exr'
+      files: '/env-gem-4.exr'
     });
-    
-    switch(materialType) {
+
+    switch (materialType) {
       case 'diamond':
         return new THREE.MeshPhysicalMaterial({
           color: new THREE.Color(0xffffff),
@@ -47,88 +47,88 @@ function NecklaceContent() {
           sheenColor: new THREE.Color(0xffffff) // White sheen
         });
 
-        case 'pearl': {
-          // Base color with slight pink/cream tint
-          const baseColor = new THREE.Color(0xfff5ee);
-          // Iridescent color with subtle rainbow effect
-          const iridescenceColor = new THREE.Color(0xe8f0ff);
-          // Sheen color with slight blue/green tint for depth
-          const sheenBaseColor = new THREE.Color(0xf0f8ff);
-  
+      case 'pearl': {
+        // Base color with slight pink/cream tint
+        const baseColor = new THREE.Color(0xfff5ee);
+        // Iridescent color with subtle rainbow effect
+        const iridescenceColor = new THREE.Color(0xe8f0ff);
+        // Sheen color with slight blue/green tint for depth
+        const sheenBaseColor = new THREE.Color(0xf0f8ff);
+
+        return new THREE.MeshPhysicalMaterial({
+          // Base material properties
+          color: baseColor,
+          metalness: 0.15,      // Slightly increased for more reflectivity
+          roughness: 0.2,       // Decreased for more shine
+
+          // Enhanced reflection and coating
+          envMapIntensity: 2.0, // Increased environment map influence
+          clearcoat: 1.0,       // Maximum clearcoat for glossy finish
+          clearcoatRoughness: 0.1,
+          reflectivity: 1.0,    // Maximum reflectivity
+
+          // Iridescence settings
+          iridescence: 0.9,     // Strong but not overwhelming
+          iridescenceIOR: 2.2,  // Higher IOR for more pronounced color shift
+          iridescenceThicknessRange: [100, 400], // Wider range for more variety
+
+          // Sheen for pearly luster
+          sheen: 1.0,           // Maximum sheen
+          sheenRoughness: 0.2,  // Reduced roughness for smoother appearance
+          sheenColor: sheenBaseColor,
+
+          // Transmission and thickness
+          transmission: 0.1,    // Slight translucency
+          thickness: 0.5,       // Moderate thickness for internal effects
+
+          // Additional properties
+          attenuationDistance: 0.3,
+          attenuationColor: new THREE.Color(0xfaf0e6),
+          ior: 1.8,            // Higher IOR for more realistic light interaction
+
+          // Ensure both sides are rendered
+          side: THREE.DoubleSide,
+
+          // Enable all relevant features
+          transparent: true,
+
+          // Optional emission for subtle glow
+          emissive: new THREE.Color(0xffffff),
+          emissiveIntensity: 0.05
+        });
+      }
+
+
+      default:
+        const isGold = partData.plating === 'gold';
+        const isMatte = finish === 'matte';
+
+        const baseColor = isGold ? 0xFED88B : 0xDDDED8;
+        const metalness = isGold ? 1.0 : 1.0; // Slightly lower metalness
+        const roughness = isGold ? 0.1 : 0.05; // Slightly higher roughness
+
+
+        if (isMatte) {
           return new THREE.MeshPhysicalMaterial({
-            // Base material properties
-            color: baseColor,
-            metalness: 0.15,      // Slightly increased for more reflectivity
-            roughness: 0.2,       // Decreased for more shine
-  
-            // Enhanced reflection and coating
-            envMapIntensity: 2.0, // Increased environment map influence
-            clearcoat: 1.0,       // Maximum clearcoat for glossy finish
-            clearcoatRoughness: 0.1,
-            reflectivity: 1.0,    // Maximum reflectivity
-  
-            // Iridescence settings
-            iridescence: 0.9,     // Strong but not overwhelming
-            iridescenceIOR: 2.2,  // Higher IOR for more pronounced color shift
-            iridescenceThicknessRange: [100, 400], // Wider range for more variety
-  
-            // Sheen for pearly luster
-            sheen: 1.0,           // Maximum sheen
-            sheenRoughness: 0.2,  // Reduced roughness for smoother appearance
-            sheenColor: sheenBaseColor,
-  
-            // Transmission and thickness
-            transmission: 0.1,    // Slight translucency
-            thickness: 0.5,       // Moderate thickness for internal effects
-  
-            // Additional properties
-            attenuationDistance: 0.3,
-            attenuationColor: new THREE.Color(0xfaf0e6),
-            ior: 1.8,            // Higher IOR for more realistic light interaction
-  
-            // Ensure both sides are rendered
+            color: isGold ? new THREE.Color(0xFED88B).multiplyScalar(0.8) : new THREE.Color(0xD0D1CC),
+            metalness: 0.8,         // Increased slightly for better metallic look
+            roughness: 0.6,         // Increased for more pronounced matte effect
+            envMap: env,
+            envMapIntensity: 1.3,   // Reduced for more subtle reflections
+            clearcoat: 0.1,         // Slight clearcoat for subtle shine
+            clearcoatRoughness: 0.8, // High roughness for matte clearcoat
+            reflectivity: 0.7,      // Moderate reflectivity
             side: THREE.DoubleSide,
-  
-            // Enable all relevant features
-            transparent: true,
-  
-            // Optional emission for subtle glow
-            emissive: new THREE.Color(0xffffff),
-            emissiveIntensity: 0.05
+            flatShading: true,      // Emphasizes the matte surface
+            normalScale: new THREE.Vector2(0.5, 0.5), // Subtle surface detail
           });
         }
-  
 
-        default:
-          const isGold = partData.plating === 'gold';
-          const isMatte = finish === 'matte';
-
-          const baseColor = isGold ? 0xFED88B : 0xDDDED8;
-          const metalness = isGold ? 1.0 : 1.0; // Slightly lower metalness
-          const roughness = isGold ? 0.1 : 0.05; // Slightly higher roughness
-          
-
-          if (isMatte) {
-            return new THREE.MeshPhysicalMaterial({
-              color: isGold ? new THREE.Color(0xFED88B).multiplyScalar(0.8) : new THREE.Color(0xD0D1CC),
-              metalness: 0.8,         // Increased slightly for better metallic look
-              roughness: 0.6,         // Increased for more pronounced matte effect
-              envMap: env,
-              envMapIntensity: 1.3,   // Reduced for more subtle reflections
-              clearcoat: 0.1,         // Slight clearcoat for subtle shine
-              clearcoatRoughness: 0.8, // High roughness for matte clearcoat
-              reflectivity: 0.7,      // Moderate reflectivity
-              side: THREE.DoubleSide,
-              flatShading: true,      // Emphasizes the matte surface
-              normalScale: new THREE.Vector2(0.5, 0.5), // Subtle surface detail
-            });
-          }
-
-          return new THREE.MeshPhysicalMaterial({
-            color: new THREE.Color(baseColor),
-            metalness: metalness,
-            roughness: roughness,
-          });
+        return new THREE.MeshPhysicalMaterial({
+          color: new THREE.Color(baseColor),
+          metalness: metalness,
+          roughness: roughness,
+        });
     }
   };
 

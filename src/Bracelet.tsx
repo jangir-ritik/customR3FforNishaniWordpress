@@ -21,7 +21,7 @@ function BraceletContent() {
   const getMaterial = (partType, materialType, finish) => {
     const partData = parts[partType];
     const env = useEnvironment({
-      files: 'https://demo-assets.pixotronics.com/pixo/presets/environment/env-gem-4.exr'
+      files: '/env-gem-4.exr'
     });
 
     switch(materialType) {

@@ -2,7 +2,34 @@ import React from 'react';
 import { Html, useProgress } from '@react-three/drei';
 
 const Loader = () => {
-    const { progress } = useProgress();
+    const { active, progress, item } = useProgress();
+    const [smoothProgress, setSmoothProgress] = React.useState(0);
+
+    React.useEffect(() => {
+        // Only update when actively loading
+        if (active) {
+            // If the actual progress is higher, smoothly increment towards it
+            if (progress > smoothProgress) {
+                const interval = setInterval(() => {
+                    setSmoothProgress(prev => {
+                        const newProgress = prev + 0.1;
+                        // Stop when we reach actual progress
+                        if (newProgress >= progress) {
+                            clearInterval(interval);
+                            return progress;
+                        }
+                        return newProgress;
+                    });
+                }, 10); // Update every 10ms
+
+                return () => clearInterval(interval);
+            }
+        } else {
+            // Reset when loading is complete
+            setSmoothProgress(0);
+        }
+    }, [progress, active, smoothProgress]);
+
     return (
         <Html center>
             <div style={{
@@ -23,7 +50,7 @@ const Loader = () => {
                     position: 'relative'
                 }}>
                     <div style={{
-                        width: `${progress}%`,
+                        width: `${smoothProgress}%`,
                         height: '100%',
                         background: 'linear-gradient(to right, #ff0023, #FF2C5A)',
                         transition: 'width 0.5s',
@@ -33,15 +60,16 @@ const Loader = () => {
                     }} />
                 </div>
                 <div style={{
-                    width: '40px',
-                    height: '40px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginTop: '20px',
+                    width: '200px',
+                    textAlign: 'center',
+                    marginTop: '10px',
                 }}>
                     <span style={{ fontSize: '12px', fontWeight: 'bold' }}>
-                        {progress.toFixed(0)}%
+                        {active ? (
+                            `Loading${item ? ':' : ''} (${smoothProgress.toFixed(1)}%)`
+                        ) : (
+                            'Loading complete'
+                        )}
                     </span>
                 </div>
             </div>

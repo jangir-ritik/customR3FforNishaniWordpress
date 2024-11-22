@@ -24,7 +24,7 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
 
   const initialCameraSettings = React.useMemo(() => ({
     position: [0, 0, 30],
-    fov: 20
+    fov: 1
   }), []);
 
   const presentationSettings = React.useMemo(() => ({
@@ -34,6 +34,18 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
     rotation: [Math.PI / 2, 0, 0],
     polar: [-Math.PI / 3, Math.PI / 3],
     azimuth: [-Math.PI / 1.4, Math.PI / 2]
+  }), []);
+
+  // Add zoom constraints to OrbitControls
+  const orbitControlsSettings = React.useMemo(() => ({
+    minDistance: 25, // Minimum zoom level (closer to object)
+    maxDistance: 100, // Maximum zoom level (further from object)
+    enableZoom: true,
+    enablePan: true,
+    enableRotate: true,
+    minPolarAngle: Math.PI / 3,
+    maxPolarAngle: Math.PI / 1.5,
+    zoomSpeed: 0.5 // Reduce zoom speed for more controlled zooming (default is 1.0)
   }), []);
 
   // Optimize SSAO settings for jewelry
@@ -80,7 +92,7 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
 
   // Add WebGL detection
   const [isWebGLSupported] = React.useState(() => WebGL.isWebGLAvailable());
-
+  console.log(isWebGLSupported, 'isWebGLSupported')
   // Add fallback render logic
   if (!isWebGLSupported) {
     return (
@@ -134,11 +146,7 @@ const ProductView = memo(({ productType }: ProductViewProps) => {
 
           <OrbitControls
             ref={orbitControlsRef}
-            enableZoom={true}
-            enablePan={true}
-            enableRotate={true}
-            minPolarAngle={Math.PI / 3}
-            maxPolarAngle={Math.PI / 1.5}
+            {...orbitControlsSettings}
           />
 
           <PresentationControls {...presentationSettings}>

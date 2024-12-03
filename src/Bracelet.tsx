@@ -15,18 +15,48 @@ export default function Bracelet() {
 
 function BraceletContent() {
   const group = useRef();
+  const textureLoader = new THREE.TextureLoader();
   const { nodes } = useGLTF('/BraceletFile.gltf');
   const { parts } = useProductStore();
+  const leftChain2NormalMap = textureLoader.load('/BraceletR2_Normals.png');
+  const leftChain3NormalMap = textureLoader.load('/BraceletR3_Normals.png');
+  const rightChain2NormalMap = textureLoader.load('/BraceletR2_Normals.png');
+  const rightChain3NormalMap = textureLoader.load('/BraceletR3_Normals.png');
+  const additionalChain2NormalMap = textureLoader.load('/BraceletA2_Normals.png');
+  const additionalChain3NormalMap = textureLoader.load('/BraceletA3_Normals.png');
+  const bottomLockNormalMap = textureLoader.load('/BottomHook3_Normals.png');
+  const topLockNormalMap = textureLoader.load('/BottomHook3_Normals.png');
 
-  const getMaterial = (partType, materialType, finish) => {
+  const getMaterial = (partType, materialType, finish, meshName) => {
     const partData = parts[partType];
     const env = useEnvironment({
       files: '/env-gem-4.exr'
     });
 
-    switch(materialType) {
+    const getNormalMap = (meshName) => {
+      switch (meshName) {
+        case 'BraceletL2': return leftChain2NormalMap;
+        case 'BraceletL3': return leftChain3NormalMap;
+        case 'BraceletR2': return rightChain2NormalMap;
+        case 'BraceletR3': return rightChain3NormalMap;
+        case 'BraceletA2': return additionalChain2NormalMap;
+        case 'BraceletA3': return additionalChain3NormalMap;
+        case 'BottomHook3': return bottomLockNormalMap;
+        case 'TopHook3': return topLockNormalMap;
+        default: return null;
+      }
+    };
+
+    const normalMap = getNormalMap(meshName);
+    const baseMatOptions = {
+      normalMap,
+      normalScale: normalMap ? new THREE.Vector2(1, 1) : undefined,
+    };
+
+    switch (materialType) {
       case 'diamond':
         return new THREE.MeshPhysicalMaterial({
+          ...baseMatOptions,
           color: new THREE.Color(0xffffff),
           metalness: 0.0,
           roughness: 0.0,
@@ -45,7 +75,7 @@ function BraceletContent() {
           side: THREE.DoubleSide,
           sheen: 1.0,                         // Added sheen for extra sparkle
           sheenRoughness: 0.0,                // Smooth sheen
-          sheenColor: new THREE.Color(0xffffff) // White sheen
+          sheenColor: new THREE.Color(0xffffff), // White sheen
         });
 
       case 'pearl': {
@@ -57,6 +87,7 @@ function BraceletContent() {
         const sheenBaseColor = new THREE.Color(0xf0f8ff);
 
         return new THREE.MeshPhysicalMaterial({
+          ...baseMatOptions,
           // Base material properties
           color: baseColor,
           metalness: 0.15,      // Slightly increased for more reflectivity
@@ -95,7 +126,7 @@ function BraceletContent() {
 
           // Optional emission for subtle glow
           emissive: new THREE.Color(0xffffff),
-          emissiveIntensity: 0.05
+          emissiveIntensity: 0.05,
         });
       }
 
@@ -109,6 +140,7 @@ function BraceletContent() {
 
         if (isMatte) {
           return new THREE.MeshPhysicalMaterial({
+            ...baseMatOptions,
             color: isGold ? new THREE.Color(0xFED88B).multiplyScalar(0.8) : new THREE.Color(0xD0D1CC),
             metalness: 0.8,         // Increased slightly for better metallic look
             roughness: 0.6,         // Increased for more pronounced matte effect
@@ -123,6 +155,7 @@ function BraceletContent() {
           });
         }
         return new THREE.MeshPhysicalMaterial({
+          ...baseMatOptions,
           color: new THREE.Color(baseColor),
           metalness: metalness,
           roughness: roughness,
@@ -188,7 +221,7 @@ function BraceletContent() {
             receiveShadow
             key={mesh.name + mesh.modelIndex}
             geometry={node.geometry}
-            material={getMaterial(mesh.partType, mesh.material, mesh.finish)}
+            material={getMaterial(mesh.partType, mesh.material, mesh.finish, mesh.name)}
             position={node.position}
             rotation={node.rotation}
             scale={node.scale}

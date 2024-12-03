@@ -1,5 +1,5 @@
 import React, { useRef, useMemo, Suspense } from 'react';
-import { useEnvironment, useGLTF } from '@react-three/drei';
+import { useEnvironment, useGLTF, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import useProductStore from './store/store';
 import Loader from './components/Loader';
@@ -17,15 +17,55 @@ function NecklaceContent() {
   const { nodes } = useGLTF('/NecklaceFile.gltf');
   const { parts } = useProductStore();
 
-  const getMaterial = (partType, materialType, finish) => {
+  // Load normal maps using useTexture hook
+  const normalMaps = useTexture({
+    necklaceL3: '/NecklaceR3_Normals.png',
+    necklaceL4: '/NecklaceR4_Normals.png',
+    necklaceR3: '/NecklaceR3_Normals.png',
+    necklaceR4: '/NecklaceR4_Normals.png',
+    necklaceA3: '/NecklaceA3.png',
+    necklaceA4: '/NecklaceA4.png',
+    bottomHook3: '/BottomHook3.png',
+    topHook3: '/BottomHook3.png',
+  });
+
+  // After loading normal maps, adjust their settings
+  Object.values(normalMaps).forEach(map => {
+    map.wrapS = map.wrapT = THREE.RepeatWrapping;
+    map.repeat.set(0.5, 0.5); // Increased from (1, 1) to cover more area
+  });
+
+  const getMaterial = (partType, materialType, finish, meshName) => {
     const partData = parts[partType];
     const env = useEnvironment({
       files: '/env-gem-4.exr'
     });
 
+    // Add normal map selection logic
+    const getNormalMap = (meshName) => {
+      switch (meshName) {
+        case 'NecklaceL3': return normalMaps.necklaceL3;
+        case 'NecklaceL4': return normalMaps.necklaceL4;
+        case 'NecklaceR3': return normalMaps.necklaceR3;
+        case 'NecklaceR4': return normalMaps.necklaceR4;
+        case 'NecklaceA3': return normalMaps.necklaceA3;
+        case 'NecklaceA4': return normalMaps.necklaceA4;
+        case 'BottomHook3': return normalMaps.bottomHook3;
+        case 'TopHook3': return normalMaps.topHook3;
+        default: return null;
+      }
+    };
+
+    const normalMap = getNormalMap(meshName);
+    const baseMatOptions = {
+      normalMap,
+      normalScale: normalMap ? new THREE.Vector2(1, 1) : undefined,
+    };
+
     switch (materialType) {
       case 'diamond':
         return new THREE.MeshPhysicalMaterial({
+          ...baseMatOptions,
           color: new THREE.Color(0xffffff),
           metalness: 0.0,
           roughness: 0.0,
@@ -44,7 +84,7 @@ function NecklaceContent() {
           side: THREE.DoubleSide,
           sheen: 1.0,                         // Added sheen for extra sparkle
           sheenRoughness: 0.0,                // Smooth sheen
-          sheenColor: new THREE.Color(0xffffff) // White sheen
+          sheenColor: new THREE.Color(0xffffff), // White sheen
         });
 
       case 'pearl': {
@@ -56,6 +96,7 @@ function NecklaceContent() {
         const sheenBaseColor = new THREE.Color(0xf0f8ff);
 
         return new THREE.MeshPhysicalMaterial({
+          ...baseMatOptions,
           // Base material properties
           color: baseColor,
           metalness: 0.15,      // Slightly increased for more reflectivity
@@ -94,7 +135,7 @@ function NecklaceContent() {
 
           // Optional emission for subtle glow
           emissive: new THREE.Color(0xffffff),
-          emissiveIntensity: 0.05
+          emissiveIntensity: 0.05,
         });
       }
 
@@ -110,6 +151,7 @@ function NecklaceContent() {
 
         if (isMatte) {
           return new THREE.MeshPhysicalMaterial({
+            ...baseMatOptions,
             color: isGold ? new THREE.Color(0xFED88B).multiplyScalar(0.8) : new THREE.Color(0xD0D1CC),
             metalness: 0.8,         // Increased slightly for better metallic look
             roughness: 0.6,         // Increased for more pronounced matte effect
@@ -125,6 +167,7 @@ function NecklaceContent() {
         }
 
         return new THREE.MeshPhysicalMaterial({
+          ...baseMatOptions,
           color: new THREE.Color(baseColor),
           metalness: metalness,
           roughness: roughness,
@@ -192,7 +235,7 @@ function NecklaceContent() {
           <mesh
             key={mesh.name + mesh.modelIndex}
             geometry={node.geometry}
-            material={getMaterial(mesh.partType, mesh.material, mesh.finish)}
+            material={getMaterial(mesh.partType, mesh.material, mesh.finish, mesh.name)}
             position={node.position}
             rotation={node.rotation}
             scale={node.scale}

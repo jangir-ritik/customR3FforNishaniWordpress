@@ -20,87 +20,46 @@ const App = () => {
 
   const productData = useProductStore(state => state.productData);
   // const productData = {
-  //   "id": "5460",
-  //   "name": "Custom Necklace",
-  //   "description": "Craft your unique style with our custom bracelets and necklaces, designed to reflect your personal touch. Choose from a selection of elegant chains and signature locks, mix and match to create jewelry as unique as you. Make your mark with timeless pieces tailored just for you!\r\n\r\n<strong>Material : </strong>Sterling Silver 925\r\n<strong>Plating : </strong>Rhodium and yellow gold\r\n<strong>Size</strong> : 15 + 3 inches (extension)\r\n<strong>AntiTarnish</strong>\r\n<p data-darkreader-inline-color=\"\">*Please note that slight color variations may occur due to photoshoot conditions and studio lighting settings.</p>",
-  //   "price": "11100",
-  //   "regular_price": "11100",
+  //   "id": "5427",
+  //   "name": "Custom Bracelet",
+  //   "description": "Craft your unique style with our custom bracelets and necklaces, designed to reflect your personal touch. Choose from a selection of elegant chains and signature locks, mix and match to create jewelry as unique as you. Make your mark with timeless pieces tailored just for you!\r\n\r\n<strong>Material : </strong>Sterling Silver 925\r\n<strong>Plating : </strong>Rhodium and Yellow Gold\r\n<strong>Size : </strong>7.5 inch\r\n<strong>AntiTarnish</strong>\r\n\r\n*Please note that slight color variations may occur due to photoshoot conditions and studio lighting settings.",
+  //   "price": "8200",
+  //   "regular_price": "8200",
   //   "sale_price": "",
-  //   "image_url": "https://nishanistudio.com/wp-content/uploads/426-5.png",
+  //   "image_url": "https://shop.nishanistudio.com/wp-content/uploads/428130.png",
   //   "gallery_images": [
   //     {
-  //       "id": "4734",
-  //       "url": "https://nishanistudio.com/wp-content/uploads/426-5.png",
+  //       "id": "4807",
+  //       "url": "https://shop.nishanistudio.com/wp-content/uploads/428130.png",
   //       "alt": "",
   //       "caption": ""
   //     },
   //     {
-  //       "id": 6690,
-  //       "url": "https://nishanistudio.com/wp-content/uploads/Home-banner-img-change-1.png",
+  //       "id": 4808,
+  //       "url": "https://shop.nishanistudio.com/wp-content/uploads/428142.png",
+  //       "alt": "",
+  //       "caption": ""
+  //     },
+  //     {
+  //       "id": 8380,
+  //       "url": "https://shop.nishanistudio.com/wp-content/uploads/nishani-studio-page-banner-V6-scaled.jpg",
   //       "alt": "",
   //       "caption": ""
   //     }
   //   ],
-  //   "attributes": {
-  //     "Right Chain Plating": [
-  //       "Gold",
-  //       "Rhodium"
-  //     ],
-  //     "Additional Chain": [
-  //       "Model 1",
-  //       "Model 2",
-  //       "Model 3",
-  //       "Model 4",
-  //       "Model 5",
-  //       "Model 6",
-  //       "null"
-  //     ],
-  //     "Additional Chain Plating": [
-  //       "Gold",
-  //       "Rhodium",
-  //       "null"
-  //     ],
-  //     "Left Chain Plating": [
-  //       "Gold",
-  //       "Rhodium"
-  //     ],
-  //     "Bottom Lock": [
-  //       "Model 1",
-  //       "Model 2",
-  //       "Model 3",
-  //       "Model 4",
-  //       "Model 5",
-  //       "Model 6"
-  //     ],
-  //     "Bottom Lock Plating": [
-  //       "Gold",
-  //       "Rhodium"
-  //     ],
-  //     "Top Lock": [
-  //       "Model 1",
-  //       "Model 2",
-  //       "Model 3",
-  //       "Model 4",
-  //       "Model 5",
-  //       "Model 6"
-  //     ],
-  //     "Top Lock Plating": [
-  //       "Gold",
-  //       "Rhodium"
-  //     ]
-  //   },
+  //   "attributes": [],
   //   "variations": [],
   //   "jewelry_parts": {
   //     "leftChain": {
-  //       "label": "Crub Chain",
+  //       "label": "Box Chain",
   //       "model": "Model-1",
-  //       "price": 3600,
+  //       "price": 2200,
   //       "plating": "gold"
   //     },
   //     "rightChain": {
-  //       "label": "Crub Chain",
+  //       "label": "Box Chain",
   //       "model": "Model-1",
-  //       "price": 3600,
+  //       "price": 2200,
   //       "plating": "gold"
   //     },
   //     "additionalChain": {

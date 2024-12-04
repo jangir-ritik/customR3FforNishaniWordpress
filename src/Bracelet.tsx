@@ -18,14 +18,14 @@ function BraceletContent() {
   const textureLoader = new THREE.TextureLoader();
   const { nodes } = useGLTF('/BraceletFile.gltf');
   const { parts } = useProductStore();
-  const leftChain2NormalMap = textureLoader.load('/BraceletR2_Normals.png');
-  const leftChain3NormalMap = textureLoader.load('/BraceletR3_Normals.png');
-  const rightChain2NormalMap = textureLoader.load('/BraceletR2_Normals.png');
-  const rightChain3NormalMap = textureLoader.load('/BraceletR3_Normals.png');
-  const additionalChain2NormalMap = textureLoader.load('/BraceletA2_Normals.png');
-  const additionalChain3NormalMap = textureLoader.load('/BraceletA3_Normals.png');
-  const bottomLockNormalMap = textureLoader.load('/BottomHook3_Normals.png');
-  const topLockNormalMap = textureLoader.load('/BottomHook3_Normals.png');
+  const leftChain2NormalMap = textureLoader.load('/BraceletR2_Normal.png');
+  const leftChain3NormalMap = textureLoader.load('/BraceletR3_Normal.png');
+  const rightChain2NormalMap = textureLoader.load('/BraceletR2_Normal.png');
+  const rightChain3NormalMap = textureLoader.load('/BraceletR3_Normal.png');
+  const additionalChain2NormalMap = textureLoader.load('/BraceletA2_Normal.png');
+  const additionalChain3NormalMap = textureLoader.load('/BraceletA3_Normal.png');
+  const bottomLockNormalMap = textureLoader.load('/Bracelet_BottomHook3_Normal.png');
+  const topLockNormalMap = textureLoader.load('/Bracelet_BottomHook3_Normal.png');
 
   const getMaterial = (partType, materialType, finish, meshName) => {
     const partData = parts[partType];
@@ -50,7 +50,8 @@ function BraceletContent() {
     const normalMap = getNormalMap(meshName);
     const baseMatOptions = {
       normalMap,
-      normalScale: normalMap ? new THREE.Vector2(1, 1) : undefined,
+      ...(normalMap && { normalScale: new THREE.Vector2(1, 1) }),
+      // normalStrength: 2.5,
     };
 
     switch (materialType) {

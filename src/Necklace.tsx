@@ -19,14 +19,14 @@ function NecklaceContent() {
 
   // Load normal maps using useTexture hook
   const normalMaps = useTexture({
-    necklaceL3: '/NecklaceR3_Normals.png',
-    necklaceL4: '/NecklaceR4_Normals.png',
-    necklaceR3: '/NecklaceR3_Normals.png',
-    necklaceR4: '/NecklaceR4_Normals.png',
-    necklaceA3: '/NecklaceA3.png',
-    necklaceA4: '/NecklaceA4.png',
-    bottomHook3: '/BottomHook3.png',
-    topHook3: '/BottomHook3.png',
+    necklaceL3: '/NecklaceR3_Normal.png',
+    necklaceL4: '/NecklaceR4_Normal.png',
+    necklaceR3: '/NecklaceR3_Normal.png',
+    necklaceR4: '/NecklaceR4_Normal.png',
+    necklaceA3: '/NecklaceA3_Normal.png',
+    necklaceA4: '/NecklaceA4_Normal.png',
+    bottomHook3: '/BottomHook3_Normal.png',
+    topHook3: '/BottomHook3_Normal.png',
   });
 
   // After loading normal maps, adjust their settings
@@ -59,7 +59,8 @@ function NecklaceContent() {
     const normalMap = getNormalMap(meshName);
     const baseMatOptions = {
       normalMap,
-      normalScale: normalMap ? new THREE.Vector2(1, 1) : undefined,
+      ...(normalMap && { normalScale: new THREE.Vector2(1, 1) }),
+      normalStrength: 2.5,
     };
 
     switch (materialType) {

@@ -70,55 +70,37 @@ graph TD
 ## 💎 Model Selection Options
 
 ```mermaid
-flowchart LR
-    Start([Start Selection]) --> N[🔗 Necklace]
+%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'arial', 'primaryColor': '#fff3bf', 'primaryBorderColor': '#868e96', 'primaryTextColor': '#212529', 'secondaryColor': '#fff9db', 'tertiaryColor': '#fff3bf'}}}%%
+graph LR
+    classDef default fill:#fff3bf,stroke:#868e96,stroke-width:2px;
+    classDef highlight fill:#fff9db,stroke:#495057,stroke-width:2px;
+    classDef selection fill:#fff3bf,stroke:#495057,stroke-width:2px;
 
-    N --> CCS[Choose Chain Style<br/>📍 Left • Right • Additional]
+    Start[Product Selection] --> Necklace[Necklace]
+    Necklace --> Components[Choose Chain Style<br/>Left + Right +<br/>Additional]
+    Components --> ChainStyles[Chain Styles]
 
-    CCS --> NC1["Curb Chain<br/>₹3,600<br/>🥇 Gold | 🥈 Silver"]
-    CCS --> NC2["Box with Pearls<br/>₹4,400<br/>🥇 Gold | 🥈 Silver"]
-    CCS --> NC3["Diamond-cut S<br/>₹6,500<br/>🥇 Gold | 🥈 Silver"]
-    CCS --> NC4["Diamond-cut L<br/>₹8,800<br/>🥇 Gold | 🥈 Silver"]
-    CCS --> NC5["Ball Chain<br/>₹4,600<br/>🥇 Gold | 🥈 Silver"]
-    CCS --> NC6["Paperclip Studded<br/>₹7,900<br/>🥇 Gold | 🥈 Silver"]
+    ChainStyles --> C1[Curb Chain<br/>₹3,600]
+    ChainStyles --> C2[Box with Pearls<br/>₹4,400]
+    ChainStyles --> C3[Diamond-cut S<br/>₹6,500]
+    ChainStyles --> C4[Diamond-cut L<br/>₹8,800]
+    ChainStyles --> C5[Ball Chain<br/>₹4,600]
+    ChainStyles --> C6[Paperclip Studded<br/>₹7,900]
 
-    NC1 --> CLS[Choose Lock Style<br/>🔒 Front • Back]
-    NC2 --> CLS
-    NC3 --> CLS
-    NC4 --> CLS
-    NC5 --> CLS
-    NC6 --> CLS
+    Components --> LockStyles[Lock Styles]
+    LockStyles --> L1[Signature Lock<br/>₹1,900]
+    LockStyles --> L2[Twisted Lock<br/>₹2,400]
+    LockStyles --> L3[Hexagonal Lock<br/>₹2,300]
+    LockStyles --> L4[Half Studded<br/>₹2,500]
+    LockStyles --> L5[Octagonal Lock<br/>₹2,200]
+    LockStyles --> L6[Matte Finish<br/>₹2,000]
 
-    CLS --> L1["Signature Lock<br/>₹1,900<br/>🥇 Gold | 🥈 Silver"]
-    CLS --> L2["Twisted Lock<br/>₹2,400<br/>🥇 Gold | 🥈 Silver"]
-    CLS --> L3["Hexagonal Lock<br/>₹2,300<br/>🥇 Gold | 🥈 Silver"]
-    CLS --> L4["Half Studded<br/>₹2,500<br/>🥇 Gold | 🥈 Silver"]
-    CLS --> L5["Octagonal Lock<br/>₹2,200<br/>🥇 Gold | 🥈 Silver"]
-    CLS --> L6["Matte Finish<br/>₹2,000<br/>🥇 Gold | 🥈 Silver"]
-    CLS --> L7["Round Lock<br/>₹1,800<br/>🥇 Gold | 🥈 Silver"]
-    CLS --> L8["Diamond Studded<br/>₹4,500<br/>🥇 Gold | 🥈 Silver"]
+    C1 & C2 & C3 & C4 & C5 & C6 & L1 & L2 & L3 & L4 & L5 & L6 --> Plating[Plating Options]
+    Plating --> Gold[Gold]
+    Plating --> Silver[Silver]
 
-    L1 --> Final([Complete Necklace<br/>✨ Ready to Order])
-    L2 --> Final
-    L3 --> Final
-    L4 --> Final
-    L5 --> Final
-    L6 --> Final
-    L7 --> Final
-    L8 --> Final
-
-
-    classDef productType fill:#e1f5fe,stroke:#01579b,stroke-width:3px
-    classDef chainStyle fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-    classDef lockStyle fill:#fff3e0,stroke:#e65100,stroke-width:2px
-    classDef decisionNode fill:#fff9c4,stroke:#f57f17,stroke-width:3px
-    classDef finalNode fill:#ffebee,stroke:#c62828,stroke-width:3px
-
-    class N productType
-    class NC1,NC2,NC3,NC4,NC5,NC6 chainStyle
-    class L1,L2,L3,L4,L5,L6,L7,L8,L9,L10,L11,L12 lockStyle
-    class CCS,CLS decisionNode
-    class Start,Final finalNode
+    class Start,Necklace,Components highlight
+    class ChainStyles,LockStyles,Plating selection
 ```
 
 The diagram above showcases the extensive customization options available for necklaces (bracelets follow a similar pattern with their respective components):

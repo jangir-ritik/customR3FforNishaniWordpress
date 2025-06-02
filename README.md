@@ -67,6 +67,86 @@ graph TD
     J --> K[Add to Cart]
 ```
 
+## 💎 Model Selection Options
+
+```mermaid
+graph TD
+    subgraph Product Type
+        PT[Product Selection] --> N[Necklace]
+        PT --> B[Bracelet]
+    end
+
+    subgraph Components
+        N --> NC[Necklace Components]
+        B --> BC[Bracelet Components]
+
+        NC --> |Customize| NCO[Chain Options]
+        NC --> |Customize| NLO[Lock Options]
+
+        BC --> |Customize| BCO[Chain Options]
+        BC --> |Customize| BLO[Lock Options]
+    end
+
+    subgraph Chain Styles
+        NCO --> |Left Chain| NC1[Curb Chain ₹3600]
+        NCO --> |Left Chain| NC2[Box with Pearls ₹4400]
+        NCO --> |Left Chain| NC3[Diamond-cut S ₹6500]
+        NCO --> |Left Chain| NC4[Diamond-cut L ₹8800]
+        NCO --> |Left Chain| NC5[Ball Chain ₹4600]
+        NCO --> |Left Chain| NC6[Paperclip Studded ₹7900]
+
+        BCO --> |Left Chain| BC1[Box Chain ₹2200]
+        BCO --> |Left Chain| BC2[Diamond-cut S ₹4500]
+        BCO --> |Left Chain| BC3[Diamond-cut L ₹3300]
+        BCO --> |Left Chain| BC4[Paper Clip ₹2500]
+        BCO --> |Left Chain| BC5[Ball Chain ₹2300]
+        BCO --> |Left Chain| BC6[Curb Chain ₹1800]
+    end
+
+    subgraph Lock Styles
+        NLO & BLO --> L1[Signature Lock ₹1900]
+        NLO & BLO --> L2[Twisted Lock ₹2400]
+        NLO & BLO --> L3[Hexagonal Lock ₹2300]
+        NLO & BLO --> L4[Half Studded ₹2500]
+        NLO & BLO --> L5[Octagonal Lock ₹2200]
+        NLO & BLO --> L6[Matte Finish ₹2000]
+    end
+
+    subgraph Plating Options
+        NC1 & NC2 & NC3 & NC4 & NC5 & NC6 & BC1 & BC2 & BC3 & BC4 & BC5 & BC6 & L1 & L2 & L3 & L4 & L5 & L6 --> Gold[Gold Plating]
+        NC1 & NC2 & NC3 & NC4 & NC5 & NC6 & BC1 & BC2 & BC3 & BC4 & BC5 & BC6 & L1 & L2 & L3 & L4 & L5 & L6 --> Silver[Silver Plating]
+    end
+```
+
+The diagram above showcases the extensive customization options available in the application:
+
+1. **Product Types**
+
+   - Necklaces and Bracelets with unique chain styles
+   - Each product type has its own set of compatible components
+
+2. **Chain Options**
+
+   - Necklaces: 6 premium styles ranging from ₹3,600 to ₹8,800
+   - Bracelets: 6 elegant styles ranging from ₹1,800 to ₹4,500
+   - Each chain can be used for left, right, or additional positions
+
+3. **Lock Options**
+
+   - 6 distinctive lock designs from ₹1,900 to ₹2,500
+   - Universal compatibility with both necklaces and bracelets
+   - Can be used for both front and back positions
+
+4. **Plating Options**
+   - Gold and Silver plating available for all components
+   - Consistent finish across all selected parts
+
+This comprehensive selection system allows for:
+
+- 72 unique chain combinations per product type (6 styles × 2 platings × 6 positions)
+- 12 lock combinations per product (6 styles × 2 platings)
+- Over 1,000 possible unique combinations when considering all components
+
 ## 💻 Technical Architecture
 
 ### Component Structure

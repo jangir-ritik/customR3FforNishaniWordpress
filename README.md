@@ -70,82 +70,94 @@ graph TD
 ## 💎 Model Selection Options
 
 ```mermaid
-graph TD
-    subgraph Product Type
-        PT[Product Selection] --> N[Necklace]
-        PT --> B[Bracelet]
-    end
+flowchart LR
+    Start([Start Selection]) --> N[🔗 Necklace]
 
-    subgraph Components
-        N --> NC[Necklace Components]
-        B --> BC[Bracelet Components]
+    N --> CCS[Choose Chain Style<br/>📍 Left • Right • Additional]
 
-        NC --> |Customize| NCO[Chain Options]
-        NC --> |Customize| NLO[Lock Options]
+    CCS --> NC1["Curb Chain<br/>₹3,600<br/>🥇 Gold | 🥈 Silver"]
+    CCS --> NC2["Box with Pearls<br/>₹4,400<br/>🥇 Gold | 🥈 Silver"]
+    CCS --> NC3["Diamond-cut S<br/>₹6,500<br/>🥇 Gold | 🥈 Silver"]
+    CCS --> NC4["Diamond-cut L<br/>₹8,800<br/>🥇 Gold | 🥈 Silver"]
+    CCS --> NC5["Ball Chain<br/>₹4,600<br/>🥇 Gold | 🥈 Silver"]
+    CCS --> NC6["Paperclip Studded<br/>₹7,900<br/>🥇 Gold | 🥈 Silver"]
 
-        BC --> |Customize| BCO[Chain Options]
-        BC --> |Customize| BLO[Lock Options]
-    end
+    NC1 --> CLS[Choose Lock Style<br/>🔒 Front • Back]
+    NC2 --> CLS
+    NC3 --> CLS
+    NC4 --> CLS
+    NC5 --> CLS
+    NC6 --> CLS
 
-    subgraph Chain Styles
-        NCO --> |Left Chain| NC1[Curb Chain ₹3600]
-        NCO --> |Left Chain| NC2[Box with Pearls ₹4400]
-        NCO --> |Left Chain| NC3[Diamond-cut S ₹6500]
-        NCO --> |Left Chain| NC4[Diamond-cut L ₹8800]
-        NCO --> |Left Chain| NC5[Ball Chain ₹4600]
-        NCO --> |Left Chain| NC6[Paperclip Studded ₹7900]
+    CLS --> L1["Signature Lock<br/>₹1,900<br/>🥇 Gold | 🥈 Silver"]
+    CLS --> L2["Twisted Lock<br/>₹2,400<br/>🥇 Gold | 🥈 Silver"]
+    CLS --> L3["Hexagonal Lock<br/>₹2,300<br/>🥇 Gold | 🥈 Silver"]
+    CLS --> L4["Half Studded<br/>₹2,500<br/>🥇 Gold | 🥈 Silver"]
+    CLS --> L5["Octagonal Lock<br/>₹2,200<br/>🥇 Gold | 🥈 Silver"]
+    CLS --> L6["Matte Finish<br/>₹2,000<br/>🥇 Gold | 🥈 Silver"]
+    CLS --> L7["Round Lock<br/>₹1,800<br/>🥇 Gold | 🥈 Silver"]
+    CLS --> L8["Diamond Studded<br/>₹4,500<br/>🥇 Gold | 🥈 Silver"]
 
-        BCO --> |Left Chain| BC1[Box Chain ₹2200]
-        BCO --> |Left Chain| BC2[Diamond-cut S ₹4500]
-        BCO --> |Left Chain| BC3[Diamond-cut L ₹3300]
-        BCO --> |Left Chain| BC4[Paper Clip ₹2500]
-        BCO --> |Left Chain| BC5[Ball Chain ₹2300]
-        BCO --> |Left Chain| BC6[Curb Chain ₹1800]
-    end
+    L1 --> Final([Complete Necklace<br/>✨ Ready to Order])
+    L2 --> Final
+    L3 --> Final
+    L4 --> Final
+    L5 --> Final
+    L6 --> Final
+    L7 --> Final
+    L8 --> Final
 
-    subgraph Lock Styles
-        NLO & BLO --> L1[Signature Lock ₹1900]
-        NLO & BLO --> L2[Twisted Lock ₹2400]
-        NLO & BLO --> L3[Hexagonal Lock ₹2300]
-        NLO & BLO --> L4[Half Studded ₹2500]
-        NLO & BLO --> L5[Octagonal Lock ₹2200]
-        NLO & BLO --> L6[Matte Finish ₹2000]
-    end
 
-    subgraph Plating Options
-        NC1 & NC2 & NC3 & NC4 & NC5 & NC6 & BC1 & BC2 & BC3 & BC4 & BC5 & BC6 & L1 & L2 & L3 & L4 & L5 & L6 --> Gold[Gold Plating]
-        NC1 & NC2 & NC3 & NC4 & NC5 & NC6 & BC1 & BC2 & BC3 & BC4 & BC5 & BC6 & L1 & L2 & L3 & L4 & L5 & L6 --> Silver[Silver Plating]
-    end
+    classDef productType fill:#e1f5fe,stroke:#01579b,stroke-width:3px
+    classDef chainStyle fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef lockStyle fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef decisionNode fill:#fff9c4,stroke:#f57f17,stroke-width:3px
+    classDef finalNode fill:#ffebee,stroke:#c62828,stroke-width:3px
+
+    class N productType
+    class NC1,NC2,NC3,NC4,NC5,NC6 chainStyle
+    class L1,L2,L3,L4,L5,L6,L7,L8,L9,L10,L11,L12 lockStyle
+    class CCS,CLS decisionNode
+    class Start,Final finalNode
 ```
 
-The diagram above showcases the extensive customization options available in the application:
+The diagram above showcases the extensive customization options available for necklaces (bracelets follow a similar pattern with their respective components):
 
-1. **Product Types**
+1. **Component Selection**
 
-   - Necklaces and Bracelets with unique chain styles
-   - Each product type has its own set of compatible components
+   - Left Chain, Right Chain, and Additional Chain options
+   - Front Lock and Back Lock customization
+   - Each component can be independently customized
 
-2. **Chain Options**
+2. **Chain Styles (Per Component)**
 
-   - Necklaces: 6 premium styles ranging from ₹3,600 to ₹8,800
-   - Bracelets: 6 elegant styles ranging from ₹1,800 to ₹4,500
-   - Each chain can be used for left, right, or additional positions
+   - Curb Chain (₹3,600)
+   - Box with Pearls (₹4,400)
+   - Signature Diamond-cut (Small) (₹6,500)
+   - Signature Diamond-cut (Large) (₹8,800)
+   - Ball Chain (₹4,600)
+   - Paperclip with Studded Links (₹7,900)
 
 3. **Lock Options**
 
-   - 6 distinctive lock designs from ₹1,900 to ₹2,500
-   - Universal compatibility with both necklaces and bracelets
-   - Can be used for both front and back positions
+   - Signature Lock (₹1,900)
+   - Twisted Lock (₹2,400)
+   - Hexagonal Textured Lock (₹2,300)
+   - Half Studded Lock (₹2,500)
+   - Octagonal Lock (₹2,200)
+   - Signature Matte Finish Lock (₹2,000)
 
 4. **Plating Options**
-   - Gold and Silver plating available for all components
-   - Consistent finish across all selected parts
+   - Gold plating available for all components
+   - Silver plating available for all components
+   - Consistent finish across selected parts
 
-This comprehensive selection system allows for:
+This modular customization system enables:
 
-- 72 unique chain combinations per product type (6 styles × 2 platings × 6 positions)
-- 12 lock combinations per product (6 styles × 2 platings)
-- Over 1,000 possible unique combinations when considering all components
+- 36 unique chain combinations for the main chains (6 styles × 2 platings × 3 positions)
+- 12 lock combinations (6 styles × 2 platings)
+- Over 500 possible unique combinations for necklaces alone
+- Similar customization options available for bracelets with their specific chain styles and pricing
 
 ## 💻 Technical Architecture
 
